@@ -20,6 +20,18 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/lib.css') }}" rel="stylesheet">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+  
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        // Shared ID
+        gtag('config', 'UA-118965717-3');
+        // Bootstrap ID
+        gtag('config', 'UA-118965717-5');
+      </script>
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <div id="app">
@@ -52,7 +64,7 @@
             @include('header.header')
             @include('sidebar.sidebar')
             @endguest
-            @yield('contenido')
+            @yield('content')
     </div>
 </body>
 </html>
