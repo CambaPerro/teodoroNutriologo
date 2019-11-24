@@ -27,6 +27,8 @@ class User extends Authenticatable
         'tipo'
     ];
 
+    protected $table = 'usuarios';
+
     /**
      * The attributes that should be hidden for arrays.
      *
