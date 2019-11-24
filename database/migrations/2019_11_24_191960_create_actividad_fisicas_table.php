@@ -15,8 +15,10 @@ class CreateActividadFisicasTable extends Migration
     {
         Schema::create('actividad_fisicas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_tipo')->nulable();
             $table->string('nombre',50);
             $table->string('descripcion',100);
+            $table->foreign('id_tipo')->references('id')->on('tipo_actividads');
             // $table->timestamps();
         });
     }
