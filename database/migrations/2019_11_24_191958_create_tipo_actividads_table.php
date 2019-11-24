@@ -14,10 +14,8 @@ class CreateTipoActividadsTable extends Migration
     public function up()
     {
         Schema::create('tipo_actividads', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_actividad_fisica');
+            $table->bigIncrements('id');        
             $table->string('tipo',10);
-            $table->foreign('id_actividad_fisica')->references('id')->on('actividad_fisicas');
             // $table->timestamps();
         });
     }

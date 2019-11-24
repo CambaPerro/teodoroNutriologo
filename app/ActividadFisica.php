@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActividadFisica extends Model
 {
-    protected $fillable=['id_actividad_fisica','tipo'];
+    protected $fillable=['id_tipo','nombre','descripcion'];
     public $timestamps = false;
 }
