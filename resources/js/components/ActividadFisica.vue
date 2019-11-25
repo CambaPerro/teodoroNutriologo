@@ -13,7 +13,7 @@
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Categoria Alimento
+          <i class="fa fa-align-justify"></i> Actividad Fisica
           <button
             type="button"
             data-toggle="modal"
@@ -56,14 +56,19 @@
               <thead>
                 <tr>
                   <th>N°</th>
+                  <th>N° Tipo</th>
+                  <th>Tipo Actividad</th>
                   <th>Nombre</th>
+                  <th>Descripcion</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="data in array_data" :key="data.id">
                   <td>{{ data.id}}</td>
+                  <td>{{ data.id_tipo}}</td>
+                  <td>{{ data.tipoactividad}}</td>
                   <td>{{ data.nombre}}</td>
-                  
+                  <td>{{ data.descripcion}}</td>
                   <td>
                     <button
                       type="button"
@@ -107,8 +112,9 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      categoria_id: 0,
-      tipo: "",
+      tipo_id: 0,
+      nombre: "",
+      descripcion :"",
       array_data: [],
       pagination: {
         total: 0,
@@ -158,7 +164,7 @@ export default {
       
     },
     listar(page, buscar){
-      var url='categoria?page='+page+'&buscar='+buscar;
+      var url='actividad_fisica?page='+page+'&buscar='+buscar;
       axios.get(url).then(resp=>{
         this.array_data=resp.data.table.data;
         this.pagination=resp.data.pagination;
@@ -172,5 +178,3 @@ export default {
   }
 };
 </script>
-
-

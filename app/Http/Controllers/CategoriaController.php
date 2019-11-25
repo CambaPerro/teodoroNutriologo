@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\CategoriaAlimento;
+use App\Categoria;
 
-class CategoriaAlimentoController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class CategoriaAlimentoController extends Controller
     {
         // if(!$request->ajax()) return redirect('/');
         $buscar=$request->buscar;
-        $table=CategorioAlimento::where('nombre','like','%'.$buscar.'%')
+        $table=Categoria::where('nombre','like','%'.$buscar.'%')
         ->orderBy('id','desc')->paginate(10);
         return [
             'pagination' => [
@@ -40,7 +40,7 @@ class CategoriaAlimentoController extends Controller
     public function store(Request $request)
     {
         // if(!$request->ajax()) return redirect('/');
-        $table= new CategorioAlimento();
+        $table= new Categoria();
         $table->nombre=$request->nombre;
         $table->save();
     }
@@ -55,7 +55,7 @@ class CategoriaAlimentoController extends Controller
     public function update(Request $request, $id)
     {
         // if(!$request->ajax()) return redirect('/');
-        $table=CategorioAlimento::findOrfail($request->id);
+        $table=Categoria::findOrfail($request->id);
         $table->nombre=$request->nombre;
         $table->save();
     }
@@ -69,7 +69,7 @@ class CategoriaAlimentoController extends Controller
     public function destroy($id)
     {
         // if(!$request->ajax()) return redirect('/');
-        $table=CategorioAlimento::find($id);
+        $table=Categoria::find($id);
         $table->delete();
     }
 }

@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dieta','DietaController@index');
 Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
+Route::get('/categoria','CategoriaController@index');
+Route::get('/actividad_fisica','ActividadFisicaController@index');
 
 
 Route::get('/orden_alimenticios',function(){
@@ -35,3 +37,7 @@ Route::get('/dietas',function(){
 Route::get('/categorias',function(){
     return view('categoria/index');
 })->name('categorias');
+
+Route::get('/actividad_fisicas',function(){
+    return view('actividad_fisica/index');
+})->name('actividad_fisicas');
