@@ -26,6 +26,9 @@ Route::get('/orden',function(){
     return view('orden_alimenticio/index');
 })->name('orden');
 
+Route::get('/alimentos',function(){
+    return view('alimento/index');
+})->name('alimentos');
 
 Route::get('/dietas',function(){
     return view('dieta/index');
