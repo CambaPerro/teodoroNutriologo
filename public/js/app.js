@@ -2222,6 +2222,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -2271,6 +2272,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+>>>>>>> 719a0a6df1391e1ab83f29d8004192b5e35b2b9f
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2321,6 +2324,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+<<<<<<< HEAD
     listarProducto: function listarProducto(page, buscar) {
       var me = this;
       var url = "orden?page=" + page + "&buscar=" + buscar;
@@ -2332,12 +2336,15 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
+=======
+>>>>>>> 719a0a6df1391e1ab83f29d8004192b5e35b2b9f
     cambiarPagina: function cambiarPagina(page, buscar) {
       var me = this; // actualizar la Pagina
 
       me.pagination.current_page = page; // enviar la peticion para visualizar la data de esta pagina
 
       me.listarProducto(page, buscar);
+<<<<<<< HEAD
     },
     cargarPdf: function cargarPdf() {
       window.open("producto/listarPdf");
@@ -2556,6 +2563,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.listarProducto(1, this.buscar);
   }
+=======
+    }
+  },
+  mounted: function mounted() {}
+>>>>>>> 719a0a6df1391e1ab83f29d8004192b5e35b2b9f
 });
 
 /***/ }),
@@ -38779,6 +38791,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+<<<<<<< HEAD
   return _c("main", { staticClass: "main" }, [
     _c("br"),
     _vm._v(" "),
@@ -38903,12 +38916,16 @@ var render = function() {
       ]
     )
   ])
+=======
+  return _vm._m(0)
+>>>>>>> 719a0a6df1391e1ab83f29d8004192b5e35b2b9f
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+<<<<<<< HEAD
     return _c("div", { staticClass: "card-header" }, [
       _c("i", { staticClass: "fa fa-align-justify" }),
       _vm._v(" Orden Alimenticio\n        "),
@@ -39080,6 +39097,204 @@ var staticRenderFns = [
         ])
       ]
     )
+=======
+    return _c("main", { staticClass: "main" }, [
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("i", { staticClass: "fa fa-align-justify" }),
+            _vm._v(" Orden Alimenticio\n        "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: {
+                  type: "button",
+                  "data-toggle": "modal",
+                  "data-target": "#ModalLong"
+                }
+              },
+              [
+                _c("i", { staticClass: "icon-plus" }),
+                _vm._v(" Nuevo\n        ")
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group row" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("div", { staticClass: "input-group" }, [
+                  _c("div", { staticClass: "col-md-10" }, [
+                    _c("div", { staticClass: "input-group" }, [
+                      _c("select", { staticClass: "form-control col-md-3" }, [
+                        _c("option", { attrs: { value: "nombre" } }, [
+                          _vm._v("Nombre")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: { type: "text", placeholder: "Buscar Producto" }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "input-group-append" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { type: "submit" }
+                          },
+                          [
+                            _c("i", { staticClass: "fa fa-search" }),
+                            _vm._v(" Buscar\n                    ")
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c(
+                "table",
+                { staticClass: "table table-bordered table-striped table-sm" },
+                [
+                  _c("thead", [
+                    _c("tr", [
+                      _c("th", [_vm._v("N°")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Nombre")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tbody", [_c("tr")])
+                ]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade bd-example-modal-lg",
+          attrs: {
+            tabindex: "-1",
+            role: "dialog",
+            id: "ModalLong",
+            "aria-labelledby": "myModalLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-primary modal-lg",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-header" }, [
+                  _c("h4", { staticClass: "modal-title" }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "modal",
+                        "aria-label": "Close"
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("×")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "form",
+                    {
+                      staticClass: "form-horizontal",
+                      attrs: {
+                        action: "",
+                        method: "post",
+                        enctype: "multipart/form-data"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "text-input" }
+                          },
+                          [_vm._v("Nombre")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder:
+                                "Nombre del Orden Alimenticio............",
+                              required: ""
+                            }
+                          })
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Cerrar")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "button" }
+                    },
+                    [_vm._v("Guardar")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "button" }
+                    },
+                    [_vm._v("Actualizar")]
+                  )
+                ])
+              ])
+            ]
+          )
+        ]
+      )
+    ])
+>>>>>>> 719a0a6df1391e1ab83f29d8004192b5e35b2b9f
   }
 ]
 render._withStripped = true
@@ -51250,8 +51465,12 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+<<<<<<< HEAD
 Vue.component('orden_alimenticio-component', __webpack_require__(/*! ./components/OrdenAlimenticio.vue */ "./resources/js/components/OrdenAlimenticio.vue")["default"]);
 Vue.component('categoria-component', __webpack_require__(/*! ./components/CategoriaAlimento.vue */ "./resources/js/components/CategoriaAlimento.vue")["default"]);
+=======
+Vue.component('orden-alimenticio-component', __webpack_require__(/*! ./components/OrdenAlimenticio.vue */ "./resources/js/components/OrdenAlimenticio.vue")["default"]);
+>>>>>>> 719a0a6df1391e1ab83f29d8004192b5e35b2b9f
 Vue.component('dieta-component', __webpack_require__(/*! ./components/Dieta.vue */ "./resources/js/components/Dieta.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -51528,9 +51747,13 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _OrdenAlimenticio_vue_vue_type_template_id_9bd19506___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrdenAlimenticio.vue?vue&type=template&id=9bd19506& */ "./resources/js/components/OrdenAlimenticio.vue?vue&type=template&id=9bd19506&");
 /* harmony import */ var _OrdenAlimenticio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OrdenAlimenticio.vue?vue&type=script&lang=js& */ "./resources/js/components/OrdenAlimenticio.vue?vue&type=script&lang=js&");
+<<<<<<< HEAD
 /* empty/unused harmony star reexport *//* harmony import */ var _OrdenAlimenticio_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OrdenAlimenticio.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/OrdenAlimenticio.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
+=======
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+>>>>>>> 719a0a6df1391e1ab83f29d8004192b5e35b2b9f
 
 
 
@@ -51538,7 +51761,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
+<<<<<<< HEAD
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+=======
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+>>>>>>> 719a0a6df1391e1ab83f29d8004192b5e35b2b9f
   _OrdenAlimenticio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _OrdenAlimenticio_vue_vue_type_template_id_9bd19506___WEBPACK_IMPORTED_MODULE_0__["render"],
   _OrdenAlimenticio_vue_vue_type_template_id_9bd19506___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -51570,6 +51797,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./resources/js/components/OrdenAlimenticio.vue?vue&type=style&index=0&lang=css&":
 /*!***************************************************************************************!*\
   !*** ./resources/js/components/OrdenAlimenticio.vue?vue&type=style&index=0&lang=css& ***!
@@ -51586,6 +51814,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+=======
+>>>>>>> 719a0a6df1391e1ab83f29d8004192b5e35b2b9f
 /***/ "./resources/js/components/OrdenAlimenticio.vue?vue&type=template&id=9bd19506&":
 /*!*************************************************************************************!*\
   !*** ./resources/js/components/OrdenAlimenticio.vue?vue&type=template&id=9bd19506& ***!
