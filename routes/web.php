@@ -30,3 +30,7 @@ Route::get('/orden',function(){
 Route::get('/dietas',function(){
     return view('dieta/index');
 })->name('dietas');
+
+Route::get('/categorias',function(){
+    return view('categoria/index');
+})->name('categorias');
