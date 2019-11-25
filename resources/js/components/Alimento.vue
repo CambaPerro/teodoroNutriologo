@@ -13,7 +13,7 @@
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Tipo Actividad
+          <i class="fa fa-align-justify"></i> Alimentos
           <button
             type="button"
             data-toggle="modal"
@@ -22,8 +22,9 @@
           >
             <i class="icon-plus"></i>&nbsp;Nuevo
           </button>
-
-          
+          <button type="button"  class="btn btn-info">
+            <i class="fa fa-print fa-lg"></i>
+          </button>
         </div>
         <div class="card-body">
           <div class="form-group row">
@@ -32,12 +33,12 @@
                 <div class="col-md-10">
                   <div class="input-group">
                     <select class="form-control col-md-3">
-                      <option value="nombre">Nombre</option>
+                      <option value="nombre">Nombre </option>
                     </select>
                     <input
                       type="text"
+                      
                       class="form-control"
-                      placeholder="Buscar Producto"
                     />
                     <span class="input-group-append">
                       <button
@@ -57,84 +58,36 @@
               <thead>
                 <tr>
                   <th>N°</th>
-                  <th>Nombre</th>
-                  
+                  <th>id_Categoria</th>
+                  <th>Categoria</th>
+                  <th>Nombres</th>
+                  <th>Calorias</th>
+                  <th>Carbohidratos</th>
+                  <th>Grasas</th>
+                  <th>Proteinas</th>
                 </tr>
               </thead>
-              <tbody >
-                <tr v-for="data in array_data" :key="data.id" >
-                  <th>{{ data.id }}</th>
-                  <th>{{ data.tipo }}</th>
-                  <th></th>
+              <tbody>
+                <tr v-for="(data) in array_data" :key="data.id">
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.id_categoria }}</td>
+                    <td>{{ data.categoria }}</td>
+                    <td>{{ data.nombre }}</td>
+                    <td>{{ data.calorias }}</td>
+                    <td>{{ data.carbohidratos }}</td>
+                    <td>{{ data.grasas }}</td>
+                    <td>{{ data.proteinas }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
+ 
         </div>
       </div>
       <!-- Fin ejemplo de tabla Listado -->
     </div>
     <!--Inicio del modal agregar/actualizar-->
-    <div
-      class="modal fade bd-example-modal-lg"
-      tabindex="-1"
-      role="dialog"
-      id="ModalLong"
-      aria-labelledby="myModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-primary modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" ></h4>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action method="post" enctype="multipart/form-data" class="form-horizontal">
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
-                <div class="col-md-9">
-                  <input
-                    type="text"
-                    placeholder="Nombre del Orden Alimenticio............"
-                    class="form-control"
-                    required
-                  />
-                </div>
-              </div>
-              
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >Cerrar</button>
-            <button
-              type="button"
-              
-              class="btn btn-primary"
-            >Guardar</button>
-            <button
-              type="button"
-             
-              class="btn btn-primary"
-            >Actualizar</button>
-          </div>
-        </div>
-        <!-- /.modal-content -->
-      </div>
-
-      <!-- /.modal-dialog -->
-    </div>
+  
     <!--Fin del modal-->
   </main>
 </template>
@@ -144,9 +97,9 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      tipo_id: 0,
-      nombre: "",
-      array_data:[],
+      categoria_id: 0,
+      tipo: "",
+      array_data: [],
       pagination: {
         total: 0,
         current_page: 0,
@@ -155,8 +108,10 @@ export default {
         from: 0,
         to: 0
       },
-      offset: 3
-      
+      offset: 3,
+      buscar: "",
+      activarValidate: "",
+      mensaje: ""
     };
   },
   computed: {
@@ -186,21 +141,28 @@ export default {
   },
   methods: {
     
+   
     cambiarPagina(page, buscar) {
       let me = this;
       // actualizar la Pagina
-      // enviar la peticion para visualizar la data de esta pagina
       me.pagination.current_page = page;
+      // enviar la peticion para visualizar la data de esta pagina
+   
     },
-    
+
     listar(page,buscar){
-      var url='tipo_actividad?page='+page+'&buscar='+buscar;
+      var url='alimento?page='+page+'&buscar='+buscar;
       axios.get(url).then(resp=>{
         this.array_data = resp.data.table.data;
         this.pagination = resp.data.pagination;
         console.log(resp);
       })
     }
+
+
+
+
+
   },
   mounted() {
     this.listar(1,'');
