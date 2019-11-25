@@ -20,6 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dieta','DietaController@index');
+Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
+
+Route::get('/orden',function(){
+    return view('orden_alimenticio/index');
+})->name('orden');
 
 
 Route::get('/dietas',function(){
