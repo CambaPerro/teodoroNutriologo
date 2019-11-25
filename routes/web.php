@@ -22,9 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dieta','DietaController@index');
 Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
 
-Route::get('/orden',function(){
+
+Route::get('/orden_alimenticios',function(){
     return view('orden_alimenticio/index');
-})->name('orden');
+})->name('orden_alimenticios');
 
 
 Route::get('/dietas',function(){

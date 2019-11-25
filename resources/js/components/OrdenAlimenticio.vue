@@ -64,60 +64,11 @@
               </thead>
               <tbody>
                 <tr >
-                  <td>
-                    <span class="badge badge-success" ></span>
-                  </td>
-                  <td>{{ data.nombre}}</td>
-                  <td>
-                    <button
-                      type="button"
-                      data-toggle="modal"
-                      data-target="#ModalLong"
-                      class="btn btn-warning btn-sm"
-                    >
-                      <i class="icon-pencil"></i>
-                    </button> &nbsp;
-                    <template >
-                      <button
-                        type="button"
-                        class="btn btn-danger btn-sm"
-                      >
-                        <i class="icon-trash"></i>
-                      </button>
-                    </template>
-                    
-                  </td>
+                  
                 </tr>
               </tbody>
             </table>
           </div>
-          <nav>
-            <!-- justify-content-center -->
-            <ul class="pagination">
-              <li class="page-item" >
-                <a
-                  class="page-link"
-                  href="#"
-                >Ant</a>
-              </li>
-              <li
-                class="page-item"
-                :key="page"
-                :class="[page == isActived ? 'active' : '']"
-              >
-                <a
-                  class="page-link"
-                  href="#"
-                ></a>
-              </li>
-              <li class="page-item" >
-                <a
-                  class="page-link"
-                  href="#"
-                >Sig</a>
-              </li>
-            </ul>
-          </nav>
         </div>
       </div>
       <!-- Fin ejemplo de tabla Listado -->
@@ -144,7 +95,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div :class="'modal-body '+activarValidate">
+          <div class="modal-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
@@ -168,12 +119,12 @@
             >Cerrar</button>
             <button
               type="button"
-              v-if="tipoAccion==1"
+              
               class="btn btn-primary"
             >Guardar</button>
             <button
               type="button"
-              v-if="tipoAccion==2"
+             
               class="btn btn-primary"
             >Actualizar</button>
           </div>
@@ -233,269 +184,18 @@ export default {
     }
   },
   methods: {
-    listarProducto(page, buscar) {
-      let me = this;
-      var url = "orden?page=" + page + "&buscar=" + buscar;
-      axios
-        .get(url)
-        .then(function(response) {
-          var respuesta = response.data;
-          me.arrayProducto = respuesta.productos.data;
-          me.pagination = respuesta.pagination;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
+    
     cambiarPagina(page, buscar) {
       let me = this;
       // actualizar la Pagina
       me.pagination.current_page = page;
       // enviar la peticion para visualizar la data de esta pagina
       me.listarProducto(page, buscar);
-    },
-    cargarPdf() {
-      window.open("producto/listarPdf");
-    },
-    imprimir() {
-      window.open("producto/imprimir");
-    },
-    registrarProducto() {
-      if (this.validarProducto()) {
-        this.activarValidate = "was-validated";
-        Swal.fire({
-          position: "center",
-          type: "error",
-          title: this.mensaje,
-          showConfirmButton: false,
-          timer: 1500
-        });
-        return;
-      }
-      let me = this;
-
-      axios
-        .post("producto/registrar", {
-          nombre: this.nombre,
-          stock: this.stock,
-          unidad: this.unidad,
-          codigo: this.codigo,
-          referencia: this.referencia
-        })
-        .then(function(response) {
-          $("#ModalLong").modal("hide");
-          me.cerrarModal();
-          me.listarProducto(1, "");
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
-    actualizarProducto() {
-      if (this.validarProducto()) {
-        this.activarValidate = "was-validated";
-        Swal.fire({
-          position: "center",
-          type: "error",
-          title: this.mensaje,
-          showConfirmButton: false,
-          timer: 1500
-        });
-        return;
-      }
-      let me = this;
-
-      axios
-        .put("producto/actualizar", {
-          nombre: this.nombre,
-          stock: this.stock,
-          unidad: this.unidad,
-          codigo: this.codigo,
-          referencia: this.referencia,
-          id: this.producto_id
-        })
-        .then(function(response) {
-          $("#ModalLong").modal("hide");
-          me.cerrarModal();
-          me.listarProducto(1, "");
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
-    desactivar(id) {
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-      });
-
-      swalWithBootstrapButtons
-        .fire({
-          title: "Estas Seguro de Desactivar el Registro?",
-          text: "Si Desactiva no estara en la Lista!",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonText: "Si, Desactivar!",
-          cancelButtonText: "No, Cancelar!",
-          reverseButtons: true
-        })
-        .then(result => {
-          if (result.value) {
-            let me = this;
-
-            axios
-              .put("producto/desactivar", {
-                id: id
-              })
-              .then(function(response) {
-                me.listarProducto(1, "");
-                Swal.fire({
-                  position: "center",
-                  type: "success",
-                  title: "El Registro ha sido Desactivado",
-                  showConfirmButton: false,
-                  timer: 1000
-                }).catch(function(error) {
-                  console.log(error);
-                });
-              });
-          } else if (result.dismiss === Swal.DismissReason.cancel) {
-            Swal.fire({
-              position: "center",
-              type: "error",
-              title: "Cancelado",
-              showConfirmButton: false,
-              timer: 1000
-            });
-          }
-        });
-    },
-    activar(id) {
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-      });
-
-      swalWithBootstrapButtons
-        .fire({
-          title: "Estas Seguro de Activar el Registro?",
-          text: "Si Activa no estara en la Lista!",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonText: "Si, Activar!",
-          cancelButtonText: "No, Cancelar!",
-          reverseButtons: true
-        })
-        .then(result => {
-          if (result.value) {
-            let me = this;
-
-            axios
-              .put("producto/activar", {
-                id: id
-              })
-              .then(function(response) {
-                me.listarProducto(1, "");
-                Swal.fire({
-                  position: "center",
-                  type: "success",
-                  title: "El Registro ha sido Activado",
-                  showConfirmButton: false,
-                  timer: 1000
-                }).catch(function(error) {
-                  console.log(error);
-                });
-              });
-          } else if (result.dismiss === Swal.DismissReason.cancel) {
-            Swal.fire({
-              position: "center",
-              type: "error",
-              title: "Cancelado",
-              showConfirmButton: false,
-              timer: 1000
-            });
-          }
-        });
-    },
-    validarProducto() {
-      if (!this.nombre || !this.unidad || !this.referencia) {
-        this.mensaje = "Ingrese El Nombre y Referencia del stock y la Unidad";
-        return true;
-      }
-      if (!this.stock || !this.codigo) {
-        this.mensaje = "Ingrese El Stock y la Unidad no Puede ser 0";
-        return true;
-      }
-      return false;
-    },
-    cerrarModal() {
-      this.tituloModal = "";
-      this.limpiarRegistro();
-    },
-    limpiarRegistro() {
-      this.nombre = "";
-      this.stock = 0;
-      this.codigo = 0;
-      this.unidad = "";
-      this.activarValidate = "";
-      this.mensaje = "";
-      this.referencia = "";
-    },
-    abrirModal(modelo, accion, data = []) {
-      switch (modelo) {
-        case "producto": {
-          switch (accion) {
-            case "registrar": {
-              this.tituloModal = "Registrar Producto";
-              this.limpiarRegistro();
-              this.tipoAccion = 1;
-              break;
-            }
-            case "actualizar": {
-              // console.log(data);
-              this.tituloModal = "Actualizar Producto";
-              this.tipoAccion = 2;
-              this.producto_id = data["id"];
-              this.nombre = data["nombre"];
-              this.stock = data["stock"];
-              this.codigo = data["codigo"];
-              this.unidad = data["unidad"];
-              this.referencia = data["referencia"];
-              break;
-            }
-          }
-        }
-      }
     }
+
   },
   mounted() {
-    this.listarProducto(1, this.buscar);
+    
   }
 };
 </script>
-<style>
-.modal-content {
-  width: 100% !important;
-  position: absolute !important;
-}
-.mostrar {
-  display: list-item !important;
-  opacity: 1 !important;
-  position: absolute !important;
-  background-color: #3c29297a !important;
-}
-.div-error {
-  display: flex;
-  justify-content: center;
-}
-.text-error {
-  color: red !important;
-  font-weight: bold;
-}
-</style>
