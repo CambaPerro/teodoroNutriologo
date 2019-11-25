@@ -42,7 +42,7 @@ class OrdenAlimenticioController extends Controller
     {
         // if(!$request->ajax()) return redirect('/');
         $table= new OrdenAlimenticio();
-        $table->nombre=$request->nombre;
+        $table->nombre=$request->data['nombre'];
         $table->save();
     }
 

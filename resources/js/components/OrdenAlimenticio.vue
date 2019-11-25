@@ -17,7 +17,8 @@
           <button
             type="button"
             data-toggle="modal"
-            data-target="#ModalLong"
+            :data-target="'#'+array_id.modal_id"
+            @click="registrar=true"
             class="btn btn-secondary"
           >
             <i class="icon-plus"></i>&nbsp;Nuevo
@@ -44,7 +45,7 @@
                       <button
                         type="submit"
                         class="btn btn-primary"
-                        :id="button_id"
+                        :id="array_id.button_id"
                         @click="listar(1,buscar)"
                       >
                         <i class="fa fa-search"></i> Buscar
@@ -58,7 +59,7 @@
          
             
               
-                <filas-component :array_data="array_data" :array_atributo="array_atributo" :url="controller" :button_id="button_id"></filas-component>
+                <filas-component :array_data="array_data" :array_atributo="array_atributo" :url="controller" :array_id="array_id" @cargarRegistro="cargarData($event)" ></filas-component>
               <!-- </tbody> -->
            
         </div>
@@ -66,6 +67,7 @@
       <!-- Fin ejemplo de tabla Listado -->
     </div>
     <!--Inicio del modal agregar/actualizar-->
+    <modal-component :array_atributo="array_atributo" :array_id="array_id" :array_registro="array_registro" :registrar="registrar" :url="controller"></modal-component>
     <!--Fin del modal-->
   </main>
 </template>
@@ -75,12 +77,17 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      orden_id: 0,
-      nombre: "",
       array_atributo:['id','nombre'],
       array_data:[],
+      array_registro:{
+        id:0,
+      nombre:''
+      },
       controller:'orden_alimenticio',
-       button_id:'buscar_orden',
+      array_id:{
+        button_id:'button',
+        modal_id:'ModalLong'
+      },
       pagination: {
         total: 0,
         current_page: 0,
@@ -90,7 +97,8 @@ export default {
         to: 0
       },
       offset: 3,
-      buscar:''
+      buscar:'',
+      registrar:true
       
     };
   },
@@ -125,7 +133,7 @@ export default {
       me.pagination.current_page = page;
     },
     listar(page,buscar){
-      var url='orden_alimenticio?page='+page+'&buscar='+buscar;
+      var url=this.controller+'?page='+page+'&buscar='+buscar;
       axios.get(url).then(resp=>{
         this.array_data=resp.data.table.data;
         this.pagination=resp.data.pagination;
@@ -134,6 +142,11 @@ export default {
       .catch(function(error) {
           console.log(error);
         });
+    },
+    cargarData(data){
+     this.array_registro=data.dato;
+     this.registrar=data.registrar;
+    console.log(data.registrar);
     }
 
 

@@ -10,7 +10,10 @@
       <tr v-for="(data,index) in array_data">
         <td v-for="atributo in array_atributo">{{ data[atributo] }}</td>
         <td>
-          <button type="button" class="btn btn-warning btn-sm">
+          <button type="button" class="btn btn-warning btn-sm"
+          data-toggle="modal"
+          :data-target="'#'+array_id.modal_id"
+          @click="actualizar(data,false)">
             <i class="icon-pencil"></i>
           </button>
           &nbsp;
@@ -35,7 +38,7 @@ export default {
     array_data: Array,
     array_atributo: Array,
     url: String,
-    button_id:String
+    array_id:Object
   },
   data() {
     return {
@@ -76,7 +79,7 @@ export default {
             });
             // this.array_data.splice(index,1);
             // console.log(document.getElementById(this.button_id).submit());
-            document.getElementById(this.button_id).click();
+            document.getElementById(this.array_id.button_id).click();
         });
            
           } else if (
@@ -96,7 +99,15 @@ export default {
       //       console.log(resp);
       //   });
       console.log(id);
-    }
+    },
+     actualizar(data,bool){
+       let dato={
+         id:data.id,
+         nombre:data.nombre
+       };
+       let registrar=bool;
+this.$emit('cargarRegistro',{dato,registrar});
+      }
   }
   //   mounted: {}
 };

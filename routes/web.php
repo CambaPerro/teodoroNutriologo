@@ -23,7 +23,7 @@ Route::get('/dieta','DietaController@index');
 Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
 Route::get('/alimento','AlimentoController@index');
 Route::get('/tipo_actividad','TipoActividadController@index');
-
+Route::post('/orden_alimenticio/registrar', 'OrdenAlimenticioController@store');
 Route::delete('/orden_alimenticio/eliminar_{id}','OrdenAlimenticioController@destroy');
 
 Route::get('/orden_alimenticios',function(){
