@@ -18,7 +18,7 @@ class CreateAlimentoDietasTable extends Migration
             $table->unsignedBigInteger('id_dieta');
             $table->unsignedBigInteger('id_alimento');
             $table->foreign('id_dieta')->references('id')->on('dietas');
-            $table->foreign('id_alimento')->references('id')->on('alimentos');
+            $table->foreign('id_alimento')->references('id')->on('detalle_alimentos');
             // $table->timestamps();
         });
     }

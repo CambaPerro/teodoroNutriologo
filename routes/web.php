@@ -20,4 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dieta','DietaController@index');
-Route::get('/');
+
+
+Route::get('/dietas',function(){
+    return view('dieta/index');
+})->name('dietas');
