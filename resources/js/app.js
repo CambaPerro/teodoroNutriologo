@@ -20,14 +20,19 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('orden_alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
+Vue.component('alimentos-component', require('./components/Alimento.vue').default);
 
 Vue.component('categoria-component', require('./components/CategoriaAlimento.vue').default);
 
 Vue.component('orden-alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
 Vue.component('actividad-component', require('./components/ActividadFisica.vue').default);
+Vue.component('filas-component', require('./components/utilitarios/Filas.vue').default);
 
+Vue.component('tipo-actividad-component', require('./components/TipoActividad.vue').default);
 
 Vue.component('dieta-component', require('./components/Dieta.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

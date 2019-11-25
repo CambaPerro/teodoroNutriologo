@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alimento extends Model
 {
-    protected $fillable=['id_orden','id_categoria','nombre','porcion','calorias','carbohidratos','grasas','proteinas'];
+    protected $fillable=['id_categoria','nombre','porcion','calorias','carbohidratos','grasas','proteinas'];
     public $timestamps = false;
+    protected $appends = ['categoria'];
+
+    public function categoria (){
+    return $this->belongsTo('App\Categoria','id_categoria');
+    }
+
+    public function getCategoriaAttribute(){
+        return $this->categoria()->first(['nombre'])->nombre;
+    }
+
+   
 }

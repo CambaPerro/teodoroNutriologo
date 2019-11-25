@@ -14,11 +14,21 @@ class TipoActividadController extends Controller
      */
     public function index(Request $request)
     {
-       // if (!$request->ajax()) return redirect('/');
-
-       $buscar = $request->buscar;
-       $table=TipoActividad::all();
-       return $table;
+        // if(!$request->ajax()) return redirect('/');
+        $buscar=$request->buscar;
+        $table=TipoActividad::where('tipo','like','%'.$buscar.'%')
+        ->orderBy('id','desc')->paginate(10);
+        return [
+            'pagination' => [
+                'total'        => $table->total(),
+                'current_page' => $table->currentPage(),
+                'per_page'     => $table->perPage(),
+                'last_page'    => $table->lastPage(),
+                'from'         => $table->firstItem(),
+                'to'           => $table->lastItem(),
+            ],
+            'table' => $table
+        ];
     }
     /**
      * Store a newly created resource in storage.

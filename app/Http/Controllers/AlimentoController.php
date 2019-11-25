@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Alimento;
 
+
 class AlimentoController extends Controller
 {
     /**
@@ -17,7 +18,9 @@ class AlimentoController extends Controller
         // if(!$request->ajax()) return redirect('/');
         $buscar=$request->buscar;
         $table=Alimento::where('nombre','like','%'.$buscar.'%')
-        ->orderBy('id','desc')->paginate(10);
+        ->orderBy('id','desc')
+        // ->with('categoria')
+         ->paginate(10);
         return [
             'pagination' => [
                 'total'        => $table->total(),
