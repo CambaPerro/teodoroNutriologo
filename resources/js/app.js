@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('orden-alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
+Vue.component('filas-component', require('./components/utilitarios/Filas.vue').default);
 
 
 Vue.component('dieta-component', require('./components/Dieta.vue').default);

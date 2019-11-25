@@ -19,8 +19,7 @@ mix.js('resources/js/app.js', 'public/js/app.js')
   //  'resources/lib/js/bootstrap.min.js',
     'resources/lib/js/perfect-scrollbar.min.js',
     'resources/lib/js/coreui.min.js',
-    'resources/lib/js/custom-tooltips.min.js',
-   //  'resources/lib/js/sweetalert2.all.min.js'
+    'resources/lib/js/custom-tooltips.min.js'
   ],'public/js/lib.js')
   .styles([
    'resources/lib/css/coreui-icons.min.css',
