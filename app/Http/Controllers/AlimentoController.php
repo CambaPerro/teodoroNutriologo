@@ -41,10 +41,8 @@ class AlimentoController extends Controller
     {
         // if(!$request->ajax()) return redirect('/');
         $table= new CategorioAlimento();
-        $table->id_orden=$request->id_orden;
         $table->id_categoria=$request->id_categoria;
         $table->nombre=$request->nombre;
-        $table->porcion=$request->porcion;
         $table->calorias=$request->calorias;
         $table->carbohidratos=$request->carbohidratos;
         $table->grasas=$request->grasas;
@@ -62,10 +60,8 @@ class AlimentoController extends Controller
     public function update(Request $request, $id)
     {
         $table=Alimenticio::findOrfail($request->id);
-        $table->id_orden=$request->id_orden;
         $table->id_categoria=$request->id_categoria;
         $table->nombre=$request->nombre;
-        $table->porcion=$request->porcion;
         $table->calorias=$request->calorias;
         $table->carbohidratos=$request->carbohidratos;
         $table->grasas=$request->grasas;

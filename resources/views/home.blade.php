@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
-@section('contenido')
+@section('content')
 {{-- @include('sidebar.sidebar') --}}
+
 @endsection

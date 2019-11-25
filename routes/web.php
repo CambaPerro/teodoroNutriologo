@@ -25,3 +25,8 @@ Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
 Route::get('/orden',function(){
     return view('orden_alimenticio/index');
 })->name('orden');
+
+
+Route::get('/dietas',function(){
+    return view('dieta/index');
+})->name('dietas');

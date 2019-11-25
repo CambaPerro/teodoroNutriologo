@@ -56,36 +56,8 @@
                                     @enderror
     
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">
-                            <i class="icon-user"></i>
-                          </span>
-                        </div>
-                        <input id="sexo" type="text" placeholder="Sexo" class="form-control @error('sexo') is-invalid @enderror" name="sexo" value="{{ old('sexo') }}" required autocomplete="sexo" autofocus>
-      
-                                      @error('sexo')
-                                          <span class="invalid-feedback" role="alert">
-                                              <strong>{{ $message }}</strong>
-                                          </span>
-                                      @enderror
-      
-                      </div>
-                      <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="icon-user"></i>
-                            </span>
-                          </div>
-                          <input id="peso" type="number" placeholder="Peso" class="form-control @error('peso') is-invalid @enderror" name="peso" value="{{ old('peso') }}" required autocomplete="peso" autofocus>
-        
-                                        @error('peso')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-        
-                        </div>
+                   
+                      
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text">
@@ -101,6 +73,37 @@
                                           @enderror
           
                           </div>
+                          <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                  <i class="icon-user"></i>
+                                </span>
+                              </div>
+                              <input id="peso" type="number" placeholder="Peso" class="form-control @error('peso') is-invalid @enderror" name="peso" value="{{ old('peso') }}" required autocomplete="peso" autofocus>
+            
+                                            @error('peso')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+            
+                            </div>
+                          <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                  <i class="icon-user"></i>
+                                </span>
+                              </div>
+                              <input id="sexo" type="text" placeholder="Sexo" class="form-control @error('sexo') is-invalid @enderror" name="sexo" value="{{ old('sexo') }}" required autocomplete="sexo" autofocus>
+            
+                                            @error('sexo')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+            
+                            </div>
+                            
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text">@</span>
@@ -120,7 +123,7 @@
                       <i class="icon-lock"></i>
                     </span>
                   </div>
-                  <input id="password" type="password" laceholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                  <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
