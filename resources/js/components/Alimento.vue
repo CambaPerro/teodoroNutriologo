@@ -13,7 +13,7 @@
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Categoria Alimento
+          <i class="fa fa-align-justify"></i> Alimentos
           <button
             type="button"
             data-toggle="modal"
@@ -58,48 +58,25 @@
               <thead>
                 <tr>
                   <th>N°</th>
+                  <th>id_Categoria</th>
                   <th>Categoria</th>
-                  <th>Estado</th>
-                  <th>Opciones</th>
+                  <th>Nombres</th>
+                  <th>Calorias</th>
+                  <th>Carbohidratos</th>
+                  <th>Grasas</th>
+                  <th>Proteinas</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <span class="badge badge-success" ></span>
-                  </td>
-                  <td></td>
-                  <td>
-                    <div >
-                      <span class="badge badge-success">Activo</span>
-                    </div>
-                    <div>
-                      <span class="badge badge-danger">Desactivado</span>
-                    </div>
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      data-toggle="modal"
-                      data-target="#ModalLong"
-                      class="btn btn-warning btn-sm"
-                    >
-                      <i class="icon-pencil"></i>
-                    </button> &nbsp;
-                    <template >
-                      <button
-                        type="button"
-                        class="btn btn-danger btn-sm"
-                      >
-                        <i class="icon-trash"></i>
-                      </button>
-                    </template>
-                    <template >
-                      <button type="button" class="btn btn-info btn-sm" >
-                        <i class="icon-check"></i>
-                      </button>
-                    </template>
-                  </td>
+                <tr v-for="(data) in array_data" :key="data.id">
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.id_categoria }}</td>
+                    <td>{{ data.categoria }}</td>
+                    <td>{{ data.nombre }}</td>
+                    <td>{{ data.calorias }}</td>
+                    <td>{{ data.carbohidratos }}</td>
+                    <td>{{ data.grasas }}</td>
+                    <td>{{ data.proteinas }}</td>
                 </tr>
               </tbody>
             </table>
@@ -163,6 +140,7 @@ export default {
     }
   },
   methods: {
+    
    
     cambiarPagina(page, buscar) {
       let me = this;
@@ -172,10 +150,22 @@ export default {
    
     },
 
-    
+    listar(page,buscar){
+      var url='alimento?page='+page+'&buscar='+buscar;
+      axios.get(url).then(resp=>{
+        this.array_data = resp.data.table.data;
+        this.pagination = resp.data.pagination;
+        console.log(resp);
+      })
+    }
+
+
+
+
+
   },
   mounted() {
-    
+    this.listar(1,'');
   }
 };
 </script>

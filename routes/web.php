@@ -21,10 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dieta','DietaController@index');
 Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
+Route::get('/alimento','AlimentoController@index');
+Route::get('/tipo_actividad','TipoActividadController@index');
 
-Route::get('/orden',function(){
+
+Route::get('/orden_alimenticios',function(){
     return view('orden_alimenticio/index');
-})->name('orden');
+})->name('orden_alimenticios');
 
 Route::get('/alimentos',function(){
     return view('alimento/index');
@@ -33,3 +36,11 @@ Route::get('/alimentos',function(){
 Route::get('/dietas',function(){
     return view('dieta/index');
 })->name('dietas');
+
+Route::get('/categorias',function(){
+    return view('categoria/index');
+})->name('categorias');
+
+Route::get('/tipo_actividads',function(){
+    return view('tipo_actividad/index');
+})->name('tipo_actividads');

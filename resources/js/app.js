@@ -23,6 +23,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('orden_alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
 Vue.component('alimentos-component', require('./components/Alimento.vue').default);
 
+Vue.component('categoria-component', require('./components/CategoriaAlimento.vue').default);
+
+Vue.component('orden-alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
+
+Vue.component('tipo-actividad-component', require('./components/TipoActividad.vue').default);
+
 Vue.component('dieta-component', require('./components/Dieta.vue').default);
 
 /**
