@@ -42,6 +42,8 @@
                       <button
                         type="submit"
                         class="btn btn-primary"
+                        :id="button_id"
+                        @click="listar(1,buscar)"
                       >
                         <i class="fa fa-search"></i> Buscar
                       </button>
@@ -51,52 +53,9 @@
               </div>
             </div>
           </div>
-          <div class="table-responsive">
-            <table class="table table-bordered table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>N°</th>
-                  <th>N° Tipo</th>
-                  <th>Tipo Actividad</th>
-                  <th>Nombre</th>
-                  <th>Descripcion</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="data in array_data" :key="data.id">
-                  <td>{{ data.id}}</td>
-                  <td>{{ data.id_tipo}}</td>
-                  <td>{{ data.tipoactividad}}</td>
-                  <td>{{ data.nombre}}</td>
-                  <td>{{ data.descripcion}}</td>
-                  <td>
-                    <button
-                      type="button"
-                      data-toggle="modal"
-                      data-target="#ModalLong"
-                      class="btn btn-warning btn-sm"
-                    >
-                      <i class="icon-pencil"></i>
-                    </button> &nbsp;
-                    <template >
-                      <button
-                        type="button"
-                        class="btn btn-danger btn-sm"
-                      >
-                        <i class="icon-trash"></i>
-                      </button>
-                    </template>
-                    <template >
-                      <button type="button" class="btn btn-info btn-sm" >
-                        <i class="icon-check"></i>
-                      </button>
-                    </template>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
           
+          <filas-component :array_data="array_data" :array_atributo="array_atributo" :url="controller" :button_id="button_id"></filas-component>
+          <!-- </tbdy> -->
         </div>
       </div>
       <!-- Fin ejemplo de tabla Listado -->
@@ -112,10 +71,10 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      tipo_id: 0,
-      nombre: "",
-      descripcion :"",
+      array_atributo:['id','tipoactividad','nombre','descripcion'],
       array_data: [],
+      controller:'actividad_fisica',
+       button_id:'buscar_actividad',
       pagination: {
         total: 0,
         current_page: 0,
@@ -125,9 +84,7 @@ export default {
         to: 0
       },
       offset: 3,
-      buscar: "",
-      activarValidate: "",
-      mensaje: ""
+      buscar: ''
     };
   },
   computed: {
@@ -164,7 +121,7 @@ export default {
       
     },
     listar(page, buscar){
-      var url='actividad_fisica?page='+page+'&buscar='+buscar;
+      var url=this.controller+'?page='+page+'&buscar='+buscar;
       axios.get(url).then(resp=>{
         this.array_data=resp.data.table.data;
         this.pagination=resp.data.pagination;
