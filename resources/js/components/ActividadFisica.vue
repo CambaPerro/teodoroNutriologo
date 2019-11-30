@@ -13,7 +13,7 @@
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Categoria Alimento
+          <i class="fa fa-align-justify"></i> Actividad Fisica
           <button
             type="button"
             data-toggle="modal"
@@ -53,47 +53,9 @@
               </div>
             </div>
           </div>
-          <div class="table-responsive">
-            <table class="table table-bordered table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>N°</th>
-                  <th>Nombre</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="data in array_data" :key="data.id">
-                  <td>{{ data.id}}</td>
-                  <td>{{ data.nombre}}</td>
-                  
-                  <td>
-                    <button
-                      type="button"
-                      data-toggle="modal"
-                      data-target="#ModalLong"
-                      class="btn btn-warning btn-sm"
-                    >
-                      <i class="icon-pencil"></i>
-                    </button> &nbsp;
-                    <template >
-                      <button
-                        type="button"
-                        class="btn btn-danger btn-sm"
-                      >
-                        <i class="icon-trash"></i>
-                      </button>
-                    </template>
-                    <template >
-                      <button type="button" class="btn btn-info btn-sm" >
-                        <i class="icon-check"></i>
-                      </button>
-                    </template>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
           
+          <filas-component :array_data="array_data" :array_atributo="array_atributo" :url="controller" :button_id="button_id"></filas-component>
+          <!-- </tbdy> -->
         </div>
       </div>
       <!-- Fin ejemplo de tabla Listado -->
@@ -109,10 +71,10 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      array_atributo:['id','nombre'],
+      array_atributo:['id','tipoactividad','nombre','descripcion'],
       array_data: [],
-      controller:'categoria',
-        button_id:'buscar_categoria',
+      controller:'actividad_fisica',
+       button_id:'buscar_actividad',
       pagination: {
         total: 0,
         current_page: 0,
@@ -122,7 +84,7 @@ export default {
         to: 0
       },
       offset: 3,
-      buscar: "",
+      buscar: ''
     };
   },
   computed: {
@@ -159,7 +121,7 @@ export default {
       
     },
     listar(page, buscar){
-      var url='categoria?page='+page+'&buscar='+buscar;
+      var url=this.controller+'?page='+page+'&buscar='+buscar;
       axios.get(url).then(resp=>{
         this.array_data=resp.data.table.data;
         this.pagination=resp.data.pagination;
@@ -173,5 +135,3 @@ export default {
   }
 };
 </script>
-
-

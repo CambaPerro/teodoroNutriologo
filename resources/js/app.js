@@ -26,6 +26,7 @@ Vue.component('alimentos-component', require('./components/Alimento.vue').defaul
 Vue.component('categoria-component', require('./components/CategoriaAlimento.vue').default);
 
 Vue.component('orden-alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
+Vue.component('actividad-component', require('./components/ActividadFisica.vue').default);
 Vue.component('filas-component', require('./components/utilitarios/Filas.vue').default);
 Vue.component('modal-component', require('./components/utilitarios/Modal.vue').default);
 

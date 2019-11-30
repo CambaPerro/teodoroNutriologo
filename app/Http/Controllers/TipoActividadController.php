@@ -30,17 +30,6 @@ class TipoActividadController extends Controller
             'table' => $table
         ];
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -55,28 +44,6 @@ class TipoActividadController extends Controller
         
         $table->estado= '1';
         $table->save();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -103,6 +70,7 @@ class TipoActividadController extends Controller
      */
     public function destroy($id)
     {
+        // if (!$request->ajax()) return redirect('/');
         $table=TipoActividad::find($id);
         $table->delete();
     }
