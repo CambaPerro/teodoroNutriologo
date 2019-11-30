@@ -43,6 +43,8 @@
                       <button
                         type="submit"
                         class="btn btn-primary"
+                        :id="button_id"
+                        @click="listar(1,busscar)"
                       >
                         <i class="fa fa-search"></i> Buscar
                       </button>
@@ -52,89 +54,13 @@
               </div>
             </div>
           </div>
-          <div class="table-responsive">
-            <table class="table table-bordered table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>N°</th>
-                  <th>Nombre</th>
-                  
-                </tr>
-              </thead>
-              <tbody >
-                <tr v-for="data in array_data" :key="data.id" >
-                  <th>{{ data.id }}</th>
-                  <th>{{ data.tipo }}</th>
-                  <th></th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          
+          <filas-component :array_data="array_data" :array_atributo="array_atributo" :url="controller" :button_id="button_id"></filas-component>
         </div>
       </div>
       <!-- Fin ejemplo de tabla Listado -->
     </div>
     <!--Inicio del modal agregar/actualizar-->
-    <div
-      class="modal fade bd-example-modal-lg"
-      tabindex="-1"
-      role="dialog"
-      id="ModalLong"
-      aria-labelledby="myModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-primary modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" ></h4>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action method="post" enctype="multipart/form-data" class="form-horizontal">
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
-                <div class="col-md-9">
-                  <input
-                    type="text"
-                    placeholder="Nombre del Orden Alimenticio............"
-                    class="form-control"
-                    required
-                  />
-                </div>
-              </div>
-              
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >Cerrar</button>
-            <button
-              type="button"
-              
-              class="btn btn-primary"
-            >Guardar</button>
-            <button
-              type="button"
-             
-              class="btn btn-primary"
-            >Actualizar</button>
-          </div>
-        </div>
-        <!-- /.modal-content -->
-      </div>
-
-      <!-- /.modal-dialog -->
-    </div>
     <!--Fin del modal-->
   </main>
 </template>
@@ -144,9 +70,10 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      tipo_id: 0,
-      nombre: "",
+      array_atributo:['id','tipo'],
       array_data:[],
+      controller:'tipo_actividad',
+        button_id:'buscar_tipo',
       pagination: {
         total: 0,
         current_page: 0,
@@ -155,7 +82,8 @@ export default {
         from: 0,
         to: 0
       },
-      offset: 3
+      offset: 3,
+      buscar:''
       
     };
   },
@@ -193,13 +121,16 @@ export default {
       me.pagination.current_page = page;
     },
     
-    listar(page,buscar){
-      var url='tipo_actividad?page='+page+'&buscar='+buscar;
+    listar(page, buscar){
+      var url=this.controller+'?page='+page+'&buscar='+buscar;
       axios.get(url).then(resp=>{
         this.array_data = resp.data.table.data;
         this.pagination = resp.data.pagination;
         console.log(resp);
       })
+      .catch(function(error) {
+        console.log(error);
+      });
     }
   },
   mounted() {

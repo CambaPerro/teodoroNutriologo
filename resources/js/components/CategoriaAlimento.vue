@@ -42,6 +42,8 @@
                       <button
                         type="submit"
                         class="btn btn-primary"
+                        :id="button_id"
+                        @click="listar(1,buscar)"
                       >
                         <i class="fa fa-search"></i> Buscar
                       </button>
@@ -51,57 +53,8 @@
               </div>
             </div>
           </div>
-          <div class="table-responsive">
-            <table class="table table-bordered table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>N°</th>
-                  <th>Categoria</th>
-                  <th>Estado</th>
-                  <th>Opciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <span class="badge badge-success" ></span>
-                  </td>
-                  <td></td>
-                  <td>
-                    <div >
-                      <span class="badge badge-success">Activo</span>
-                    </div>
-                    <div>
-                      <span class="badge badge-danger">Desactivado</span>
-                    </div>
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      data-toggle="modal"
-                      data-target="#ModalLong"
-                      class="btn btn-warning btn-sm"
-                    >
-                      <i class="icon-pencil"></i>
-                    </button> &nbsp;
-                    <template >
-                      <button
-                        type="button"
-                        class="btn btn-danger btn-sm"
-                      >
-                        <i class="icon-trash"></i>
-                      </button>
-                    </template>
-                    <template >
-                      <button type="button" class="btn btn-info btn-sm" >
-                        <i class="icon-check"></i>
-                      </button>
-                    </template>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+         
+             <filas-component :array_data="array_data" :array_atributo="array_atributo" :url="controller" :button_id="button_id"></filas-component>
           
         </div>
       </div>
@@ -118,9 +71,10 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      categoria_id: 0,
-      tipo: "",
+      array_atributo:['id','nombre'],
       array_data: [],
+      controller:'categoria',
+        button_id:'buscar_categoria',
       pagination: {
         total: 0,
         current_page: 0,
@@ -131,8 +85,6 @@ export default {
       },
       offset: 3,
       buscar: "",
-      activarValidate: "",
-      mensaje: ""
     };
   },
   computed: {
@@ -168,9 +120,20 @@ export default {
       // enviar la peticion para visualizar la data de esta pagina
       
     },
+    listar(page,buscar){
+      var url=this.controller+'?page='+page+'&buscar='+buscar;
+      axios.get(url).then(resp=>{
+        this.array_data=resp.data.table.data;
+        this.pagination=resp.data.pagination;
+        console.log(resp);
+      })
+      .catch(function(error) {
+          console.log(error);
+        });
+    }
   },
   mounted() {
-    
+    this.listar(1,'');
   }
 };
 </script>

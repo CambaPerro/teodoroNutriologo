@@ -75,8 +75,6 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      orden_id: 0,
-      nombre: "",
       array_atributo:['id','nombre'],
       array_data:[],
       controller:'orden_alimenticio',
@@ -125,7 +123,7 @@ export default {
       me.pagination.current_page = page;
     },
     listar(page,buscar){
-      var url='orden_alimenticio?page='+page+'&buscar='+buscar;
+      var url=controller+'?page='+page+'&buscar='+buscar;
       axios.get(url).then(resp=>{
         this.array_data=resp.data.table.data;
         this.pagination=resp.data.pagination;
