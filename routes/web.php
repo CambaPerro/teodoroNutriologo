@@ -25,7 +25,7 @@ Route::get('/categoria','CategoriaController@index');
 Route::get('/actividad_fisica','ActividadFisicaController@index');
 Route::get('/alimento','AlimentoController@index');
 Route::get('/tipo_actividad','TipoActividadController@index');
-
+Route::post('/orden_alimenticio/registrar', 'OrdenAlimenticioController@store');
 Route::delete('/orden_alimenticio/eliminar_{id}','OrdenAlimenticioController@destroy');
 
 Route::get('/orden_alimenticios',function(){
