@@ -21,7 +21,7 @@ window.Vue = require('vue');
 /*aqui invocas todas las vistas */
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-Vue.component('orden_alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
+// Vue.component('orden_alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
 
 
 
