@@ -35,6 +35,7 @@ class CategoriaController extends Controller
         // if(!$request->ajax()) return redirect('/');
         $buscar=$request->buscar;
         $table=Categoria::where('nombre','like','%'.$buscar.'%')
+        ->take(10)
         ->get();
         return ['table' => $table];
     }

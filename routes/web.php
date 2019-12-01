@@ -22,15 +22,17 @@ Route::get('/dieta','DietaController@index');
 
 //CRUD ORDEN ALIMENTICIO
 Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
+Route::get('/orden_alimenticio/listar_alimento','OrdenAlimenticioController@listar_alimento');
 Route::post('/orden_alimenticio/registrar','OrdenAlimenticioController@store');
 Route::put('/orden_alimenticio/actualizar','OrdenAlimenticioController@update');
-Route::delete('/orden_alimenticio/eliminar_(id)','OrdenAlimenticioController@destroy');
+Route::delete('/orden_alimenticio/eliminar_{id}','OrdenAlimenticioController@destroy');
 
 
 Route::get('/categoria','CategoriaController@index');
 Route::post('/categoria/registrar','CategoriaController@store');
 Route::put('/categoria/actualizar','CategoriaController@update');
 Route::delete('/categoria/eliminar_{id}','CategoriaController@destroy');
+Route::get('/categoria/select','CategoriaController@select');
 //actividad fisica
 Route::get('/actividad_fisica','ActividadFisicaController@index');
 
@@ -39,12 +41,11 @@ Route::get('/alimento','AlimentoController@index');
 Route::post('/alimento/registrar','AlimentoController@store');
 Route::put('/alimento/actualizar','AlimentoController@update');
 Route::delete('/alimento/eliminar_{id}','AlimentoController@destroy');
+Route::get('/alimento/select','AlimentoController@select');
+Route::get('/alimento/listar','AlimentoController@listar');
+
 
 Route::get('/tipo_actividad','TipoActividadController@index');
-Route::post('/orden_alimenticio/registrar', 'OrdenAlimenticioController@store');
-Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
-Route::delete('/orden_alimenticio/eliminar_{id}','OrdenAlimenticioController@destroy');
-
 
 // Route:get('/nombre para url',functio(){
     // return view('direccion del views');
