@@ -60,7 +60,7 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         // if(!$request->ajax()) return redirect('/');
         $table=Categoria::findOrfail($request->id);

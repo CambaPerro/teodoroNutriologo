@@ -13,7 +13,7 @@
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Productos
+          <i class="fa fa-align-justify"></i> Alimentos
           <button
             type="button"
             data-toggle="modal"

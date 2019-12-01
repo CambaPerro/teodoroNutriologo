@@ -17,7 +17,7 @@ class OrdenAlimenticioController extends Controller
         // if(!$request->ajax()) return redirect('/');
         $buscar=$request->buscar;
         $table=OrdenAlimenticio::where('nombre','like','%'.$buscar.'%')
-        ->orderBy('id','desc')->paginate(10);
+        ->orderBy('id','desc')->paginate(5);
         return [
             'pagination' => [
                 'total'        => $table->total(),
@@ -42,7 +42,7 @@ class OrdenAlimenticioController extends Controller
     {
         // if(!$request->ajax()) return redirect('/');
         $table= new OrdenAlimenticio();
-        $table->nombre=$request->data['nombre'];
+        $table->nombre=$request->nombre;
         $table->save();
     }
 
@@ -54,7 +54,7 @@ class OrdenAlimenticioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         // if(!$request->ajax()) return redirect('/');
         $table=OrdenAlimenticio::findOrfail($request->id);
