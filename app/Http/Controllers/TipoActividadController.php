@@ -41,8 +41,10 @@ class TipoActividadController extends Controller
         // if (!$request->ajax()) return redirect('/');
         $table= new TipoActividad();
         $table->tipo = $request->tipo;
+        $table->descripcion = $request->descripcion;
+        $table->calorias_quemadas = $request->calorias_quemadas;
         
-        $table->estado= '1';
+        // $table->estado= '1';
         $table->save();
     }
 
@@ -53,11 +55,13 @@ class TipoActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
          // if (!$request->ajax()) return redirect('/');
          $table = TipoActividad::findOrFail($request->id);
          $table->tipo = $request->tipo;
+         $table->descripcion = $request->descripcion;
+         $table->calorias_quemadas = $request->calorias_quemadas;
          $table->save();
  
     }

@@ -184,7 +184,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div :class="'modal-body ' + activarValidate">
+                    <div :class="'modal-body' + activarValidate">
                         <form
                             action
                             method="post"
@@ -327,7 +327,7 @@ export default {
         },
         registrar() {
             if(this.validar()){
-                this.activarValidate="was-validate";
+                this.activarValidate="was-validated";
                 this.eventoAlerta('error',this.mensaje);
                 return;
             }
@@ -344,7 +344,7 @@ export default {
         },
         actualizar(){
             if(this.validar()){
-                this.activarValidate="was-validate";
+                this.activarValidate="was-validated";
                 this.eventoAlerta('error',this.mensaje);
                 return;
             }
