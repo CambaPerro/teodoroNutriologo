@@ -64,7 +64,7 @@
                                 <i class="icon-user"></i>
                               </span>
                             </div>
-                            <input id="altura" type="number" placeholder="altura" class="form-control @error('altura') is-invalid @enderror" name="altura" value="{{ old('altura') }}" required autocomplete="altura" autofocus>
+                            <input id="altura" type="number" step="any" placeholder="altura" class="form-control @error('altura') is-invalid @enderror" name="altura" value="{{ old('altura') }}" required autocomplete="altura" autofocus>
           
                                           @error('altura')
                                               <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
                                   <i class="icon-user"></i>
                                 </span>
                               </div>
-                              <input id="peso" type="number" placeholder="Peso" class="form-control @error('peso') is-invalid @enderror" name="peso" value="{{ old('peso') }}" required autocomplete="peso" autofocus>
+                              <input id="peso" type="number" step="any" placeholder="Peso" class="form-control @error('peso') is-invalid @enderror" name="peso" value="{{ old('peso') }}" required autocomplete="peso" autofocus>
             
                                             @error('peso')
                                                 <span class="invalid-feedback" role="alert">

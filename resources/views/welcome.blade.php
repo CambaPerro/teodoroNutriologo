@@ -80,9 +80,8 @@
                     @endauth
                 </div>
             @endif
-
-            
         </div>
+        <h2>ABASTO</h2>
     </div>
     </body>
 </html>

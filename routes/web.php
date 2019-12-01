@@ -21,12 +21,27 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dieta','DietaController@index');
 Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
+
+
 Route::get('/categoria','CategoriaController@index');
+Route::get('/categoria/select','CategoriaController@select');
+
 Route::get('/actividad_fisica','ActividadFisicaController@index');
+
+//  CRUD ALIMENTO
 Route::get('/alimento','AlimentoController@index');
+Route::post('/alimento/registrar','AlimentoController@store');
+Route::put('/alimento/actualizar','AlimentoController@update');
+Route::delete('/alimento/eliminar_{id}','AlimentoController@destroy');
+
 Route::get('/tipo_actividad','TipoActividadController@index');
 Route::post('/orden_alimenticio/registrar', 'OrdenAlimenticioController@store');
 Route::delete('/orden_alimenticio/eliminar_{id}','OrdenAlimenticioController@destroy');
+
+
+// Route:get('/nombre para url',functio(){
+    // return view('direccion del views');
+// })->name('nombre para url');
 
 Route::get('/orden_alimenticios',function(){
     return view('orden_alimenticio/index');

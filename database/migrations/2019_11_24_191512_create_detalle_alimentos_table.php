@@ -21,7 +21,7 @@ class CreateDetalleAlimentosTable extends Migration
             $table->string('porcion',10);
             $table->foreign('id_orden')->references('id')->on('orden_alimenticios');
             $table->foreign('id_alimento')->references('id')->on('alimentos');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

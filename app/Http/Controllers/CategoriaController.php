@@ -30,6 +30,14 @@ class CategoriaController extends Controller
             'table' => $table
         ];
     }
+    public function select(Request $request)
+    {
+        // if(!$request->ajax()) return redirect('/');
+        $buscar=$request->buscar;
+        $table=Categoria::where('nombre','like','%'.$buscar.'%')
+        ->get();
+        return ['table' => $table];
+    }
 
     /**
      * Store a newly created resource in storage.
