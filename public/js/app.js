@@ -1829,17 +1829,10 @@ module.exports = {
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ActividadFisica.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ActividadFisica.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************************************************************************************************/
-=======
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Alimento.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Alimento.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1855,10 +1848,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
 /* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_4__);
-<<<<<<< HEAD
-=======
 //
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
 //
 //
 //
@@ -1951,15 +1941,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-<<<<<<< HEAD
-=======
-//
-//
-//
-//
-//
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
 //
 //
 //
@@ -2256,7 +2237,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
       var _this2 = this;
 
       if (this.validar()) {
-        this.activarValidate = "was-validated";
+        this.activarValidate = "was-validate";
         this.eventoAlerta("error", this.mensaje);
         return;
       }
@@ -2428,7 +2409,6 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-<<<<<<< HEAD
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
@@ -2464,12 +2444,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-=======
-/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.js */ "./node_modules/sweetalert2/dist/sweetalert2.js");
-/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_2__);
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
 //
 //
 //
@@ -2841,7 +2815,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
       var _this2 = this;
 
       if (this.validar()) {
-        this.activarValidate = "was-validate";
+        this.activarValidate = "was-validated";
         this.eventoAlerta("error", this.mensaje);
         return;
       }
@@ -2869,7 +2843,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
       var _this3 = this;
 
       if (this.validar()) {
-        this.activarValidate = "was-validate";
+        this.activarValidate = "was-validated";
         this.eventoAlerta("error", this.mensaje);
         return;
       }
@@ -3235,163 +3209,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
 
 
 
@@ -3407,20 +3224,8 @@ __webpack_require__.r(__webpack_exports__);
       referencia: "",
       tituloModal: "",
       tipoAccion: 0,
-<<<<<<< HEAD
       error: 0,
       errorMostrarMsj: [],
-=======
-      array_alimento: [],
-      array_detalle: [],
-      alimento: {},
-      id_alimento: 0,
-      vue_alimento: {
-        id: 0,
-        nombre: ""
-      },
-      alimento_buscar: '',
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
       pagination: {
         total: 0,
         current_page: 0,
@@ -3432,8 +3237,7 @@ __webpack_require__.r(__webpack_exports__);
       offset: 3,
       buscar: "",
       activarValidate: "",
-      mensaje: "",
-      listado: true
+      mensaje: ""
     };
   },
   mounted: function mounted() {
@@ -3484,45 +3288,10 @@ __webpack_require__.r(__webpack_exports__);
       var url = this.url_ctrl + "?page=" + page + "&buscar=" + buscar;
       axios.get(url).then(function (resp) {
         _this.array_data = resp.data.table.data;
-<<<<<<< HEAD
         _this.pagination = resp.data.pagination; //  console.log(this.array_data);
-=======
-        _this.pagination = resp.data.pagination; // console.log(resp);
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
       })["catch"](function (error) {
         console.log(error);
       });
-    },
-    select_alimento: function select_alimento(search, loading) {
-      var _this2 = this;
-
-      loading(true);
-      var url = "alimento/select?buscar=" + search;
-      axios.get(url).then(function (resp) {
-        var respuesta = resp.data;
-
-        q: search;
-
-        _this2.array_alimento = respuesta.table;
-        loading(false);
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    get_alimento: function get_alimento(val1) {
-      try {
-        this.id_alimento = val1.id;
-        this.alimento = val1;
-        this.vue_alimento = {
-          id: val1.id,
-          nombre: val1.nombre
-        };
-      } catch (_unused) {
-        this.vue_alimento = {
-          id: 0,
-          nombre: ""
-        };
-      }
     },
     eventoAlerta: function eventoAlerta(icono, mensaje) {
       sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
@@ -3534,81 +3303,54 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     registrar: function registrar() {
-      var _this3 = this;
+      var _this2 = this;
 
       if (this.validar()) {
-<<<<<<< HEAD
         this.activarValidate = "was-validate";
-=======
-        this.activarValidate = "was-validated";
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
         this.eventoAlerta("error", this.mensaje);
         return;
       }
 
       axios.post(this.url_ctrl + "/registrar", {
-        nombre: this.nombre,
-        data: this.array_detalle
+        nombre: this.nombre
       }).then(function (resp) {
         $("#ModalLong").modal("hide");
 
-<<<<<<< HEAD
         _this2.eventoAlerta("success", "Guardado Exitosamente");
-=======
-        _this3.eventoAlerta("success", "Guardado Exitosamente");
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
 
-        _this3.listar(1, "");
+        _this2.listar(1, "");
 
-        _this3.listado = true;
-
-        _this3.limpiar();
+        _this2.limpiar();
       })["catch"](function (error) {
         console.log(error);
       });
     },
     actualizar: function actualizar() {
-      var _this4 = this;
+      var _this3 = this;
 
       if (this.validar()) {
-<<<<<<< HEAD
         this.activarValidate = "was-validate";
-=======
-        this.activarValidate = "was-validated";
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
         this.eventoAlerta("error", this.mensaje);
         return;
       }
 
       axios.put(this.url_ctrl + "/actualizar", {
-<<<<<<< HEAD
         nombre: this.nombre,
         id: this.id
       }).then(function (resp) {
         $("#ModalLong").modal("hide");
 
         _this3.eventoAlerta("success", "Actualizar Exitosamente");
-=======
-        id: this.id,
-        nombre: this.nombre,
-        data: this.array_detalle
-      }).then(function (resp) {
-        $("#ModalLong").modal("hide");
 
-        _this4.eventoAlerta("success", "Actualizado Exitosamente");
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
+        _this3.listar(1, "");
 
-        _this4.listar(1, "");
-
-        _this4.listado = true;
-
-        _this4.limpiar();
+        _this3.limpiar();
       })["catch"](function (error) {
         console.log(error);
       });
     },
     eliminar: function eliminar(id) {
-      var _this5 = this;
+      var _this4 = this;
 
       var swalWithBootstrapButtons = sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_1___default.a.mixin({
         customClass: {
@@ -3627,48 +3369,27 @@ __webpack_require__.r(__webpack_exports__);
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          axios["delete"](_this5.url_ctrl + "/eliminar_" + id).then(function (resp) {
-            _this5.eventoAlerta("success", "Eliminado Exitosamente");
+          axios["delete"](_this4.url_ctrl + "/eliminar_" + id).then(function (resp) {
+            _this4.eventoAlerta("success", "Eliminado Exitosamente");
 
-            _this5.listar(1, "");
+            _this4.listar(1, "");
           })["catch"](function (error) {
             console.log(error);
           });
         } else if (
         /* Read more about handling dismissals below */
         result.dismiss === sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_1___default.a.DismissReason.cancel) {
-          _this5.eventoAlerta("error", "Cancelado");
+          _this4.eventoAlerta('error', 'Cancelado');
         }
       });
     },
-    abrirModal: function abrirModal() {
-      this.array_alimento = [];
-      this.tituloModal = "Selecione uno o varios Alimentos";
-    },
-    listar_alimento: function listar_alimento(buscar) {
-      var _this6 = this;
-
-      var url = "alimento/listar?buscar=" + buscar;
-      axios.get(url).then(function (resp) {
-        _this6.array_alimento = resp.data.table;
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    mostrar_detalle: function mostrar_detalle(accion) {
-      var _this7 = this;
-
+    abrirModal: function abrirModal(accion) {
       var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-      this.listado = false;
 
       switch (accion) {
         case "registrar":
           {
-<<<<<<< HEAD
             this.tituloModal = "Registrar Categoria de Alimento";
-=======
-            this.tituloModal = "Registrar Orden Alimenticio";
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
             this.limpiar();
             this.tipoAccion = 1;
             break;
@@ -3676,83 +3397,19 @@ __webpack_require__.r(__webpack_exports__);
 
         case "actualizar":
           {
-<<<<<<< HEAD
             this.tituloModal = "Actualizar Alimento";
-=======
-            this.tituloModal = "Actualizar Orden Alimenticio";
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
             this.tipoAccion = 2;
             this.id = data.id;
             this.nombre = data.nombre;
-            axios.get(this.url_ctrl + "/listar_alimento?id=" + data.id).then(function (resp) {
-              _this7.array_detalle = resp.data.detalle;
-            })["catch"](function (error) {
-              console.log(error);
-            });
             break;
           }
       }
     },
-    agregar_detalle: function agregar_detalle() {
-      if (this.id_alimento == 0) {
-        this.eventoAlerta("error", "Error");
-      } else {
-        if (this.encuentra(this.id_alimento)) {
-          this.eventoAlerta("error", "Se encuentra Agregado");
-        } else {
-          this.array_detalle.push({
-            id_alimento: this.id_alimento,
-            alimento: this.alimento,
-            cantidad: this.cantidad,
-            porcion: this.porcion
-          });
-          this.cantidad = 0;
-        }
-      }
-    },
-    agregar_detalle_modal: function agregar_detalle_modal() {
-      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-      if (this.encuentra(data.id)) {
-        this.eventoAlerta("error", "Se encuentra Agregado");
-      } else {
-        this.array_detalle.push({
-          id_alimento: data.id,
-          alimento: data,
-          cantidad: 0,
-          porcion: ''
-        });
-        this.cantidad = 0;
-      }
-    },
-    eliminar_detalle: function eliminar_detalle(index) {
-      this.array_detalle.splice(index, 1);
-    },
-    encuentra: function encuentra(id) {
-      for (var i = 0; i < this.array_detalle.length; i++) {
-        if (this.array_detalle[i].id_alimento == id) {
-          return true;
-        }
-      }
-
-      return false;
-    },
-    ocultar_detalle: function ocultar_detalle() {
-      this.listado = true;
-      this.limpiar();
-      this.listar(1, "");
-    },
     limpiar: function limpiar() {
       this.id = 0;
       this.nombre = "";
-<<<<<<< HEAD
       this.buscar = "";
       this.activarValidate = '';
-=======
-      this.activarValidate = "";
-      this.array_alimento = [];
-      this.array_detalle = [];
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
     },
     validar: function validar() {
       if (!this.nombre) {
@@ -3760,26 +3417,6 @@ __webpack_require__.r(__webpack_exports__);
         return true;
       }
 
-<<<<<<< HEAD
-=======
-      if (this.array_detalle.length <= 0) {
-        this.mensaje = "No tiene Alimentos Agregados";
-        return true;
-      }
-
-      for (var index = 0; index < this.array_detalle.length; index++) {
-        if (!this.array_detalle[index].cantidad) {
-          this.mensaje = "La Cantidad No Puede Ser Menor A Cero";
-          return true;
-        }
-
-        if (!this.array_detalle[index].porcion) {
-          this.mensaje = "La Porcion no debe estar Vacia";
-          return true;
-        }
-      }
-
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
       return false;
     }
   }
@@ -4038,6 +3675,128 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4053,8 +3812,15 @@ __webpack_require__.r(__webpack_exports__);
       referencia: "",
       tituloModal: "",
       tipoAccion: 0,
-      errorProducto: 0,
-      errorMostrarMsj: [],
+      array_alimento: [],
+      array_detalle: [],
+      alimento: {},
+      id_alimento: 0,
+      vue_alimento: {
+        id: 0,
+        nombre: ""
+      },
+      alimento_buscar: '',
       pagination: {
         total: 0,
         current_page: 0,
@@ -4066,7 +3832,8 @@ __webpack_require__.r(__webpack_exports__);
       offset: 3,
       buscar: "",
       activarValidate: "",
-      mensaje: ""
+      mensaje: "",
+      listado: true
     };
   },
   mounted: function mounted() {
@@ -4117,11 +3884,41 @@ __webpack_require__.r(__webpack_exports__);
       var url = this.url_ctrl + "?page=" + page + "&buscar=" + buscar;
       axios.get(url).then(function (resp) {
         _this.array_data = resp.data.table.data;
-        _this.pagination = resp.data.pagination;
-        console.log(resp);
+        _this.pagination = resp.data.pagination; // console.log(resp);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    select_alimento: function select_alimento(search, loading) {
+      var _this2 = this;
+
+      loading(true);
+      var url = "alimento/select?buscar=" + search;
+      axios.get(url).then(function (resp) {
+        var respuesta = resp.data;
+
+        q: search;
+
+        _this2.array_alimento = respuesta.table;
+        loading(false);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    get_alimento: function get_alimento(val1) {
+      try {
+        this.id_alimento = val1.id;
+        this.alimento = val1;
+        this.vue_alimento = {
+          id: val1.id,
+          nombre: val1.nombre
+        };
+      } catch (_unused) {
+        this.vue_alimento = {
+          id: 0,
+          nombre: ""
+        };
+      }
     },
     eventoAlerta: function eventoAlerta(icono, mensaje) {
       sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
@@ -4133,54 +3930,60 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     registrar: function registrar() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.validar()) {
-        this.activarValidate = "was-validate";
-        this.eventoAlerta('error', this.mensaje);
+        this.activarValidate = "was-validated";
+        this.eventoAlerta("error", this.mensaje);
         return;
       }
 
       axios.post(this.url_ctrl + "/registrar", {
-        nombre: this.nombre
+        nombre: this.nombre,
+        data: this.array_detalle
       }).then(function (resp) {
         $("#ModalLong").modal("hide");
 
-        _this2.eventoAlerta('success', 'Guardado Exitosamente');
-
-        _this2.listar(1, "");
-
-        _this2.limpiar();
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    actualizar: function actualizar() {
-      var _this3 = this;
-
-      if (this.validar()) {
-        this.activarValidate = "was-validate";
-        this.eventoAlerta('error', this.mensaje);
-        return;
-      }
-
-      axios.put(this.url_ctrl + '/actualizar', {
-        id: this.id,
-        nombre: this.nombre
-      }).then(function (resp) {
-        $("#ModalLong").modal("hide");
-
-        _this3.eventoAlerta('success', 'Actualizado Exitosamente');
+        _this3.eventoAlerta("success", "Guardado Exitosamente");
 
         _this3.listar(1, "");
+
+        _this3.listado = true;
 
         _this3.limpiar();
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    eliminar: function eliminar(id) {
+    actualizar: function actualizar() {
       var _this4 = this;
+
+      if (this.validar()) {
+        this.activarValidate = "was-validated";
+        this.eventoAlerta("error", this.mensaje);
+        return;
+      }
+
+      axios.put(this.url_ctrl + "/actualizar", {
+        id: this.id,
+        nombre: this.nombre,
+        data: this.array_detalle
+      }).then(function (resp) {
+        $("#ModalLong").modal("hide");
+
+        _this4.eventoAlerta("success", "Actualizado Exitosamente");
+
+        _this4.listar(1, "");
+
+        _this4.listado = true;
+
+        _this4.limpiar();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    eliminar: function eliminar(id) {
+      var _this5 = this;
 
       var swalWithBootstrapButtons = sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_1___default.a.mixin({
         customClass: {
@@ -4199,49 +4002,144 @@ __webpack_require__.r(__webpack_exports__);
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          axios["delete"](_this4.url_ctrl + "/eliminar_" + id).then(function (resp) {
-            _this4.eventoAlerta("success", "Eliminado Exitosamente");
+          axios["delete"](_this5.url_ctrl + "/eliminar_" + id).then(function (resp) {
+            _this5.eventoAlerta("success", "Eliminado Exitosamente");
 
-            _this4.listar(1, "");
+            _this5.listar(1, "");
           })["catch"](function (error) {
             console.log(error);
           });
         } else if (
         /* Read more about handling dismissals below */
         result.dismiss === sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_1___default.a.DismissReason.cancel) {
-          _this4.eventoAlerta('error', 'Cancelado');
+          _this5.eventoAlerta("error", "Cancelado");
         }
       });
     },
-    abrirModal: function abrirModal(accion) {
+    abrirModal: function abrirModal() {
+      this.array_alimento = [];
+      this.tituloModal = "Selecione uno o varios Alimentos";
+    },
+    listar_alimento: function listar_alimento(buscar) {
+      var _this6 = this;
+
+      var url = "alimento/listar?buscar=" + buscar;
+      axios.get(url).then(function (resp) {
+        _this6.array_alimento = resp.data.table;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    mostrar_detalle: function mostrar_detalle(accion) {
+      var _this7 = this;
+
       var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+      this.listado = false;
 
       switch (accion) {
         case "registrar":
           {
-            this.tituloModal = "Registrar Orden Alimenticio", this.limpiar();
+            this.tituloModal = "Registrar Orden Alimenticio";
+            this.limpiar();
             this.tipoAccion = 1;
             break;
           }
 
         case "actualizar":
           {
-            this.tituloModal = "Actualizar Orden Alimenticio", this.tipoAccion = 2;
+            this.tituloModal = "Actualizar Orden Alimenticio";
+            this.tipoAccion = 2;
             this.id = data.id;
             this.nombre = data.nombre;
+            axios.get(this.url_ctrl + "/listar_alimento?id=" + data.id).then(function (resp) {
+              _this7.array_detalle = resp.data.detalle;
+            })["catch"](function (error) {
+              console.log(error);
+            });
             break;
           }
       }
     },
+    agregar_detalle: function agregar_detalle() {
+      if (this.id_alimento == 0) {
+        this.eventoAlerta("error", "Error");
+      } else {
+        if (this.encuentra(this.id_alimento)) {
+          this.eventoAlerta("error", "Se encuentra Agregado");
+        } else {
+          this.array_detalle.push({
+            id_alimento: this.id_alimento,
+            alimento: this.alimento,
+            cantidad: this.cantidad,
+            porcion: this.porcion
+          });
+          this.cantidad = 0;
+        }
+      }
+    },
+    agregar_detalle_modal: function agregar_detalle_modal() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      if (this.encuentra(data.id)) {
+        this.eventoAlerta("error", "Se encuentra Agregado");
+      } else {
+        this.array_detalle.push({
+          id_alimento: data.id,
+          alimento: data,
+          cantidad: 0,
+          porcion: ''
+        });
+        this.cantidad = 0;
+      }
+    },
+    eliminar_detalle: function eliminar_detalle(index) {
+      this.array_detalle.splice(index, 1);
+    },
+    encuentra: function encuentra(id) {
+      for (var i = 0; i < this.array_detalle.length; i++) {
+        if (this.array_detalle[i].id_alimento == id) {
+          return true;
+        }
+      }
+
+      return false;
+    },
+    ocultar_detalle: function ocultar_detalle() {
+      this.listado = true;
+      this.limpiar();
+      this.listar(1, "");
+    },
     limpiar: function limpiar() {
-      this.id = 0, this.nombre = "", // this.tituloModal="",
+      this.id = 0;
+      this.nombre = "";
       this.activarValidate = "";
+      this.array_alimento = [];
+      this.array_detalle = [];
     },
     validar: function validar() {
       if (!this.nombre) {
         this.mensaje = "Ingrese el Nombre";
         return true;
       }
+
+      if (this.array_detalle.length <= 0) {
+        this.mensaje = "No tiene Alimentos Agregados";
+        return true;
+      }
+
+      for (var index = 0; index < this.array_detalle.length; index++) {
+        if (!this.array_detalle[index].cantidad) {
+          this.mensaje = "La Cantidad No Puede Ser Menor A Cero";
+          return true;
+        }
+
+        if (!this.array_detalle[index].porcion) {
+          this.mensaje = "La Porcion no debe estar Vacia";
+          return true;
+        }
+      }
+
+      return false;
     }
   }
 });
@@ -43465,7 +43363,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ActividadFisica.vue?vue&type=template&id=af59250e&":
 /*!******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ActividadFisica.vue?vue&type=template&id=af59250e& ***!
@@ -43997,8 +43894,6 @@ render._withStripped = true
 
 /***/ }),
 
-=======
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Alimento.vue?vue&type=template&id=a9915844&":
 /*!***********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Alimento.vue?vue&type=template&id=a9915844& ***!
@@ -45794,8 +45689,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Opciones")])
       ])
     ])
-<<<<<<< HEAD
-=======
   },
   function() {
     var _vm = this
@@ -45884,7 +45777,6 @@ var staticRenderFns = [
         [_vm._v("Cerrar")]
       )
     ])
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
   }
 ]
 render._withStripped = true
@@ -58374,11 +58266,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.component('alimentos-component', __webpack_require__(/*! ./components/Alimento.vue */ "./resources/js/components/Alimento.vue")["default"]);
 Vue.component('categorias-component', __webpack_require__(/*! ./components/CategoriaAlimento.vue */ "./resources/js/components/CategoriaAlimento.vue")["default"]);
 Vue.component('orden_alimenticios-component', __webpack_require__(/*! ./components/OrdenAlimenticio.vue */ "./resources/js/components/OrdenAlimenticio.vue")["default"]);
-<<<<<<< HEAD
 Vue.component('actividad_fisicas-component', __webpack_require__(/*! ./components/ActividadFisica.vue */ "./resources/js/components/ActividadFisica.vue")["default"]);
-=======
-Vue.component('actividad-component', __webpack_require__(/*! ./components/ActividadFisica.vue */ "./resources/js/components/ActividadFisica.vue")["default"]);
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
 Vue.component('filas-component', __webpack_require__(/*! ./components/utilitarios/Filas.vue */ "./resources/js/components/utilitarios/Filas.vue")["default"]);
 Vue.component('modal-component', __webpack_require__(/*! ./components/utilitarios/Modal.vue */ "./resources/js/components/utilitarios/Modal.vue")["default"]);
 Vue.component('tipo-actividad-component', __webpack_require__(/*! ./components/TipoActividad.vue */ "./resources/js/components/TipoActividad.vue")["default"]);
@@ -58986,13 +58874,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! C:\xampp\htdocs\teoNutricion\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\xampp\htdocs\teoNutricion\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! C:\xampp\htdocs\teodoro\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\teodoro\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> dda259d8c4332ebb7f2d3a0ebf48151e7b860a6d
 
 
 /***/ })
