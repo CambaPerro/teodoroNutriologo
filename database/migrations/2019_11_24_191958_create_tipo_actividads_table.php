@@ -16,9 +16,8 @@ class CreateTipoActividadsTable extends Migration
         Schema::create('tipo_actividads', function (Blueprint $table) {
             $table->bigIncrements('id');        
             $table->string('tipo',10);
-            $table->string('descripcion',100);
-            $table->string('calorias_quemadas',10);
-            
+            $table->string('descripcion', 100);
+            $table->decimal('calorias_quemadas',8,2);
             // $table->timestamps();
         });
     }

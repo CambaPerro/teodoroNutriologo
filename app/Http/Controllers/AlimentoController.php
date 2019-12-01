@@ -33,7 +33,24 @@ class AlimentoController extends Controller
             'table' => $table
         ];
     }
-
+    public function select(Request $request)
+    {
+        // if(!$request->ajax()) return redirect('/');
+        $buscar=$request->buscar;
+        $table=Alimento::where('nombre','like','%'.$buscar.'%')
+        ->take(10)
+        ->get();
+        return ['table' => $table];
+    }
+    public function listar(Request $request)
+    {
+        // if(!$request->ajax()) return redirect('/');
+        $buscar=$request->buscar;
+        $table=Alimento::where('nombre','like','%'.$buscar.'%')
+        ->take(10)
+        ->get();
+        return ['table' => $table];
+    }
     /**
      * Store a newly created resource in storage.
      *

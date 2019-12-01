@@ -19,6 +19,7 @@ class CreateDetalleAlimentosTable extends Migration
             $table->unsignedBigInteger('id_alimento');
             $table->decimal('cantidad',8,2);
             $table->string('porcion',10);
+            $table->boolean('estado')->default(1);
             $table->foreign('id_orden')->references('id')->on('orden_alimenticios');
             $table->foreign('id_alimento')->references('id')->on('alimentos');
             // $table->timestamps();

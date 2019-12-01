@@ -21,7 +21,7 @@ window.Vue = require('vue');
 /*aqui invocas todas las vistas */
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-Vue.component('orden_alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
+// Vue.component('orden_alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
 
 
 
@@ -30,8 +30,11 @@ Vue.component('alimentos-component', require('./components/Alimento.vue').defaul
 Vue.component('categorias-component', require('./components/CategoriaAlimento.vue').default);
 
 Vue.component('orden_alimenticios-component', require('./components/OrdenAlimenticio.vue').default);
-Vue.component('actividad-component', require('./components/ActividadFisica.vue').default);
+
+Vue.component('actividad_fisicas-component', require('./components/ActividadFisica.vue').default);
+
 Vue.component('filas-component', require('./components/utilitarios/Filas.vue').default);
+
 Vue.component('modal-component', require('./components/utilitarios/Modal.vue').default);
 
 Vue.component('tipo-actividad-component', require('./components/TipoActividad.vue').default);

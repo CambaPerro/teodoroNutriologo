@@ -394,7 +394,7 @@ export default {
     },
     registrar() {
       if (this.validar()) {
-        this.activarValidate = "was-validate";
+        this.activarValidate = "was-validated";
         this.eventoAlerta("error", this.mensaje);
         return;
       }
@@ -420,7 +420,7 @@ export default {
     actualizar()
     {
       if (this.validar()) {
-        this.activarValidate = "was-validate";
+        this.activarValidate = "was-validated";
         this.eventoAlerta("error", this.mensaje);
         return;
       }
