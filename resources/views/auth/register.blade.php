@@ -41,68 +41,8 @@
                                   @enderror
   
                   </div>
-                  <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="icon-user"></i>
-                        </span>
-                      </div>
-                      <input id="fecha_nacimiento" type="date" placeholder="fecha_nacimiento" class="form-control @error('fecha_nacimiento') is-invalid @enderror" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" required autocomplete="fecha_nacimiento" autofocus>
-    
-                                    @error('fecha_nacimiento')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-    
-                    </div>
-                   
-                      
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text">
-                                <i class="icon-user"></i>
-                              </span>
-                            </div>
-                            <input id="altura" type="number" step="any" placeholder="altura" class="form-control @error('altura') is-invalid @enderror" name="altura" value="{{ old('altura') }}" required autocomplete="altura" autofocus>
-          
-                                          @error('altura')
-                                              <span class="invalid-feedback" role="alert">
-                                                  <strong>{{ $message }}</strong>
-                                              </span>
-                                          @enderror
-          
-                          </div>
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                  <i class="icon-user"></i>
-                                </span>
-                              </div>
-                              <input id="peso" type="number" step="any" placeholder="Peso" class="form-control @error('peso') is-invalid @enderror" name="peso" value="{{ old('peso') }}" required autocomplete="peso" autofocus>
-            
-                                            @error('peso')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-            
-                            </div>
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                  <i class="icon-user"></i>
-                                </span>
-                              </div>
-                              <input id="sexo" type="text" placeholder="Sexo" class="form-control @error('sexo') is-invalid @enderror" name="sexo" value="{{ old('sexo') }}" required autocomplete="sexo" autofocus>
-            
-                                            @error('sexo')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-            
-                            </div>
+                  
+                        
                             
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">

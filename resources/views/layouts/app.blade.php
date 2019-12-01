@@ -38,23 +38,30 @@
             @guest
 
             @else
-           
-            @include('header.header')
-            <div class="app-body">
-            @include('sidebar.sidebar')
-            </div>
+              {{-- @if (Auth::user()->fecha_nacimiento==null || Auth::user()->peso==null || Auth::user()->altura==null || Auth::user()->sexo==null )
+              <principal-component :usuario="{{ Auth::user() }}"></principal-component>
+           @else --}}
+           @include('header.header')
+           <div class="app-body">
+           @include('sidebar.sidebar')
+           </div>
+           {{-- @endif --}}
+          
             @endguest
+
             @yield('content')
-    </div>
-    <footer class="app-footer">
-            <div>
-              <a href="#">ABASTO</a>
-              <span>&copy; 2019 creativeLabs.</span>
-            </div>
-            <div class="ml-auto">
-              <span>Powered by</span>
-              <a href="#">Luis Rodrigo</a>
-            </div>
-          </footer>
+            @guest
+
+            @else
+            @if (Auth::user()->fecha_nacimiento==null || Auth::user()->peso==null || Auth::user()->altura==null || Auth::user()->sexo==null )
+            
+           @else
+          </div>
+          
+            @include('footer.footer')
+           @endif
+          
+            @endguest
+    
 </body>
 </html>
