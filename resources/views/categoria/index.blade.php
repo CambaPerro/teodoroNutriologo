@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-<categoria-component></categoria-component>
+<categorias-component></categorias-component>
 @endsection

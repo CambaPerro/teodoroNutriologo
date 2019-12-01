@@ -18,12 +18,12 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
+/*aqui invocas todas las vistas */
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('orden_alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
 Vue.component('alimentos-component', require('./components/Alimento.vue').default);
 
-Vue.component('categoria-component', require('./components/CategoriaAlimento.vue').default);
+Vue.component('categorias-component', require('./components/CategoriaAlimento.vue').default);
 
 Vue.component('orden-alimenticio-component', require('./components/OrdenAlimenticio.vue').default);
 Vue.component('actividad-component', require('./components/ActividadFisica.vue').default);
