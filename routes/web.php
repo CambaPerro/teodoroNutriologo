@@ -20,7 +20,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dieta','DietaController@index');
+
+//CRUD ORDEN ALIMENTICIO
 Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
+Route::post('/orden_alimenticio/registrar','OrdenAlimenticioController@store');
+Route::put('/orden_alimenticio/actualizar','OrdenAlimenticioController@update');
+Route::delete('/orden_alimenticio/eliminar_(id)','OrdenAlimenticioController@destroy');
+
+
 Route::get('/categoria','CategoriaController@index');
 Route::get('/actividad_fisica','ActividadFisicaController@index');
 Route::get('/alimento','AlimentoController@index');
