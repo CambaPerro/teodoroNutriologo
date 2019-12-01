@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-<actividad-component></actividad-component>
+<actividad_fisicas-component></actividad_fisicas-component>
 @endsection
