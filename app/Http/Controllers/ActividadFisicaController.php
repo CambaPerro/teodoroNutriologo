@@ -55,7 +55,7 @@ class ActividadFisicaController extends Controller
         $table->id_tipo = $request->id_tipo;
         $table->nombre = $request->nombre;
         $table->descripcion = $request->descripcion;
-        $table->estado= '1';
+        // $table->estado= '1';
         $table->save();
 
     }
@@ -67,17 +67,19 @@ class ActividadFisicaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {   
         // if (!$request->ajax()) return redirect('/');
         $table =  ActividadFisica::findOrFail($request->id);
         $table->nombre = $request->nombre;
         $table->descripcion = $request->descripcion;
         
-        $table->estado= '1';
+        // $table->estado= '1';
         $table->save();
 
     }
+
+    
 
     /**
      * Remove the specified resource from storage.

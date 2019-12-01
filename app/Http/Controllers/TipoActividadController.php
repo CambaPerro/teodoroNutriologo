@@ -46,6 +46,15 @@ class TipoActividadController extends Controller
         $table->save();
     }
 
+    public function select(Request $request)
+    {
+        // if(!$request->ajax()) return redirect('/');
+        $buscar=$request->buscar;
+        $table=TipoActividad::where('tipo','like','%'.$buscar.'%')
+        ->get();
+        return ['table' => $table];
+    }
+
     /**
      * Update the specified resource in storage.
      *
