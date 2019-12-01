@@ -43,7 +43,7 @@ class AlimentoController extends Controller
     public function store(Request $request)
     {
         // if(!$request->ajax()) return redirect('/');
-        $table= new CategorioAlimento();
+        $table= new Alimento();
         $table->id_categoria=$request->id_categoria;
         $table->nombre=$request->nombre;
         $table->calorias=$request->calorias;
@@ -62,7 +62,7 @@ class AlimentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $table=Alimenticio::findOrfail($request->id);
+        $table=Alimento::findOrfail($request->id);
         $table->id_categoria=$request->id_categoria;
         $table->nombre=$request->nombre;
         $table->calorias=$request->calorias;

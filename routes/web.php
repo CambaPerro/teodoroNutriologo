@@ -18,7 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/dieta','DietaController@index');
 
 //CRUD ORDEN ALIMENTICIO
@@ -29,12 +28,20 @@ Route::delete('/orden_alimenticio/eliminar_(id)','OrdenAlimenticioController@des
 
 
 Route::get('/categoria','CategoriaController@index');
+Route::post('/categoria/registrar','CategoriaController@store');
+Route::put('/categoria/actualizar','CategoriaController@update');
+Route::delete('/categoria/eliminar_{id}','CategoriaController@destroy');
+//actividad fisica
 Route::get('/actividad_fisica','ActividadFisicaController@index');
 Route::get('/alimento','AlimentoController@index');
 Route::get('/tipo_actividad','TipoActividadController@index');
 Route::post('/orden_alimenticio/registrar', 'OrdenAlimenticioController@store');
+Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
 Route::delete('/orden_alimenticio/eliminar_{id}','OrdenAlimenticioController@destroy');
 
+
+
+/*vistas*/
 Route::get('/orden_alimenticios',function(){
     return view('orden_alimenticio/index');
 })->name('orden_alimenticios');
@@ -46,7 +53,7 @@ Route::get('/alimentos',function(){
 Route::get('/dietas',function(){
     return view('dieta/index');
 })->name('dietas');
-
+/*url de las vistas*/ 
 Route::get('/categorias',function(){
     return view('categoria/index');
 })->name('categorias');
