@@ -359,7 +359,6 @@
 <script>
 import Vue from "vue";
 import Swal from "sweetalert2/dist/sweetalert2.js";
-
 import "sweetalert2/src/sweetalert2.scss";
 export default {
   data() {
@@ -416,7 +415,6 @@ export default {
       if (to >= this.pagination.last_page) {
         to = this.pagination.last_page;
       }
-
       var pagesArray = [];
       while (from <= to) {
         pagesArray.push(from);

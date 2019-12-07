@@ -330,7 +330,7 @@ export default {
       mensaje: "",
       vue_categoria:{
         id:0,
-        nombre:''
+        nombre: ""
       }
     };
   },

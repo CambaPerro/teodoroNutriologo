@@ -5,59 +5,66 @@
                     <a class="nav-link active" href="dashboard"><i class="icon-speedometer"></i> Escritorio</a>
                 </li>
                 <li class="nav-title">
-                    Mantenimiento
+                    Gestion de Dieta
                 </li>
                 <li class="nav-item nav-dropdown">
-                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon icon-bag"></i> Alimento</a>
+                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon icon-bag"></i> Administracion</a>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="alimento"><i class="nav-icon icon-grid"></i> Alimento</a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link" href="productos"> <i class="nav-icon fa fa-product-hunt"></i> Productos</a>
+                            <a class="nav-link" href="categorias"><i class="nav-icon icon-grid"></i> Categoria Alimentos</a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="ventas"><i class="nav-icon icon-basket-loaded"></i> Venta</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="compras"><i class="nav-icon icon-handbag"></i> Compra</a>
-                </li>
-                
-                <li class="nav-item">
-                <a class="nav-link" href="ingresos"><i class="nav-icon fa fa-money"></i> Ingreso</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="egresos"><i class="nav-icon fa fa-money"></i> Egreso</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="cuentas"><i class="nav-icon icon-briefcase"></i> Plan de Cuentas</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="balance_general"><i class="nav-icon icon-chart"></i> Balance General</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="estado_resultado"><i class="nav-icon icon-chart"></i> Estado Resultado</a>
-                    </li>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="orden_alimenticios"><i class="nav-icon icon-grid"></i> Orden Alimenticio</a>
+                        </li>
+                    </ul>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="alimentos"><i class="nav-icon icon-grid"></i> Alimentos</a>
+                        </li>
+                    </ul>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="detalle_alimentos"><i class="nav-icon icon-grid"></i> Detalle Alimentos</a>
+                        </li>
+                    </ul>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="tipo_actividads"><i class="nav-icon icon-grid"></i> Tipo Actividad Fisica</a>
+                        </li>
+                    </ul>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="actividad_fisicas"><i class="nav-icon icon-grid"></i> Actividad Fisica</a>
+                        </li>
+                    </ul>
+                  
+                    
+                </li>    
                 <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon icon-people"></i> Acceso</a>
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon icon-people"></i>Usuarios</a>
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="nav-icon icon-user"></i> Usuarios</a>
+                                <a class="nav-link" href="dietas"><i class="nav-icon icon-user"></i> Dieta</a>
+                            </li>
+                        </ul>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="alimento_dietas"><i class="nav-icon icon-user"></i> Alimento Dieta</a>
+                            </li>
+                        </ul>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="register"><i class="nav-icon icon-user"></i> Registro de Usuario</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="nav-icon icon-user-following"></i> Roles</a>
+                                <a class="nav-link" href="login"><i class="nav-icon icon-user"></i> Login</a>
                             </li>
                         </ul>
                     </li>
                
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="nav-icon icon-book-open"></i> Ayuda <span class="badge badge-danger">PDF</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> <i class=" fa fa-ban"></i><i class="nav-icon icon-info"></i> Acerca de...<span class="badge badge-info">IT</span></a>
-                </li>
+                
             </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
