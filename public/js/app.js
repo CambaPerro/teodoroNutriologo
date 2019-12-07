@@ -60130,7 +60130,7 @@ Vue.component('principal-component', __webpack_require__(/*! ./components/Princi
 var app = new Vue({
   el: '#app',
   data: {
-    menu: {}
+    menu: 0
   }
 });
 

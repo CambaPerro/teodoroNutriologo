@@ -51,6 +51,6 @@ Vue.component('principal-component', require('./components/Principal.vue').defau
 const app = new Vue({
     el: '#app',
     data :{
-        menu : {}
+        menu : 0
     }
 });
