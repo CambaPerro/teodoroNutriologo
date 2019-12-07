@@ -81,6 +81,7 @@
                   <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                 </div>
                 <button class="btn btn-block btn-success" type="submit">Create Account</button>
+                    </form>
               </div>
               <div class="card-footer p-4">
                 <div class="row">

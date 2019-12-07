@@ -81,7 +81,7 @@
                 </div>
             @endif
         </div>
-        <h2>ABASTO</h2>
+        <h2>APLICACION WEB</h2>
     </div>
     </body>
 </html>
