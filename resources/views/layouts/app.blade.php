@@ -38,7 +38,7 @@
             @guest
 
             @else
-              @if (Auth::user()->fecha_nacimiento==null || Auth::user()->peso==null || Auth::user()->altura==null || Auth::user()->sexo==null )
+              @if (Auth::user()->estado=='0')
               <principal-component :usuario="{{ Auth::user() }}"></principal-component>
            @else
            @include('header.header')
@@ -53,7 +53,7 @@
             @guest
 
             @else
-            @if (Auth::user()->fecha_nacimiento==null || Auth::user()->peso==null || Auth::user()->altura==null || Auth::user()->sexo==null )
+            @if (Auth::user()->estado=='0')
             
            @else
           </div>
