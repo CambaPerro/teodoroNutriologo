@@ -18,12 +18,13 @@ class CreateUsuariosTable extends Migration
             $table->string('email',50)->unique();
             $table->string('password');
             $table->string('nombre',50);
-            $table->string('apellido',50);
+            $table->string('apellido',50)->nullable();
             $table->date('fecha_nacimiento')->nullable();
             $table->decimal('altura',8,2)->nullable();
             $table->decimal('peso',8,2)->nullable();
             $table->string('sexo',10)->nullable();
             $table->string('tipo',10);
+            $table->boolean('estado')->default(0);
             // $table->timestamps();
         });
     }

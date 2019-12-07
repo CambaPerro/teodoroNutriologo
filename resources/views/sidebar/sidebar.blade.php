@@ -26,11 +26,6 @@
                     </ul>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="detalle_alimentos"><i class="nav-icon icon-grid"></i> Detalle Alimentos</a>
-                        </li>
-                    </ul>
-                    <ul class="nav-dropdown-items">
-                        <li class="nav-item">
                             <a class="nav-link" href="tipo_actividads"><i class="nav-icon icon-grid"></i> Tipo Actividad Fisica</a>
                         </li>
                     </ul>
