@@ -40,6 +40,7 @@ Vue.component('modal-component', require('./components/utilitarios/Modal.vue').d
 Vue.component('tipo-actividad-component', require('./components/TipoActividad.vue').default);
 
 Vue.component('dieta-component', require('./components/Dieta.vue').default);
+Vue.component('principal-component', require('./components/Principal.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -49,4 +50,7 @@ Vue.component('dieta-component', require('./components/Dieta.vue').default);
 
 const app = new Vue({
     el: '#app',
+    data :{
+        menu : {}
+    }
 });

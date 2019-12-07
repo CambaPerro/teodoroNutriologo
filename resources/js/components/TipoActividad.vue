@@ -233,7 +233,8 @@
                                 >
                                 <div class="col-md-9">
                                     <input
-                                        type="text"
+                                        type="number"
+                                        step="any"
                                         v-model="calorias_quemadas"
                                         placeholder="calorias quemadas............"
                                         class="form-control"
