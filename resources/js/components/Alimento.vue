@@ -91,8 +91,11 @@
                       <i class="icon-pencil"></i>
                     </button>
                     &nbsp;
-                    <button type="button" class="btn btn-danger btn-sm" 
-                    @click="eliminar(data.id)">
+                    <button
+                      type="button"
+                      class="btn btn-danger btn-sm"
+                      @click="eliminar(data.id)"
+                    >
                       <i class="icon-trash"></i>
                     </button>
                   </td>
@@ -273,7 +276,7 @@
               v-if="tipoAccion==1"
               @click="registrar()"
             >Guardar</button>
-            <button type="button" class="btn btn-primary" v-else @click="actualizar()" >Actualizar</button>
+            <button type="button" class="btn btn-primary" v-else @click="actualizar()">Actualizar</button>
           </div>
         </div>
         <!-- /.modal-content -->
@@ -328,8 +331,8 @@ export default {
       buscar: "",
       activarValidate: "",
       mensaje: "",
-      vue_categoria:{
-        id:0,
+      vue_categoria: {
+        id: 0,
         nombre: ""
       }
     };
@@ -417,23 +420,23 @@ export default {
           console.log(error);
         });
     },
-    actualizar()
-    {
+    actualizar() {
       if (this.validar()) {
         this.activarValidate = "was-validated";
         this.eventoAlerta("error", this.mensaje);
         return;
       }
-      axios.put(this.url_ctrl+"/actualizar",{
-        id_categoria: this.id_categoria,
+      axios
+        .put(this.url_ctrl + "/actualizar", {
+          id_categoria: this.id_categoria,
           nombre: this.nombre,
           calorias: this.calorias,
           carbohidratos: this.carbohidratos,
           grasas: this.grasas,
           proteinas: this.proteinas,
-          id:this.id
-      })
-      .then(resp => {
+          id: this.id
+        })
+        .then(resp => {
           this.eventoAlerta("success", "Actualizado Exitosamente");
           $("#ModalLong").modal("hide");
           this.listar(1, "");
@@ -443,9 +446,8 @@ export default {
           console.log(error);
         });
     },
-    eliminar(id)
-    {
-       const swalWithBootstrapButtons = Swal.mixin({
+    eliminar(id) {
+      const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           confirmButton: "btn btn-success",
           cancelButton: "btn btn-danger"
@@ -464,20 +466,20 @@ export default {
         })
         .then(result => {
           if (result.value) {
-      
-      axios.delete(this.url_ctrl+"/eliminar_"+id)
-      .then(resp => {
-          this.eventoAlerta("success", "Eliminado Exitosamente");
-          this.listar(1, "");
-        })
-        .catch(error => {
-          console.log(error);
-        });
-        } else if (
+            axios
+              .delete(this.url_ctrl + "/eliminar_" + id)
+              .then(resp => {
+                this.eventoAlerta("success", "Eliminado Exitosamente");
+                this.listar(1, "");
+              })
+              .catch(error => {
+                console.log(error);
+              });
+          } else if (
             /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
-          ){
-            this.eventoAlerta('error','Cancelado')
+          ) {
+            this.eventoAlerta("error", "Cancelado");
           }
         });
     },
@@ -499,35 +501,35 @@ export default {
     getDatoCategoria(val1) {
       this.id_categoria = val1.id;
       this.categoria = val1.nombre;
-      this.vue_categoria={
-        id:val1.id,
-        nombre:val1.nombre
+      this.vue_categoria = {
+        id: val1.id,
+        nombre: val1.nombre
       };
     },
-    abrirModal(accion,data=[]){
-      switch(accion){
-        case "registrar":{
-          this.tituloModal="Registrar Alimento";
+    abrirModal(accion, data = []) {
+      switch (accion) {
+        case "registrar": {
+          this.tituloModal = "Registrar Alimento";
           this.limpiar();
-          this.tipoAccion=1;
+          this.tipoAccion = 1;
           break;
         }
-        case "actualizar":{
-          this.tituloModal="Actualizar Alimento";
-          this.tipoAccion=2;
-          this.id=data.id;
-          this.nombre=data.nombre;
-          this.id_categoria=data.id_categoria;
-          this.categoria=data.categoria;
-          this.calorias=data.calorias;
-          this.carbohidratos=data.carbohidratos
-          this.grasas=data.grasas;;
-          this.proteinas=data.proteinas;   
-          this.vue_categoria={
-            id:this.id_categoria,
-            nombre:this.categoria
+        case "actualizar": {
+          this.tituloModal = "Actualizar Alimento";
+          this.tipoAccion = 2;
+          this.id = data.id;
+          this.nombre = data.nombre;
+          this.id_categoria = data.id_categoria;
+          this.categoria = data.categoria;
+          this.calorias = data.calorias;
+          this.carbohidratos = data.carbohidratos;
+          this.grasas = data.grasas;
+          this.proteinas = data.proteinas;
+          this.vue_categoria = {
+            id: this.id_categoria,
+            nombre: this.categoria
           };
-          break;          
+          break;
         }
       }
     },
