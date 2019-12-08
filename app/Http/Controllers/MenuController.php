@@ -65,7 +65,7 @@ class MenuController extends Controller
 
         foreach ($data as $key => $det) {
             $detalle=new DetalleAlimento();
-            $detalle->id_orden=$table->id;
+            $detalle->id_menu=$table->id;
             $detalle->id_alimento=$det['id_alimento'];
             $detalle->cantidad=$det['cantidad'];
             $detalle->estado='1';
@@ -94,7 +94,7 @@ class MenuController extends Controller
             $table=Menu::findOrfail($request->id);
             $table->nombre=$request->nombre;
             $table->save();
-            $detalles = DetalleAlimento::where('id_orden','=',$table->id)->update(['estado'=>'0']);
+            $detalles = DetalleAlimento::where('id_menu','=',$table->id)->update(['estado'=>'0']);
 
         $data=$request->data;
         
