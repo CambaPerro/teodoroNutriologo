@@ -16,7 +16,7 @@ class CreateDietasTable extends Migration
         Schema::create('dietas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_usuario');
-            $table->unsignedBigInteger('id_actividad');
+            $table->unsignedBigInteger('id_actividad')->nullable();
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->decimal('peso_ideal',8,2);
