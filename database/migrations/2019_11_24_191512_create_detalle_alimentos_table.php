@@ -15,12 +15,11 @@ class CreateDetalleAlimentosTable extends Migration
     {
         Schema::create('detalle_alimentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_orden');
+            $table->unsignedBigInteger('id_menu');
             $table->unsignedBigInteger('id_alimento');
             $table->decimal('cantidad',8,2);
-            $table->string('porcion',10);
             $table->boolean('estado')->default(1);
-            $table->foreign('id_orden')->references('id')->on('orden_alimenticios');
+            $table->foreign('id_menu')->references('id')->on('menus');
             $table->foreign('id_alimento')->references('id')->on('alimentos');
             // $table->timestamps();
         });

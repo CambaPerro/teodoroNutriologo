@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlimentoDietasTable extends Migration
+class CreateDetalleDietasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateAlimentoDietasTable extends Migration
      */
     public function up()
     {
-        Schema::create('alimento_dietas', function (Blueprint $table) {
+        Schema::create('detalle_dietas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_dieta');
-            $table->unsignedBigInteger('id_alimento');
+            $table->unsignedBigInteger('id_orden');
             $table->foreign('id_dieta')->references('id')->on('dietas');
-            $table->foreign('id_alimento')->references('id')->on('detalle_alimentos');
-            // $table->timestamps();
+            $table->foreign('id_orden')->references('id')->on('orden_alimentos');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateAlimentoDietasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alimento_dietas');
+        Schema::dropIfExists('detalle_dietas');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdenAlimenticiosTable extends Migration
+class CreateMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOrdenAlimenticiosTable extends Migration
      */
     public function up()
     {
-        Schema::create('orden_alimenticios', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre',50);
             // $table->timestamps();
@@ -27,6 +27,6 @@ class CreateOrdenAlimenticiosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orden_alimenticios');
+        Schema::dropIfExists('menus');
     }
 }
