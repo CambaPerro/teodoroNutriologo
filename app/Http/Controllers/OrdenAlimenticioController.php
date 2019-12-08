@@ -98,10 +98,16 @@ class OrdenAlimenticioController extends Controller
             $detalles = DetalleAlimento::where('id_orden','=',$table->id)->update(['estado'=>'0']);
 
         $data=$request->data;
-
+        
         foreach ($data as $key => $det) {
+            if($data['cantidad']!=0 && $data['cantidad']!=null){
             $detalle=DetalleAlimento::updateOrInsert(['id_orden' =>$table->id,'id_alimento'=>$det['id_alimento']],
                 ['cantidad'=>$det['cantidad'],'porcion'=>$det['porcion'],'estado'=>'1']);
+            }
+            else{
+                $detalle=DetalleAlimento::updateOrInsert(['id_orden' =>$table->id,'id_alimento'=>$det['id_alimento']],
+                ['cantidad'=>0,'porcion'=>$det['porcion'],'estado'=>'0']);
+            }
         }
 
         DB::commit();

@@ -18,7 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/dieta','DietaController@index');
+Route::post('/dieta/registrar','DietaController@store');
 
 //CRUD ORDEN ALIMENTICIO
 Route::get('/orden_alimenticio','OrdenAlimenticioController@index');

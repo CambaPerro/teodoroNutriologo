@@ -4157,6 +4157,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.js */ "./node_modules/sweetalert2/dist/sweetalert2.js");
+/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -4340,6 +4344,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     usuario: Object
@@ -4405,14 +4416,50 @@ __webpack_require__.r(__webpack_exports__);
       me.pagination.current_page = page; // enviar la peticion para visualizar la data de esta pagina
 
       this.ventana = this.pagination.current_page;
+
+      if (this.ventana == 4) {
+        this.registrar();
+      }
+    },
+    eventoAlerta: function eventoAlerta(icono, mensaje) {
+      sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+        position: "center",
+        icon: icono,
+        title: mensaje,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    },
+    registrar: function registrar() {
+      var _this = this;
+
+      if (this.validar()) {
+        this.activarValidate = "was-validated";
+        this.eventoAlerta("error", this.mensaje);
+        return;
+      }
+
+      axios.post("dieta/registrar", {
+        peso_ideal: 60,
+        calorias: 100,
+        imc: 100,
+        tipo: this.tipo,
+        fecha_nacimiento: this.fecha_nacimiento,
+        altura: this.altura,
+        peso: this.peso,
+        sexo: this.sexo
+      }).then(function (resp) {
+        _this.eventoAlerta("success", "Bienbenido a Masaco"); // this.limpiar();
+
+
+        window.open("home");
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     objetivo: function objetivo(tipo) {
       this.tipo = tipo;
-      this.cambiarPagina(this.pagination.current_page + 1);
-      this.ventana = this.pagination.current_page;
-    },
-    mostrarValor: function mostrarValor() {// let resp=document.getElementsByClassName("progress");
-      // console.log(resp);
+      this.cambiarPagina(this.pagination.current_page + 1); // this.ventana = this.pagination.current_page;
     },
     cambiarValor: function cambiarValor(valor) {
       if (this.progreso + valor >= 10 && valor > 0) {
@@ -4427,6 +4474,17 @@ __webpack_require__.r(__webpack_exports__);
 
       this.progreso = this.progreso + valor; // this.cambioValor.emit(this.progreso);k
       // this.txtProgress.nativeElement.focus();
+    },
+    validar: function validar() {
+      // if (!this.nombre) {
+      //   this.mensaje = "Ingrese el Nombre";
+      //   return true;
+      // }
+      // if (!this.id_categoria) {
+      //   this.mensaje = "Seleccione la Categoria";
+      //   return true;
+      // }
+      return false;
     }
   }
 });
@@ -46792,7 +46850,7 @@ var render = function() {
                               staticClass: "col-md-3 form-control-label",
                               attrs: { for: "text-input" }
                             },
-                            [_vm._v("Peso")]
+                            [_vm._v("Sexo")]
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-9" }, [
@@ -47007,36 +47065,38 @@ var render = function() {
                                   }
                                 }
                               },
-                              [_vm._v("Atras")]
+                              [_vm._v("Volver")]
                             )
                           ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm._l(_vm.pagesNumber, function(page) {
-                        return _c(
-                          "li",
-                          {
-                            key: page,
-                            staticClass: "page-item",
-                            class: [page == _vm.isActived ? "active" : ""]
-                          },
-                          [
-                            _c("a", {
-                              staticClass: "page-link",
-                              attrs: { href: "#" },
-                              domProps: { textContent: _vm._s(page) },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  return _vm.cambiarPagina(page)
-                                }
-                              }
-                            })
-                          ]
-                        )
+                        return page == _vm.isActived
+                          ? _c(
+                              "li",
+                              {
+                                key: page,
+                                staticClass: "page-item",
+                                class: [page == _vm.isActived ? "active" : ""]
+                              },
+                              [
+                                _c("a", {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  domProps: { textContent: _vm._s(page) },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.cambiarPagina(page)
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          : _vm._e()
                       }),
                       _vm._v(" "),
-                      _vm.pagination.current_page < _vm.pagination.last_page
+                      _vm.pagination.current_page > 1
                         ? _c("li", { staticClass: "page-item" }, [
                             _c(
                               "a",

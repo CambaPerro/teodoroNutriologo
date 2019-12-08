@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Dieta;
+use App\User;
+use DB;
+use Carbon\Carbon;
 
 class DietaController extends Controller
 {
@@ -15,7 +18,7 @@ class DietaController extends Controller
     public function index()
     {
         // if(!$request->ajax()) return redirect('/');
-        $table=Dieta::where('id_usuario','=',auth()->id)
+        $table=Dieta::where('id_usuario','=',auth()->id())
         ->get();
         return $table;
     }
@@ -29,14 +32,31 @@ class DietaController extends Controller
     public function store(Request $request)
     {
         // if(!$request->ajax()) return redirect('/');
+        DB::beginTransaction();
+        try {
+        $fecha= Carbon::now('America/La_Paz');
         $table= new Dieta();
-        $table->id_usuario=auth()->id;
-        $table->fecha_inicio=$request->fecha_inicio;
-        $table->fecha_fin=$request->fecha_fin;
+        $table->id_usuario=auth()->id();
+        $table->fecha_inicio=$fecha;
+        $table->fecha_fin=$fecha;
         $table->peso_ideal=$request->peso_ideal;
         $table->calorias=$request->calorias;
         $table->imc=$request->imc;
+        $table->tipo=$request->tipo;
         $table->save();
+        
+        $user=User::findOrFail(auth()->id());
+        $user->fecha_nacimiento=$request->fecha_nacimiento;
+        $user->altura=$request->altura;
+        $user->peso=$request->peso;
+        $user->sexo=$request->sexo;
+        $user->estado='1';
+        $user->save();
+
+        DB::commit();
+    } catch (Exception $e){
+        DB::rollBack();
+    }
     }
 
     /**
