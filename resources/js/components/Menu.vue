@@ -194,7 +194,6 @@
                 <tr>
                   <th>Opciones</th>
                   <th>Alimento</th>
-                  <th>Cantidad</th>
                 </tr>
               </thead>
               <tbody v-if="(array_detalle.length)">
@@ -209,17 +208,7 @@
                     </button>
                   </td>
                   <td>{{ detalle.alimento.nombre }}</td>
-                  <td>
-                    <input
-                      type="number"
-                      min="0"
-                      step="any"
-                      v-model="detalle.cantidad"
-                      class="form-control"
-                      required
-                      placeholder="Cantidad...."
-                    />
-                  </td>
+               
                 </tr>
               </tbody>
               <tbody v-else>
@@ -608,9 +597,7 @@ export default {
           this.array_detalle.push({
             id_alimento: this.id_alimento,
             alimento: this.alimento,
-            cantidad: this.cantidad,
           });
-          this.cantidad = 0;
         }
       }
     },
@@ -622,9 +609,7 @@ export default {
           this.array_detalle.push({
             id_alimento: data.id,
             alimento: data,
-            cantidad: 0
           });
-          this.cantidad = 0;
         }
     },
     eliminar_detalle(index) {
@@ -658,12 +643,6 @@ export default {
       if (this.array_detalle.length <= 0) {
         this.mensaje = "No tiene Alimentos Agregados";
         return true;
-      }
-      for (let index = 0; index < this.array_detalle.length; index++) {
-        if (!this.array_detalle[index].cantidad) {
-          this.mensaje = "La Cantidad No Puede Ser Menor A Cero";
-          return true;
-        }
       }
       return false;
     }

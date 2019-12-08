@@ -28,6 +28,7 @@ Route::get('/orden_alimento/listar_alimento','OrdenAlimentoController@listar_ali
 Route::post('/orden_alimento/registrar','OrdenAlimentoController@store');
 Route::put('/orden_alimento/actualizar','OrdenAlimentoController@update');
 Route::delete('/orden_alimento/eliminar_{id}','OrdenAlimentoController@destroy');
+Route::put('/orden_alimento/eliminar_detalle','OrdenAlimentoController@destroy_detalle');
 Route::get('/alimento/select','AlimentoController@select');
 Route::get('/alimento/listar','AlimentoController@listar');
 //CRUD CATEGORIA
@@ -61,6 +62,7 @@ Route::get('/tipo_actividad/select','TipoActividadController@select');
 
 //CRUD MENU
 Route::get('/menu','MenuController@index');
+Route::get('/menu/listar_menu','MenuController@listar_menu');
 Route::get('/menu/listar_alimento','MenuController@listar_alimento');
 Route::post('/menu/registrar','MenuController@store');
 Route::put('/menu/actualizar','MenuController@update');

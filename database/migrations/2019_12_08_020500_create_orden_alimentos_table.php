@@ -15,7 +15,7 @@ class CreateOrdenAlimentosTable extends Migration
     {
         Schema::create('orden_alimentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('fecha');
+            $table->date('fecha')->unique();
             $table->decimal('total_calorias',8,2);
             $table->decimal('total_carbohidratos',8,2);
             $table->decimal('total_grasas',8,2);
