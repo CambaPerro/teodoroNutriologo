@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\OrdenAlimento;
-use App\DetalleAlimento;
+use App\DetalleOrden;
 use DB;
 
 class OrdenAlimentoController extends Controller
@@ -17,20 +17,15 @@ class OrdenAlimentoController extends Controller
     public function index(Request $request)
     {
         // if(!$request->ajax()) return redirect('/');
-        $buscar=$request->buscar;
-        $table=OrdenAlimento::where('nombre','like','%'.$buscar.'%')
-        ->orderBy('id','desc')->paginate(10);
-        return [
-            'pagination' => [
-                'total'        => $table->total(),
-                'current_page' => $table->currentPage(),
-                'per_page'     => $table->perPage(),
-                'last_page'    => $table->lastPage(),
-                'from'         => $table->firstItem(),
-                'to'           => $table->lastItem(),
-            ],
-            'table' => $table
-        ];
+        // $buscar=$request->buscar;
+        $table=OrdenAlimento::join('detalle_ordens','orden_alimentos.id','=','detalle_ordens.id_orden')
+        ->join('detalle_alimentos','detalle_ordens.id_alimento','=','detalle_alimentos.id')
+        ->join('menus','detalle_alimentos.id_menu','=','menus.id')
+        ->join('alimentos','detalle_alimentos.id_alimento','=','alimentos.id')
+        ->select('menus.nombre','orden_alimentos.fecha')
+        ->groupBy('menus.nombre','orden_alimentos.fecha')
+        ->get();
+        return $table;
     }
 
    
