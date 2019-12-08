@@ -67,6 +67,7 @@ class AlimentoController extends Controller
         $table->carbohidratos=$request->carbohidratos;
         $table->grasas=$request->grasas;
         $table->proteinas=$request->proteinas;
+        $table->peso=$request->peso;
         $table->save();
     }
 
@@ -86,6 +87,7 @@ class AlimentoController extends Controller
         $table->carbohidratos=$request->carbohidratos;
         $table->grasas=$request->grasas;
         $table->proteinas=$request->proteinas;
+        $table->peso=$request->peso;
         $table->save();
     }
 

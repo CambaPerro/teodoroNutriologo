@@ -62,6 +62,7 @@
                   <th>Carbohidratos</th>
                   <th>Grasas</th>
                   <th>Proteinas</th>
+                  <th>Peso</th>
                   <th>Opciones</th>
                 </tr>
               </thead>
@@ -80,6 +81,7 @@
                   <td>{{ data.carbohidratos }}</td>
                   <td>{{ data.grasas }}</td>
                   <td>{{ data.proteinas }}</td>
+                  <td>{{ data.peso }}</td>
                   <td>
                     <button
                       type="button"
@@ -248,6 +250,20 @@
                   />
                 </div>
               </div>
+               <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input">Peso</label>
+                <div class="col-md-9">
+                  <input
+                    type="number"
+                    min="0"
+                    step="any"
+                    class="form-control"
+                    v-model="peso"
+                    required
+                    placeholder="Peso...."
+                  />
+                </div>
+              </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input">Categoria</label>
                 <div class="col-md-9">
@@ -309,6 +325,7 @@ export default {
       carbohidratos: 0,
       grasas: 0,
       proteinas: 0,
+      peso:0,
 
       array_data: [],
       array_categoria: [],
@@ -408,7 +425,8 @@ export default {
           calorias: this.calorias,
           carbohidratos: this.carbohidratos,
           grasas: this.grasas,
-          proteinas: this.proteinas
+          proteinas: this.proteinas,
+          peso: this.peso
         })
         .then(resp => {
           this.eventoAlerta("success", "Guardado Exitosamente");
@@ -434,6 +452,7 @@ export default {
           carbohidratos: this.carbohidratos,
           grasas: this.grasas,
           proteinas: this.proteinas,
+          peso: this.peso,
           id: this.id
         })
         .then(resp => {
@@ -525,6 +544,7 @@ export default {
           this.carbohidratos = data.carbohidratos;
           this.grasas = data.grasas;
           this.proteinas = data.proteinas;
+          this.peso = data.peso;
           this.vue_categoria = {
             id: this.id_categoria,
             nombre: this.categoria
@@ -542,6 +562,7 @@ export default {
       this.carbohidratos = 0;
       this.grasas = 0;
       this.proteinas = 0;
+      this.peso=0;
       this.buscar = "";
       this.array_categoria = [];
       this.activarValidate = "";

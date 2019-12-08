@@ -16,7 +16,7 @@
                     </ul>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="orden_alimenticios"><i class="nav-icon icon-grid"></i> Orden Alimenticio</a>
+                            <a class="nav-link" href="orden_alimentos"><i class="nav-icon icon-grid"></i> Orden Alimenticio</a>
                         </li>
                     </ul>
                     <ul class="nav-dropdown-items">
