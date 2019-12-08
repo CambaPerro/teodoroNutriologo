@@ -45,7 +45,7 @@ class MenuController extends Controller
         // if(!$request->ajax()) return redirect('/');
         $id = $request->id;
 
-        $detalle = DetalleAlimento::where('id_orden','=',$request->id)
+        $detalle = DetalleAlimento::where('id_menu','=',$request->id)
         ->where('estado','=','1')
         ->with('alimento')        
         ->get();
@@ -100,11 +100,11 @@ class MenuController extends Controller
         
         foreach ($data as $key => $det) {
             if($data['cantidad']!=0 && $data['cantidad']!=null){
-            $detalle=DetalleAlimento::updateOrInsert(['id_orden' =>$table->id,'id_alimento'=>$det['id_alimento']],
+            $detalle=DetalleAlimento::updateOrInsert(['id_menu' =>$table->id,'id_alimento'=>$det['id_alimento']],
                 ['cantidad'=>$det['cantidad'],'estado'=>'1']);
             }
             else{
-                $detalle=DetalleAlimento::updateOrInsert(['id_orden' =>$table->id,'id_alimento'=>$det['id_alimento']],
+                $detalle=DetalleAlimento::updateOrInsert(['id_menu' =>$table->id,'id_alimento'=>$det['id_alimento']],
                 ['cantidad'=>0,'estado'=>'0']);
             }
         }

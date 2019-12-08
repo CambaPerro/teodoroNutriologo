@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alimento extends Model
 {
-    protected $fillable=['id_categoria','nombre','calorias','carbohidratos','grasas','proteinas','peso'];
+    // protected $fillable=['id_categoria','nombre','calorias','carbohidratos','grasas','proteinas','peso'];
     public $timestamps = false;
     protected $appends = ['categoria'];
 

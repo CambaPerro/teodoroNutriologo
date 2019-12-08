@@ -34,6 +34,11 @@
                             <a class="nav-link" href="actividad_fisicas"><i class="nav-icon icon-grid"></i> Actividad Fisica</a>
                         </li>
                     </ul>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="menus"><i class="nav-icon icon-grid"></i> Menu</a>
+                        </li>
+                    </ul>
                   
                     
                 </li>    
@@ -47,6 +52,11 @@
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a class="nav-link" href="alimento_dietas"><i class="nav-icon icon-user"></i> Alimento Dieta</a>
+                            </li>
+                        </ul>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="menus"><i class="nav-icon icon-grid"></i> Menu</a>
                             </li>
                         </ul>
                         <ul class="nav-dropdown-items">

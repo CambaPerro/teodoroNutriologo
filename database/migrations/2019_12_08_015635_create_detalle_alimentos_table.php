@@ -17,7 +17,6 @@ class CreateDetalleAlimentosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_menu');
             $table->unsignedBigInteger('id_alimento');
-            $table->decimal('cantidad',8,2);
             $table->boolean('estado')->default(1);
             $table->foreign('id_menu')->references('id')->on('menus');
             $table->foreign('id_alimento')->references('id')->on('alimentos');
