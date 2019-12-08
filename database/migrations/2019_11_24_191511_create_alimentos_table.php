@@ -21,6 +21,7 @@ class CreateAlimentosTable extends Migration
             $table->decimal('carbohidratos',8,2);
             $table->decimal('grasas',8,2);
             $table->decimal('proteinas',8,2);
+            $table->decimal('peso',8,2);
             $table->foreign('id_categoria')->references('id')->on('categorias');
             
             // $table->timestamps();

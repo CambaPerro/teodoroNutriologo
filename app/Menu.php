@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AlimentoDieta extends Model
+class Menu extends Model
 {
-    protected $fillable=['id_dieta','id_alimento'];
+    protected $fillable = ['nombre'];
     public $timestamps = false;
 }

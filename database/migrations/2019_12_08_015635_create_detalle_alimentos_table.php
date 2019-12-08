@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlimentoDietasTable extends Migration
+class CreateDetalleAlimentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateAlimentoDietasTable extends Migration
      */
     public function up()
     {
-        Schema::create('alimento_dietas', function (Blueprint $table) {
+        Schema::create('detalle_alimentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_dieta');
+            $table->unsignedBigInteger('id_menu');
             $table->unsignedBigInteger('id_alimento');
-            $table->foreign('id_dieta')->references('id')->on('dietas');
-            $table->foreign('id_alimento')->references('id')->on('detalle_alimentos');
+            $table->decimal('cantidad',8,2);
+            $table->boolean('estado')->default(1);
+            $table->foreign('id_menu')->references('id')->on('menus');
+            $table->foreign('id_alimento')->references('id')->on('alimentos');
             // $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateAlimentoDietasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alimento_dietas');
+        Schema::dropIfExists('detalle_alimentos');
     }
 }
