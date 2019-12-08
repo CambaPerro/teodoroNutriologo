@@ -59,6 +59,13 @@ Route::delete('/alimento/eliminar_{id}','AlimentoController@destroy');
 Route::get('/tipo_actividad','TipoActividadController@index');
 Route::get('/tipo_actividad/select','TipoActividadController@select');
 
+//CRUD MENU
+Route::get('/menu','MenuController@index');
+Route::get('/menu/listar_alimento','MenuController@listar_alimento');
+Route::post('/menu/registrar','MenuController@store');
+Route::put('/menu/actualizar','MenuController@update');
+Route::delete('/menu/eliminar_{id}','MenuController@destroy');
+
 
 // Route:get('/nombre para url',functio(){
     // return view('direccion del views');
@@ -88,3 +95,7 @@ Route::get('/actividad_fisicas',function(){
 Route::get('/tipo_actividads',function(){
     return view('tipo_actividad/index');
 })->name('tipo_actividads');
+
+Route::get('/menus',function(){
+    return view('menu/index');
+})->name('menus');
