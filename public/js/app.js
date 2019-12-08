@@ -79549,6 +79549,8 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(data.proteinas))]),
                       _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(data.peso))]),
+                      _vm._v(" "),
                       _c("td", [
                         _c(
                           "button",
@@ -79941,6 +79943,47 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
+                        [_vm._v("Peso")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.peso,
+                              expression: "peso"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "number",
+                            min: "0",
+                            step: "any",
+                            required: "",
+                            placeholder: "Peso...."
+                          },
+                          domProps: { value: _vm.peso },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.peso = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "text-input" }
+                        },
                         [_vm._v("Categoria")]
                       ),
                       _vm._v(" "),
@@ -80052,6 +80095,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Grasas")]),
         _vm._v(" "),
         _c("th", [_vm._v("Proteinas")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Peso")]),
         _vm._v(" "),
         _c("th", [_vm._v("Opciones")])
       ])
@@ -80190,19 +80235,6 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(data.nombre))]),
                       _vm._v(" "),
-<<<<<<< HEAD
-=======
-                      _c("td", [_vm._v(_vm._s(data.calorias))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.carbohidratos))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.grasas))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.proteinas))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.peso))]),
-                      _vm._v(" "),
->>>>>>> 1e2e7ab725c021f40f95492e69ec14fcac65f958
                       _c("td", [
                         _c(
                           "button",
@@ -80632,7 +80664,6 @@ var render = function() {
                           [_c("i", { staticClass: "icon-trash" })]
                         )
                       ])
-<<<<<<< HEAD
                     ])
                   }),
                   0
@@ -80660,81 +80691,6 @@ var render = function() {
                                 _vm.pagination.current_page - 1,
                                 _vm.buscar
                               )
-=======
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Peso")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-9" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.peso,
-                              expression: "peso"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            min: "0",
-                            step: "any",
-                            required: "",
-                            placeholder: "Peso...."
-                          },
-                          domProps: { value: _vm.peso },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.peso = $event.target.value
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Categoria")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col-md-9" },
-                        [
-                          _c("v-select", {
-                            attrs: {
-                              label: "nombre",
-                              options: _vm.array_categoria,
-                              placeholder: "Categoria..."
-                            },
-                            on: {
-                              search: _vm.selectCategoria,
-                              input: _vm.getDatoCategoria
-                            },
-                            model: {
-                              value: _vm.vue_categoria,
-                              callback: function($$v) {
-                                _vm.vue_categoria = $$v
-                              },
-                              expression: "vue_categoria"
->>>>>>> 1e2e7ab725c021f40f95492e69ec14fcac65f958
                             }
                           }
                         },
@@ -80831,7 +80787,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-<<<<<<< HEAD
     return _c("span", { staticClass: "input-group-append" }, [
       _c(
         "button",
@@ -80841,28 +80796,6 @@ var staticRenderFns = [
           _vm._v("\n                      Buscar\n                    ")
         ]
       )
-=======
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("ID")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Categoria")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nombre")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Calorias")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Carbohidratos")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Grasas")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Proteinas")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Peso")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Opciones")])
-      ])
->>>>>>> 1e2e7ab725c021f40f95492e69ec14fcac65f958
     ])
   },
   function() {
@@ -96787,8 +96720,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\teoNutricion\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\teoNutricion\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\masaco\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\masaco\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
