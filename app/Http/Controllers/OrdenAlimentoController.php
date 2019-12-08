@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\OrdenAlimenticio;
+use App\OrdenAlimento;
 use App\DetalleAlimento;
 use DB;
 
-class OrdenAlimenticioController extends Controller
+class OrdenAlimentoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class OrdenAlimenticioController extends Controller
     {
         // if(!$request->ajax()) return redirect('/');
         $buscar=$request->buscar;
-        $table=OrdenAlimenticio::where('nombre','like','%'.$buscar.'%')
+        $table=OrdenAlimento::where('nombre','like','%'.$buscar.'%')
         ->orderBy('id','desc')->paginate(10);
         return [
             'pagination' => [
@@ -57,7 +57,7 @@ class OrdenAlimenticioController extends Controller
         // if(!$request->ajax()) return redirect('/');
         DB::beginTransaction();
         try{    
-        $table= new OrdenAlimenticio();
+        $table= new OrdenAlimento();
         $table->nombre=$request->nombre;
         $table->save();
 
@@ -92,7 +92,7 @@ class OrdenAlimenticioController extends Controller
         // if(!$request->ajax()) return redirect('/');
         DB::beginTransaction();
         try{    
-            $table=OrdenAlimenticio::findOrfail($request->id);
+            $table=OrdenAlimento::findOrfail($request->id);
             $table->nombre=$request->nombre;
             $table->save();
             $detalles = DetalleAlimento::where('id_orden','=',$table->id)->update(['estado'=>'0']);
@@ -127,7 +127,7 @@ class OrdenAlimenticioController extends Controller
     public function destroy($id)
     {
         // if(!$request->ajax()) return redirect('/');
-        $table=OrdenAlimenticio::find($id);
+        $table=OrdenAlimento::find($id);
         $table->delete();
     }
 }

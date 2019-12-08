@@ -195,7 +195,6 @@
                   <th>Opciones</th>
                   <th>Alimento</th>
                   <th>Cantidad</th>
-                  <th>Porcion</th>
                 </tr>
               </thead>
               <tbody v-if="(array_detalle.length)">
@@ -219,15 +218,6 @@
                       class="form-control"
                       required
                       placeholder="Cantidad...."
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      v-model="detalle.porcion"
-                      class="form-control"
-                      required
-                      placeholder="Porcion....."
                     />
                   </td>
                 </tr>
@@ -617,7 +607,6 @@ export default {
             id_alimento: this.id_alimento,
             alimento: this.alimento,
             cantidad: this.cantidad,
-            porcion: this.porcion
           });
           this.cantidad = 0;
         }
@@ -631,8 +620,7 @@ export default {
           this.array_detalle.push({
             id_alimento: data.id,
             alimento: data,
-            cantidad: 0,
-            porcion: ''
+            cantidad: 0
           });
           this.cantidad = 0;
         }
@@ -672,10 +660,6 @@ export default {
       for (let index = 0; index < this.array_detalle.length; index++) {
         if (!this.array_detalle[index].cantidad) {
           this.mensaje = "La Cantidad No Puede Ser Menor A Cero";
-          return true;
-        }
-        if (!this.array_detalle[index].porcion) {
-          this.mensaje = "La Porcion no debe estar Vacia";
           return true;
         }
       }

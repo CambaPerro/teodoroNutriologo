@@ -23,11 +23,11 @@ Route::get('/dieta','DietaController@index');
 Route::post('/dieta/registrar','DietaController@store');
 
 //CRUD ORDEN ALIMENTICIO
-Route::get('/orden_alimenticio','OrdenAlimenticioController@index');
-Route::get('/orden_alimenticio/listar_alimento','OrdenAlimenticioController@listar_alimento');
-Route::post('/orden_alimenticio/registrar','OrdenAlimenticioController@store');
-Route::put('/orden_alimenticio/actualizar','OrdenAlimenticioController@update');
-Route::delete('/orden_alimenticio/eliminar_{id}','OrdenAlimenticioController@destroy');
+Route::get('/orden_alimento','OrdenAlimentoController@index');
+Route::get('/orden_alimento/listar_alimento','OrdenAlimentoController@listar_alimento');
+Route::post('/orden_alimento/registrar','OrdenAlimentoController@store');
+Route::put('/orden_alimento/actualizar','OrdenAlimentoController@update');
+Route::delete('/orden_alimento/eliminar_{id}','OrdenAlimentoController@destroy');
 Route::get('/alimento/select','AlimentoController@select');
 Route::get('/alimento/listar','AlimentoController@listar');
 //CRUD CATEGORIA
@@ -65,9 +65,9 @@ Route::get('/tipo_actividad/select','TipoActividadController@select');
 // })->name('nombre para url');
 
 /*rutas de las vistas */
-Route::get('/orden_alimenticios',function(){
-    return view('orden_alimenticio/index');
-})->name('orden_alimenticios');
+Route::get('/orden_alimentos',function(){
+    return view('orden_alimento/index');
+})->name('orden_alimentos');
 
 Route::get('/alimentos',function(){
     return view('alimento/index');
