@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\OrdenAlimento;
 use App\DetalleOrden;
+use App\DetalleAlimento;
 use DB;
+use Carbon\Carbon;
 
 class OrdenAlimentoController extends Controller
 {
@@ -18,13 +20,38 @@ class OrdenAlimentoController extends Controller
     {
         // if(!$request->ajax()) return redirect('/');
         // $buscar=$request->buscar;
-        $table=OrdenAlimento::join('detalle_ordens','orden_alimentos.id','=','detalle_ordens.id_orden')
+
+        $table=OrdenAlimento::where('fecha','=','2019/12/08')
+        ->first();
+        // $table->detalle=DetalleOrden::where('id_orden','=',$table->id)
+        // // ->with('detalle_alimento')
+        // ->get();
+        // foreach ($table->detalle as $value) {
+        //     $value->detalle_alimento=DetalleAlimento::where('detalle_alimentos.id','=',$value->id_alimento)
+        //     ->with('alimento')
+        //     ->get();
+        // }
+
+        $table->detalle=OrdenAlimento::join('detalle_ordens','orden_alimentos.id','=','detalle_ordens.id_orden')
         ->join('detalle_alimentos','detalle_ordens.id_alimento','=','detalle_alimentos.id')
         ->join('menus','detalle_alimentos.id_menu','=','menus.id')
         ->join('alimentos','detalle_alimentos.id_alimento','=','alimentos.id')
-        ->select('menus.nombre','orden_alimentos.fecha')
-        ->groupBy('menus.nombre','orden_alimentos.fecha')
+        ->where('orden_alimentos.id','=',$table->id)
+        ->select('menus.id','menus.nombre')
+        ->groupBy('menus.id','menus.nombre')
         ->get();
+        foreach ($table->detalle as $value) {
+            $value->detalle=OrdenAlimento::join('detalle_ordens','orden_alimentos.id','=','detalle_ordens.id_orden')
+            ->join('detalle_alimentos','detalle_ordens.id_alimento','=','detalle_alimentos.id')
+            ->join('menus','detalle_alimentos.id_menu','=','menus.id')
+            ->join('alimentos','detalle_alimentos.id_alimento','=','alimentos.id')
+            ->where('menus.id','=',$value->id)
+            ->where('orden_alimentos.id','=',$table->id)
+            ->select('detalle_alimentos.id','detalle.alimentos.cantidad','alimentos.nombre','alimentos.calorias','alimentos.carbohidratos','alimentos.grasas','alimentos.proteinas','alimentos.peso')
+            ->groupBy('detalle_alimentos.id','detalle.alimentos.cantidad','alimentos.nombre','alimentos.calorias','alimentos.carbohidratos','alimentos.grasas','alimentos.proteinas','alimentos.peso')
+            ->get();
+        }
+
         return $table;
     }
 
@@ -52,19 +79,22 @@ class OrdenAlimentoController extends Controller
         // if(!$request->ajax()) return redirect('/');
         DB::beginTransaction();
         try{    
+            $fecha= Carbon::now('America/La_Paz');
         $table= new OrdenAlimento();
-        $table->nombre=$request->nombre;
+        $table->fecha=$fecha;
+        $table->total_calorias=$request->total_calorias;
+        $table->total_carbohidratos=$request->total_carbohidratos;
+        $table->total_grasas=$request->total_grasas;
+        $table->proteinas=$request->proteinas;
         $table->save();
 
         $data=$request->data;
 
         foreach ($data as $key => $det) {
-            $detalle=new DetalleAlimento();
+            $detalle=new DetalleOrden();
             $detalle->id_orden=$table->id;
             $detalle->id_alimento=$det['id_alimento'];
-            $detalle->cantidad=$det['cantidad'];
-            $detalle->porcion=$det['porcion'];
-            $detalle->estado='1';
+            // $detalle->estado='1';
             $detalle->save();
         }
 

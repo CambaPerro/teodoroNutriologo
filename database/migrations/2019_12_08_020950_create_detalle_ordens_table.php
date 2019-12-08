@@ -19,7 +19,7 @@ class CreateDetalleOrdensTable extends Migration
             $table->unsignedBigInteger('id_alimento');
             $table->foreign('id_orden')->references('id')->on('orden_alimentos');
             $table->foreign('id_alimento')->references('id')->on('detalle_alimentos');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

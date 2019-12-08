@@ -357,7 +357,7 @@ export default {
       id: 0,
       nombre: "",
       array_data: [],
-      url_ctrl: "orden_alimenticio",
+      url_ctrl: "orden_alimento",
       // fin de los atributos de la tabla
       referencia: "",
       tituloModal: "",
@@ -426,8 +426,9 @@ export default {
       axios
         .get(url)
         .then(resp => {
-          this.array_data = resp.data.table.data;
-          this.pagination = resp.data.pagination;
+          // this.array_data = resp.data.table.data;
+          console.log(resp);
+          // this.pagination = resp.data.pagination;
           // console.log(resp);
         })
         .catch(error => {
