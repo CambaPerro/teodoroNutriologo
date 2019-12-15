@@ -18,6 +18,7 @@ class CreateActividadFisicasTable extends Migration
             $table->unsignedBigInteger('id_tipo')->nulable();
             $table->string('nombre',50);
             $table->string('descripcion',100);
+            $table->decimal('calorias_quemadas',8,2);
             $table->foreign('id_tipo')->references('id')->on('tipo_actividads');
             // $table->timestamps();
         });
