@@ -18,7 +18,7 @@ class CreateNivelActividadsTable extends Migration
             $table->string('nombre',50);
             $table->decimal('valor',8,2);
             $table->string('descripcion',50);
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 
