@@ -101,3 +101,4 @@ Route::get('/tipo_actividads',function(){
 Route::get('/menus',function(){
     return view('menu/index');
 })->name('menus');
+

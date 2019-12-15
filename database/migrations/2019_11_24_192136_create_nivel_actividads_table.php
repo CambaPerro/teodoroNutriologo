@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoActividadsTable extends Migration
+class CreateNivelActividadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateTipoActividadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_actividads', function (Blueprint $table) {
-            $table->bigIncrements('id');        
-            $table->string('tipo',10);            
+        Schema::create('nivel_actividads', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre',50);
+            $table->decimal('valor',8,2);
+            $table->string('descripcion',50);
             // $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateTipoActividadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_actividads');
+        Schema::dropIfExists('nivel_actividads');
     }
 }

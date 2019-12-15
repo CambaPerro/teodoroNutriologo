@@ -2129,6 +2129,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2144,6 +2163,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
       tipoactividad: "",
       nombre: "",
       descripcion: "",
+      calorias_quemadas: 0,
       array_data: [],
       array_tipo: [],
       url_ctrl: "actividad_fisica",
@@ -2245,7 +2265,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
       axios.post(this.url_ctrl + "/registrar", {
         id_tipo: this.id_tipo,
         nombre: this.nombre,
-        descripcion: this.descripcion
+        descripcion: this.descripcion,
+        calorias_quemadas: this.calorias_quemadas
       }).then(function (resp) {
         _this2.eventoAlerta("success", "Guardado Exitosamente");
 
@@ -2271,6 +2292,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
         id_tipo: this.id_tipo,
         nombre: this.nombre,
         descripcion: this.descripcion,
+        calorias_quemadas: this.calorias_quemadas,
         id: this.id
       }).then(function (resp) {
         _this3.eventoAlerta("success", "Actualizado Exitosamente");
@@ -2363,7 +2385,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
             this.id_tipo = data.id_tipo;
             this.tipoactividad = data.tipoactividad;
             this.descripcion = data.descripcion;
-            this.vue_tipo = {
+            this.calorias_quemadas = data.calorias_quemadas, this.vue_tipo = {
               id: this.id_tipo,
               tipo: this.tipoactividad
             };
@@ -2377,7 +2399,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
       this.tipoactividad = "";
       this.nombre = "";
       this.descripcion = "";
-      this.array_tipo = [];
+      this.calorias_quemadas = 0, this.array_tipo = [];
       this.activarValidate = "";
     },
     validar: function validar() {
@@ -5846,8 +5868,8 @@ __webpack_require__.r(__webpack_exports__);
       //   atributos de la tabla
       id: 0,
       tipo: "",
-      descripcion: "",
-      calorias_quemadas: "",
+      // descripcion:"",
+      // calorias_quemadas: "",
       array_data: [],
       url_ctrl: "tipo_actividad",
       // fin de los atributos de la tabla
@@ -5943,9 +5965,9 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios.post(this.url_ctrl + "/registrar", {
-        tipo: this.tipo,
-        descripcion: this.descripcion,
-        calorias_quemadas: this.calorias_quemadas
+        tipo: this.tipo // descripcion : this.descripcion,
+        // calorias_quemadas : this.calorias_quemadas
+
       }).then(function (resp) {
         $("#ModalLong").modal("hide");
 
@@ -5969,9 +5991,9 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.put(this.url_ctrl + "/actualizar", {
         id: this.id,
-        tipo: this.tipo,
-        descripcion: this.descripcion,
-        calorias_quemadas: this.calorias_quemadas
+        tipo: this.tipo // descripcion : this.descripcion,
+        // calorias_quemadas : this.calorias_quemadas
+
       }).then(function (resp) {
         $("#ModalLong").modal("hide");
 
@@ -6033,16 +6055,17 @@ __webpack_require__.r(__webpack_exports__);
           {
             this.tituloModal = "Actualizar Tipo de Actividad", this.tipoAccion = 2;
             this.id = data.id;
-            this.tipo = data.tipo;
-            this.descripcion = data.descripcion;
-            this.calorias_quemadas = data.calorias_quemadas;
+            this.tipo = data.tipo; // this.descripcion = data.descripcion;
+            // this.calorias_quemadas = data.calorias_quemadas;
+
             break;
           }
       }
     },
     limpiar: function limpiar() {
-      this.id = 0, this.tipo = "", this.descripcion = "", this.calorias_quemadas = "", // this.tituloModal="",
-      this.activarValidate = "";
+      this.id = 0, this.tipo = "", this.descripcion = ""; // (this.calorias_quemadas = ""),
+      // // this.tituloModal="",
+      // (this.activarValidate = "");
     },
     validar: function validar() {
       if (!this.tipo) {
@@ -79173,6 +79196,8 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(data.descripcion))]),
                       _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(data.calorias_quemadas))]),
+                      _vm._v(" "),
                       _c("td", [
                         _c(
                           "button",
@@ -79440,6 +79465,46 @@ var render = function() {
                         "label",
                         {
                           staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "number-input" }
+                        },
+                        [_vm._v("Calorias Quemadas")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.calorias_quemadas,
+                              expression: "calorias_quemadas"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "number",
+                            step: "any",
+                            placeholder: "calorias quemadas............",
+                            required: ""
+                          },
+                          domProps: { value: _vm.calorias_quemadas },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.calorias_quemadas = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
                         [_vm._v("Tipo de Actividad")]
@@ -79559,6 +79624,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Nombre")]),
         _vm._v(" "),
         _c("th", [_vm._v("Descripcion")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Calorias Quemadas")]),
         _vm._v(" "),
         _c("th", [_vm._v("Opciones")])
       ])
@@ -83138,10 +83205,6 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(data.tipo))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.descripcion))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.calorias_quemadas))]),
-                      _vm._v(" "),
                       _c(
                         "td",
                         [
@@ -83369,85 +83432,6 @@ var render = function() {
                           }
                         })
                       ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Descripcion")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-9" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.descripcion,
-                              expression: "descripcion"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            placeholder: "descripcion............",
-                            required: ""
-                          },
-                          domProps: { value: _vm.descripcion },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.descripcion = $event.target.value
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Calorias Quemadas")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-9" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.calorias_quemadas,
-                              expression: "calorias_quemadas"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            step: "any",
-                            placeholder: "calorias quemadas............",
-                            required: ""
-                          },
-                          domProps: { value: _vm.calorias_quemadas },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.calorias_quemadas = $event.target.value
-                            }
-                          }
-                        })
-                      ])
                     ])
                   ]
                 )
@@ -83533,10 +83517,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("N°")]),
         _vm._v(" "),
         _c("th", [_vm._v("Tipo")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Descripcion")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Calorias Quemadas")]),
         _vm._v(" "),
         _c("th", [_vm._v("Opciones")])
       ])
@@ -96855,8 +96835,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\teodoro\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\teodoro\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\masaco\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\masaco\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

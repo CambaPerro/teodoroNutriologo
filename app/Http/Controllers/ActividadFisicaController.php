@@ -55,6 +55,7 @@ class ActividadFisicaController extends Controller
         $table->id_tipo = $request->id_tipo;
         $table->nombre = $request->nombre;
         $table->descripcion = $request->descripcion;
+        $table->calorias_quemadas = $request->calorias_quemadas;
         // $table->estado= '1';
         $table->save();
 
@@ -73,6 +74,7 @@ class ActividadFisicaController extends Controller
         $table =  ActividadFisica::findOrFail($request->id);
         $table->nombre = $request->nombre;
         $table->descripcion = $request->descripcion;
+        $table->calorias_quemadas = $request->calorias_quemadas;
         
         // $table->estado= '1';
         $table->save();

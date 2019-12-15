@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActividadFisica extends Model
 {
-    protected $fillable=['id_tipo','nombre','descripcion'];
+    protected $fillable=['id_tipo','nombre','descripcion','calorias_quemadas'];
     public $timestamps = false;
     protected $appends = ['tipoactividad'];
 
