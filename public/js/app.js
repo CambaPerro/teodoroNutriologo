@@ -5312,27 +5312,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5342,11 +5321,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       fecha_nacimiento: "",
-      altura: "",
-      peso: "",
+      altura: 1,
+      peso: 0,
+      peso_ideal: 0,
       sexo: "",
       ventana: 1,
       tipo: "",
+      dias: 0,
+      array_nivel_actividad: [],
+      id_nivel: 0,
       pagination: {
         total: 3,
         current_page: 1,
@@ -5356,7 +5339,7 @@ __webpack_require__.r(__webpack_exports__);
         to: 1
       },
       offset: 3,
-      progreso: 0
+      funcion: ""
     };
   },
   mounted: function mounted() {
@@ -5395,6 +5378,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     cambiarPagina: function cambiarPagina(page) {
+      if (this.validar()) {
+        this.activarValidate = "was-validated";
+        this.eventoAlerta("error", this.mensaje);
+        return;
+      }
+
       var me = this; // actualizar la Pagina
 
       me.pagination.current_page = page; // enviar la peticion para visualizar la data de esta pagina
@@ -5414,8 +5403,31 @@ __webpack_require__.r(__webpack_exports__);
         timer: 1500
       });
     },
-    registrar: function registrar() {
+    select_nivel_actividad: function select_nivel_actividad(search, loading) {
       var _this = this;
+
+      loading(true);
+      var url = "nivel_actividad/select?buscar=" + search;
+      axios.get(url).then(function (resp) {
+        var respuesta = resp.data;
+
+        q: search;
+
+        _this.array_nivel_actividad = respuesta.table;
+        loading(false);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    get_nivel_actividad: function get_nivel_actividad(val1) {
+      try {
+        this.id_nivel = val1.id;
+      } catch (_unused) {
+        this.id_nivel = 0;
+      }
+    },
+    registrar: function registrar() {
+      var _this2 = this;
 
       if (this.validar()) {
         this.activarValidate = "was-validated";
@@ -5424,16 +5436,17 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios.post("dieta/registrar", {
-        peso_ideal: 60,
+        peso_ideal: this.peso_ideal,
         calorias: 100,
         imc: 100,
+        id_nivel: this.id_nivel,
         tipo: this.tipo,
         fecha_nacimiento: this.fecha_nacimiento,
         altura: this.altura,
         peso: this.peso,
         sexo: this.sexo
       }).then(function (resp) {
-        _this.eventoAlerta("success", "Bienbenido a Masaco"); // this.limpiar();
+        _this2.eventoAlerta("success", "Bienbenido a Masaco"); // this.limpiar();
 
 
         window.open("home");
@@ -5443,31 +5456,83 @@ __webpack_require__.r(__webpack_exports__);
     },
     objetivo: function objetivo(tipo) {
       this.tipo = tipo;
+      this.calcular_peso();
+
+      if (tipo == "mantener" && this.peso > this.peso_ideal || tipo == "mantener" && this.peso < this.peso_ideal) {
+        this.eventoAlerta('error', 'No puede Seleccionar esta Opcion');
+        return;
+      }
+
+      if (tipo == "reducir" && this.peso < this.peso_ideal) {
+        this.eventoAlerta('error', 'No puede Seleccionar esta Opcion');
+        return;
+      }
+
+      if (tipo == "aumentar" && this.peso > this.peso_ideal) {
+        this.eventoAlerta('error', 'No puede Seleccionar esta Opcion');
+        return;
+      }
+
       this.cambiarPagina(this.pagination.current_page + 1); // this.ventana = this.pagination.current_page;
     },
-    cambiarValor: function cambiarValor(valor) {
-      if (this.progreso + valor >= 10 && valor > 0) {
-        this.progreso = 10;
-        return;
+    calcular_peso: function calcular_peso() {
+      var alt = this.altura;
+      var total = 0;
+      var d = 0;
+
+      if (this.sexo == "MASCULINO") {
+        total = (alt - 100) * 0.9;
       }
 
-      if (this.progreso <= 0 && valor < 0) {
-        this.progreso = 0;
-        return;
+      if (this.sexo == "FEMENINO") {
+        total = (alt - 100) * 0.85;
       }
 
-      this.progreso = this.progreso + valor; // this.cambioValor.emit(this.progreso);k
-      // this.txtProgress.nativeElement.focus();
+      if (this.funcion == "normal") {
+        d = (this.peso - total) * 2 * 7;
+      }
+
+      if (this.funcion == "rapido") {
+        d = (this.peso - total) * 7;
+      }
+
+      if (d < 0) {
+        d = d * -1;
+      }
+
+      this.dias = d.toFixed(0);
+      this.peso_ideal = total.toFixed(0);
     },
     validar: function validar() {
-      // if (!this.nombre) {
-      //   this.mensaje = "Ingrese el Nombre";
-      //   return true;
-      // }
-      // if (!this.id_categoria) {
-      //   this.mensaje = "Seleccione la Categoria";
-      //   return true;
-      // }
+      if (this.ventana == 1) {
+        if (!this.fecha_nacimiento) {
+          this.mensaje = "Ingrese Su Fecha de Nacimiento";
+          return true;
+        }
+
+        if (this.altura < 100 || this.altura > 250) {
+          this.mensaje = "La altura no Puede ser menor a 100 cm o Mayor de 250 cm";
+          return true;
+        }
+
+        if (this.peso < 20) {
+          this.mensaje = "El Peso no Puede ser Menor a 20 Kilos";
+          return true;
+        }
+
+        if (!this.sexo) {
+          this.mensaje = "Seleccione el Sexo";
+          return true;
+        }
+      }
+
+      if (this.ventana == 3) {
+        if (!this.dias) {
+          this.mensaje = "Seleccione el Objetivo";
+          return true;
+        }
+      }
+
       return false;
     }
   }
@@ -82488,7 +82553,7 @@ var render = function() {
                 "form",
                 { attrs: { method: "POST" } },
                 [
-                  _vm.ventana == 1
+                  _vm.ventana == 2
                     ? [
                         _c("h1", [_vm._v("Objetivo")]),
                         _vm._v(" "),
@@ -82531,14 +82596,14 @@ var render = function() {
                             attrs: { type: "button" },
                             on: {
                               click: function($event) {
-                                return _vm.objetivo("contruir")
+                                return _vm.objetivo("aumentar")
                               }
                             }
                           },
                           [_vm._v("Contruir Musculo")]
                         )
                       ]
-                    : _vm.ventana == 2
+                    : _vm.ventana == 1
                     ? [
                         _c("h1", [_vm._v("Datos Personales")]),
                         _vm._v(" "),
@@ -82592,9 +82657,10 @@ var render = function() {
                               directives: [
                                 {
                                   name: "model",
-                                  rawName: "v-model",
+                                  rawName: "v-model.number",
                                   value: _vm.altura,
-                                  expression: "altura"
+                                  expression: "altura",
+                                  modifiers: { number: true }
                                 }
                               ],
                               staticClass: "form-control",
@@ -82611,7 +82677,10 @@ var render = function() {
                                   if ($event.target.composing) {
                                     return
                                   }
-                                  _vm.altura = $event.target.value
+                                  _vm.altura = _vm._n($event.target.value)
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
                                 }
                               }
                             })
@@ -82633,9 +82702,10 @@ var render = function() {
                               directives: [
                                 {
                                   name: "model",
-                                  rawName: "v-model",
+                                  rawName: "v-model.number",
                                   value: _vm.peso,
-                                  expression: "peso"
+                                  expression: "peso",
+                                  modifiers: { number: true }
                                 }
                               ],
                               staticClass: "form-control",
@@ -82643,8 +82713,7 @@ var render = function() {
                                 type: "number",
                                 min: "0",
                                 step: "any",
-                                required: "",
-                                placeholder: "Peso..."
+                                required: ""
                               },
                               domProps: { value: _vm.peso },
                               on: {
@@ -82652,7 +82721,10 @@ var render = function() {
                                   if ($event.target.composing) {
                                     return
                                   }
-                                  _vm.peso = $event.target.value
+                                  _vm.peso = _vm._n($event.target.value)
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
                                 }
                               }
                             })
@@ -82706,12 +82778,12 @@ var render = function() {
                                 _vm._v(" "),
                                 _c(
                                   "option",
-                                  { attrs: { value: "Masculino" } },
-                                  [_vm._v("Masculino")]
+                                  { attrs: { value: "MASCULINO" } },
+                                  [_vm._v("MASCULINO")]
                                 ),
                                 _vm._v(" "),
-                                _c("option", { attrs: { value: "Femenino" } }, [
-                                  _vm._v("Femenino")
+                                _c("option", { attrs: { value: "FEMENINO" } }, [
+                                  _vm._v("FEMENINO")
                                 ])
                               ]
                             )
@@ -82727,84 +82799,55 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "card-body" }, [
-                          _c("div", { staticClass: "progress" }, [
-                            _c("div", {
-                              staticClass:
-                                "progress-bar progress-bar-striped progress-bar-animated",
-                              style: "width:" + _vm.progreso * 10 + "%",
-                              attrs: {
-                                role: "progressbar",
-                                "aria-valuenow": _vm.progreso * 10,
-                                "aria-valuemin": "0",
-                                "aria-valuemax": "100"
-                              }
-                            })
-                          ]),
+                          _c("h3", [_vm._v("Objetivo")]),
                           _vm._v(" "),
-                          _c("h3", [_vm._v("Semanas")]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "input-group" }, [
-                            _c("span", { staticClass: "input-group-prepend" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "button" }
-                                },
-                                [
-                                  _c("i", {
-                                    staticClass: "fa fa-minus",
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.cambiarValor(-1)
-                                      }
-                                    }
-                                  })
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
+                          _c(
+                            "select",
+                            {
                               directives: [
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.progreso,
-                                  expression: "progreso"
+                                  value: _vm.funcion,
+                                  expression: "funcion"
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: { type: "number", min: "1", max: "100" },
-                              domProps: { value: _vm.progreso },
                               on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.progreso = $event.target.value
+                                click: function($event) {
+                                  return _vm.calcular_peso()
+                                },
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.funcion = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "input-group-append" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.cambiarValor(+1)
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "fa fa-plus" })]
-                              )
-                            ])
-                          ])
+                            },
+                            [
+                              _c("option", { attrs: { value: "" } }, [
+                                _vm._v("Seleccione")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "normal" } }, [
+                                _vm._v("Normal")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "rapido" } }, [
+                                _vm._v("Rapido")
+                              ])
+                            ]
+                          )
                         ]),
-                        _vm._v(" "),
-                        _vm._m(0),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group row" }, [
                           _c(
@@ -82813,39 +82856,53 @@ var render = function() {
                               staticClass: "col-md-3 form-control-label",
                               attrs: { for: "text-input" }
                             },
-                            [_vm._v("Peso")]
+                            [_vm._v("Dias Estimado")]
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-9" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.peso,
-                                  expression: "peso"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "number",
-                                min: "0",
-                                step: "any",
-                                required: "",
-                                placeholder: "Peso..."
-                              },
-                              domProps: { value: _vm.peso },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.peso = $event.target.value
-                                }
-                              }
-                            })
+                            _vm._v(_vm._s(_vm.dias) + " Dias")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-md-3 form-control-label",
+                              attrs: { for: "text-input" }
+                            },
+                            [_vm._v("Peso ideal")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-9" }, [
+                            _vm._v(_vm._s(_vm.peso_ideal))
                           ])
                         ])
+                      ]
+                    : _vm.ventana == 4
+                    ? [
+                        _c("h1", [_vm._v("Seleccione el Nivel de Actividad")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "card-body" },
+                          [
+                            _c("h3", [_vm._v("Nivel Actidad")]),
+                            _vm._v(" "),
+                            _c("v-select", {
+                              attrs: {
+                                label: "nombre",
+                                options: _vm.array_nivel_actividad,
+                                placeholder: "Nivel Actividad"
+                              },
+                              on: {
+                                search: _vm.select_nivel_actividad,
+                                input: _vm.get_nivel_actividad
+                              }
+                            })
+                          ],
+                          1
+                        )
                       ]
                     : _vm._e()
                 ],
@@ -82865,7 +82922,8 @@ var render = function() {
                         "pagination pagination-lg justify-content-center"
                     },
                     [
-                      _vm.pagination.current_page > 1
+                      _vm.pagination.current_page < 2 ||
+                      _vm.pagination.current_page > 2
                         ? _c("li", { staticClass: "page-item" }, [
                             _c(
                               "a",
@@ -82912,7 +82970,8 @@ var render = function() {
                           : _vm._e()
                       }),
                       _vm._v(" "),
-                      _vm.pagination.current_page > 1
+                      _vm.pagination.current_page < 2 ||
+                      _vm.pagination.current_page > 2
                         ? _c("li", { staticClass: "page-item" }, [
                             _c(
                               "a",
@@ -82944,27 +83003,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-3 form-control-label",
-          attrs: { for: "text-input" }
-        },
-        [_vm._v("Fecha de Estimada de Cumplimiento")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-9" }, [
-        _c("input", { staticClass: "form-control", attrs: { type: "date" } })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
