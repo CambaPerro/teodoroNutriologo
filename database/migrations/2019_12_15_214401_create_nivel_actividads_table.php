@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetalleDietasTable extends Migration
+class CreateNivelActividadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateDetalleDietasTable extends Migration
      */
     public function up()
     {
-        Schema::create('detalle_dietas', function (Blueprint $table) {
+        Schema::create('nivel_actividads', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_dieta');
-            $table->unsignedBigInteger('id_orden');
-            $table->foreign('id_dieta')->references('id')->on('dietas');
-            $table->foreign('id_orden')->references('id')->on('orden_alimentos');
+            $table->string('nombre',50);
+            $table->decimal('valor',8,2);
+            $table->string('descripcion',50);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateDetalleDietasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detalle_dietas');
+        Schema::dropIfExists('nivel_actividads');
     }
 }

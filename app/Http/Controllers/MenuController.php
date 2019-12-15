@@ -52,6 +52,18 @@ class MenuController extends Controller
 
         return ['detalle'=>$detalle];
     }
+    public function listar_menu()
+    {
+        // if(!$request->ajax()) return redirect('/');
+        $table=Menu::get();
+        foreach ($table as $value) {
+        $value->detalle=DetalleAlimento::where('id_menu','=',$value->id)
+        ->with('alimento')
+        ->get();
+        }
+
+        return $table;
+    }
     public function store(Request $request)
     {
         // if(!$request->ajax()) return redirect('/');
@@ -67,7 +79,6 @@ class MenuController extends Controller
             $detalle=new DetalleAlimento();
             $detalle->id_menu=$table->id;
             $detalle->id_alimento=$det['id_alimento'];
-            $detalle->cantidad=$det['cantidad'];
             $detalle->estado='1';
             $detalle->save();
         }
@@ -105,7 +116,7 @@ class MenuController extends Controller
             }
             else{
                 $detalle=DetalleAlimento::updateOrInsert(['id_menu' =>$table->id,'id_alimento'=>$det['id_alimento']],
-                ['cantidad'=>0,'estado'=>'0']);
+                ['estado'=>'0']);
             }
         }
 
