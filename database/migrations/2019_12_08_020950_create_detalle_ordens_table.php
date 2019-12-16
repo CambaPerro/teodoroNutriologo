@@ -18,10 +18,10 @@ class CreateDetalleOrdensTable extends Migration
             $table->unsignedBigInteger('id_orden');
             $table->unsignedBigInteger('id_alimento');
             $table->decimal('cantidad',8,2);
-            $table->decimal('subtotalcaloria',8.2);
-            $table->decimal('subtotalcarbohidrato',8.2);
-            $table->decimal('subtotalgrasa',8.2);
-            $table->decimal('subtotalproteina',8.2);
+            $table->decimal('sub_calorias',8.2);
+            $table->decimal('sub_carbohidratos',8.2);
+            $table->decimal('sub_grasas',8.2);
+            $table->decimal('sub_proteinas',8.2);
             $table->boolean('estado')->default(1);
             $table->foreign('id_orden')->references('id')->on('orden_alimentos');
             $table->foreign('id_alimento')->references('id')->on('detalle_alimentos');
