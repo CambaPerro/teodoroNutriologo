@@ -9,6 +9,31 @@
       <div class="card">
         <div class="card-header"></div>
         <div class="car-body">
+             <div class="form-group row">
+            <div class="col-md-12">
+              <div class="input-group">
+                <div class="col-md-10">
+                  <div class="input-group">
+                    <select class="form-control col-md-3">
+                      <option value="nombre">Nombre</option>
+                    </select>
+                    <input
+                      type="date"
+                      v-model="fecha"
+                      class="form-control"
+                      placeholder="Buscar...."
+                    />
+                    <span class="input-group-append">
+                      <button type="submit" class="btn btn-primary" @click="listarOrdenAlimento()">
+                        <i class="fa fa-search"></i>
+                        Buscar
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
            <div class="row">
                <div class="col-md-6">
               <div class="table-responsive">
@@ -40,22 +65,63 @@
                 </table>
               </div>
             </div>
-            
+            <div class="col-md-6">
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped table-sm" >
+                    <thead>
+                      <tr>
+                      <h1>Total Kcal</h1>
+                      <h2> {{ array_data.total_calorias }} / {{ array_dieta.calorias }}</h2>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                       <th>Calorias</th>
+                       <td>{{ array_data.total_calorias }}</td>
+                      </tr>
+                      <tr>
+                        <th>Proteinas</th>
+                        <td>{{ array_data.total_proteinas }}</td>
+                      </tr>
+                      <tr>
+                        <th>Carbohidratos</th>
+                        <td>{{ array_data.total_carbohidratos }}</td>
+                      </tr>
+                      <tr>
+                        <th>Grasas</th>
+                        <td>{{ array_data.total_grasas }}</td>
+                      </tr>
+                    </tbody>
+                </table>
+              </div>
+            </div>
            </div>
           <div class="row">
             <div class="col-md-6">
               <div class="table-responsive">
                 <table class="table table-bordered table-striped table-sm">
-                  <template v-for="data in array_data.detalle" v-if="array_data.length>0">
+                  <template v-for="data in array_data.detalle">
                     <thead>
-                      <th colspan="4">{{ data.nombre }}</th>
+                      <th colspan="7">{{ data.nombre }}</th>
                     </thead>
                     <tbody>
+                      <tr>
+                        <th>Alimento</th>
+                        <th>Sub Total Calorias</th>
+                        <th>Sub Total Carbohidratos</th>
+                        <th>Sub Total Grasas</th>
+                        <th>Sub Total Proteinas</th>
+                        <th>Cantidad de Alimento</th>
+                        <th>Opciones</th>
+                      </tr>
                       <tr v-for="data1 in data.detalle" :key="data1.id">
-                        <td>{{ data1.id }}</td>
+                        <!-- <td>{{ data1.id }}</td> -->
                         <td>{{ data1.nombre }}</td>
+                        <td>{{ data1.sub_calorias }}</td>
+                        <td>{{ data1.sub_carbohidratos }}</td>
+                        <td>{{ data1.sub_grasas }}</td>
+                        <td>{{ data1.sub_proteinas }}</td>
                         <td>{{ data1.cantidad }}</td>
-                        <td>{{ data1.peso }}</td>
                         <td>
                           <button
                             type="button"
@@ -155,6 +221,7 @@ export default {
       // url_ctrl:'orden_alimento',
       array_data: [],
       array_menu: [],
+      array_dieta:[],
       fecha:new Date(),
       offset: 4,
     };
@@ -162,18 +229,36 @@ export default {
   mounted() {
     this.listarMenu();
     this.listarOrdenAlimento();
+    this.listar_dieta();
 
   },
   methods: {
-    listarOrdenAlimento() {
-      var url = "orden_alimento?fecha="+this.fecha;
+        listar_dieta() {
+      var url = "dieta";
       axios
         .get(url)
         .then(resp => {
-          if(resp.data.length>0)
+            this.array_dieta = resp.data[0];
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    listarOrdenAlimento() {
+      let fecha=this.fecha;
+      var url = "orden_alimento?fecha="+fecha;
+      axios
+        .get(url)
+        .then(resp => {
+          let data=resp.data;
+          if(data.length>0)
           {
-            this.array_data = resp.data[0];
-          }         
+            // console.log(data);
+            this.array_data = data[0];
+          } 
+          else{
+             this.array_data = [];
+          }        
           // console.log(this.array_data);
         })
         .catch(error => {
@@ -186,7 +271,8 @@ export default {
         .get(url)
         .then(resp => {
           this.array_menu = resp.data;
-        // this.fecha=moment().format('YYYY-MM-DD');
+        let fecha=moment().format('YYYY-MM-DD');
+        this.fecha=fecha;
       // console.log(moment().format('YYYY-MM-DD'));
           // console.log(resp);
         })
@@ -194,24 +280,16 @@ export default {
           console.log(error);
         });
     },
-    agregar(data = []) {
-      // console.log(this.array_data);
-      if (this.array_data==null) {
-      //  console.log(this.array_data);
+    agregar(data = []) {    
        this.registrar(data);
-      } else {
-// console.log(data.cantidad);
-        
-         this.actualizar_detalle(data);
-        // this.actualizar_detalle(data);
-      }
-      // this.listarOrdenAlimento();
     },
     registrar(data=[]) {
       axios
         .post("orden_alimento/registrar", {
+          fecha:this.fecha,
           id_alimento:data.id,
-          cantidad:data.cantidad
+          cantidad:data.cantidad,
+          alimento:data.alimento,
         })
         .then(resp => {
           // console.log(resp);
@@ -227,8 +305,7 @@ export default {
       axios
         .put("orden_alimento/actualizar", {
           id_alimento:data.id,
-          cantidad:data.cantidad,
-          id_orden:this.array_data.id
+          cantidad:data.cantidad
 
         })
         .then(resp => {

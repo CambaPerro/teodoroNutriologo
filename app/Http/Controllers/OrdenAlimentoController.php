@@ -23,14 +23,6 @@ class OrdenAlimentoController extends Controller
 
         $table=OrdenAlimento::where('fecha','=',$fecha)
         ->get();
-        // $table->detalle=DetalleOrden::where('id_orden','=',$table->id)
-        // // ->with('detalle_alimento')
-        // ->get();
-        // foreach ($table->detalle as $value) {
-        //     $value->detalle_alimento=DetalleAlimento::where('detalle_alimentos.id','=',$value->id_alimento)
-        //     ->with('alimento')
-        //     ->get();
-        // }
         if(count($table)>0){
 
         $table[0]->detalle=OrdenAlimento::join('detalle_ordens','orden_alimentos.id','=','detalle_ordens.id_orden')
@@ -50,8 +42,8 @@ class OrdenAlimentoController extends Controller
             ->where('menus.id','=',$value->id)
             ->where('detalle_ordens.id_orden','=',$table[0]->id)
             ->where('detalle_ordens.estado','=','1')
-            ->select('detalle_ordens.id','detalle_ordens.cantidad','alimentos.nombre','alimentos.calorias','alimentos.carbohidratos','alimentos.grasas','alimentos.proteinas','alimentos.peso')
-            ->groupBy('detalle_ordens.id','detalle_ordens.cantidad','alimentos.nombre','alimentos.calorias','alimentos.carbohidratos','alimentos.grasas','alimentos.proteinas','alimentos.peso')
+            ->select('detalle_ordens.id','detalle_ordens.cantidad','alimentos.nombre','detalle_ordens.sub_calorias','detalle_ordens.sub_carbohidratos','detalle_ordens.sub_grasas','detalle_ordens.sub_proteinas','alimentos.peso')
+            ->groupBy('detalle_ordens.id','detalle_ordens.cantidad','alimentos.nombre','detalle_ordens.sub_calorias','detalle_ordens.sub_carbohidratos','detalle_ordens.sub_grasas','detalle_ordens.sub_proteinas','alimentos.peso')
             ->get();
         }
     }
@@ -82,6 +74,81 @@ class OrdenAlimentoController extends Controller
         // if(!$request->ajax()) return redirect('/');
         DB::beginTransaction();
         try{    
+            $fecha=$request->fecha;
+
+            $table=OrdenAlimento::where('fecha','=',$fecha)
+            ->get();
+            // return $table[0]->id;
+            if(count($table)>0)
+            {
+                $data=$request->alimento;
+                $cantidad=$request->cantidad;
+
+                    $detalle=DetalleOrden::updateOrInsert(['id_orden' =>$table[0]->id,'id_alimento'=>$request->id_alimento],
+                    ['cantidad'=>$cantidad,'sub_calorias'=>$data['calorias']*$cantidad,
+                    'sub_carbohidratos'=>$data['carbohidratos']*$cantidad,'sub_grasas'=>$data['grasas']*$cantidad,
+                    'sub_proteinas'=>$data['proteinas']*$cantidad,'estado'=>'1']);
+                
+
+
+                $calorias=DetalleOrden::where('id_orden','=',$table[0]->id)
+                ->where('estado','=','1')
+                ->sum('sub_calorias');
+                $carbohidratos=DetalleOrden::where('id_orden','=',$table[0]->id)
+                ->where('estado','=','1')
+                ->sum('sub_carbohidratos');
+                $grasas=DetalleOrden::where('id_orden','=',$table[0]->id)
+                ->where('estado','=','1')
+                ->sum('sub_grasas');
+                $proteinas=DetalleOrden::where('id_orden','=',$table[0]->id)
+                ->where('estado','=','1')
+                ->sum('sub_proteinas');
+
+                $ta=OrdenAlimento::find($table[0]->id);
+                $ta->total_calorias=$calorias;
+                $ta->total_carbohidratos=$carbohidratos;
+                $ta->total_grasas=$grasas;
+                $ta->total_proteinas=$proteinas;
+                $ta->save();
+            }
+            else
+            {
+                $table= new OrdenAlimento();
+                $table->fecha=$request->fecha;
+                $table->total_calorias=0;
+                $table->total_carbohidratos=0;
+                $table->total_grasas=0;
+                $table->total_proteinas=0;
+                $table->save();
+
+                $data=$request->alimento;
+                $cantidad=$request->cantidad;
+       
+                    $detalle=DetalleOrden::updateOrInsert(['id_orden' =>$table->id,'id_alimento'=>$request->id_alimento],
+                    ['cantidad'=>$cantidad,'sub_calorias'=>$data['calorias']*$cantidad,
+                    'sub_carbohidratos'=>$data['carbohidratos']*$cantidad,'sub_grasas'=>$data['grasas']*$cantidad,
+                    'sub_proteinas'=>$data['proteinas']*$cantidad,'estado'=>'1']);
+
+                $calorias=DetalleOrden::where('id_orden','=',$table->id)
+                ->where('estado','=','1')
+                ->sum('sub_calorias');
+                $carbohidratos=DetalleOrden::where('id_orden','=',$table->id)
+                ->where('estado','=','1')
+                ->sum('sub_carbohidratos');
+                $grasas=DetalleOrden::where('id_orden','=',$table->id)
+                ->where('estado','=','1')
+                ->sum('sub_grasas');
+                $proteinas=DetalleOrden::where('id_orden','=',$table->id)
+                ->where('estado','=','1')
+                ->sum('sub_proteinas');
+
+                $ta=OrdenAlimento::find($table->id);
+                $ta->total_calorias=$calorias;
+                $ta->total_carbohidratos=$carbohidratos;
+                $ta->total_grasas=$grasas;
+                $ta->total_proteinas=$proteinas;
+                $ta->save();
+            }
             // $fecha= date('yy-mm-dd');
         //     $fecha= Carbon::now('America/La_Paz');
         //     // $table=OrdenAlimento::updateOrInsert(['fecha'=>'2019-12-08'],
@@ -97,8 +164,7 @@ class OrdenAlimentoController extends Controller
         // $table->total_grasas=300;
         // $table->total_proteinas=400;
         // $table->save();
-        $detalle=DetalleOrden::updateOrInsert(['id_orden' =>$request->id_orden,'id_alimento'=>$request->id_alimento],
-                ['cantidad'=>$request->cantidad,'estado'=>'1']);
+        
 
         // return ['table'=>$table ];
 

@@ -19,6 +19,8 @@ class DietaController extends Controller
     {
         // if(!$request->ajax()) return redirect('/');
         $table=Dieta::where('id_usuario','=',auth()->id())
+        ->orderBy('id','desc')
+        ->limit(1)
         ->get();
         return $table;
     }
@@ -34,11 +36,11 @@ class DietaController extends Controller
         // if(!$request->ajax()) return redirect('/');
         DB::beginTransaction();
         try {
-        $fecha= Carbon::now('America/La_Paz');
+        // $fecha= Carbon::now('America/La_Paz');
         $table= new Dieta();
         $table->id_usuario=auth()->id();
-        $table->fecha_inicio=$fecha;
-        $table->fecha_fin=$fecha;
+        $table->fecha_inicio=$request->fecha_inicio;
+        $table->fecha_fin=$request->fecha_fin;
         $table->peso_ideal=$request->peso_ideal;
         $table->calorias=$request->calorias;
         $table->imc=$request->imc;
