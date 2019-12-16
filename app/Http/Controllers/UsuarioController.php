@@ -34,6 +34,9 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
+        
+    }
+    public function guardar_imagen(Request $request){
         if($request->foto==null){//si no tiene imagen entonces se le asigna una imagen por defecto
             $users->imagen ='defecto.png';
             }else{

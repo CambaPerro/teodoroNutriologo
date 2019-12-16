@@ -11,8 +11,8 @@
                    
                  <div class="row">
                     <label for="street">Foto de Perfil</label>
-                    <div class="col-lg-12" style="ceter-text">
-                      <img class="img-circle" :src="imagen" width="250px" height="250px" />
+                    <div class="col-lg-12">
+                      <img class="img-circle" :src="imagen" width="140" height="140" />
                     </div>
                    
                 </div>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                       <label>Nombres</label>
-                      <input class="form-control"  type="text" placeholder="">
+                      <input class="form-control"  type="text" placeholder="" />
                     </div>
                     <div class="form-group">
                       <label for="">Apellidos</label>
@@ -85,6 +85,12 @@
                       <input class="form-control"  type="number" placeholder="">
                     </div>
                     </div>
+                  
+                    <button class="btn btn-sm btn-primary" type="submit" @click="registar">
+                      <i class="fa fa-dot-circle-o"></i> Guardar</button>
+                    <button class="btn btn-sm btn-danger" type="reset">
+                      <i class="fa fa-ban"></i> Cancelar</button>
+                
 
                   </div>
                 </div>
@@ -108,7 +114,14 @@ export default {
     return {
       //   atributos de la tabla
       id: 0,
-      nombre: "",
+      email: "",
+      password:"",
+      nombre:"",
+      apellido:"",
+      fecha_nacimiento:"",
+      altura:"",
+      peso:"",
+      sexo:"",
       array_data: [],
       url_ctrl: "user",
       // fin de los atributos de la tabla
@@ -235,7 +248,7 @@ export default {
         return;
       }
       axios
-        .post(this.url_ctrl + "/registrar", {
+        .post(this.url_ctrl + "/guardarImg", {
           nombre: this.nombre,
           data: this.array_detalle
         })

@@ -5281,6 +5281,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -5289,7 +5295,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       //   atributos de la tabla
       id: 0,
+      email: "",
+      password: "",
       nombre: "",
+      apellido: "",
+      fecha_nacimiento: "",
+      altura: "",
+      peso: "",
+      sexo: "",
       array_data: [],
       url_ctrl: "user",
       // fin de los atributos de la tabla
@@ -5422,7 +5435,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return;
       }
 
-      axios.post(this.url_ctrl + "/registrar", {
+      axios.post(this.url_ctrl + "/guardarImg", {
         nombre: this.nombre,
         data: this.array_detalle
       }).then(function (resp) {
@@ -83202,10 +83215,10 @@ var render = function() {
                 _vm._v("Foto de Perfil")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-lg-12", staticStyle: {} }, [
+              _c("div", { staticClass: "col-lg-12" }, [
                 _c("img", {
                   staticClass: "img-circle",
-                  attrs: { src: _vm.imagen, width: "250px", height: "250px" }
+                  attrs: { src: _vm.imagen, width: "140", height: "140" }
                 })
               ])
             ]),
@@ -83247,7 +83260,22 @@ var render = function() {
             _vm._v(" "),
             _vm._m(9),
             _vm._v(" "),
-            _vm._m(10)
+            _vm._m(10),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-primary",
+                attrs: { type: "submit" },
+                on: { click: _vm.registar }
+              },
+              [
+                _c("i", { staticClass: "fa fa-dot-circle-o" }),
+                _vm._v(" Guardar")
+              ]
+            ),
+            _vm._v(" "),
+            _vm._m(11)
           ])
         ])
       ])
@@ -83438,6 +83466,16 @@ var staticRenderFns = [
         })
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-sm btn-danger", attrs: { type: "reset" } },
+      [_c("i", { staticClass: "fa fa-ban" }), _vm._v(" Cancelar")]
+    )
   }
 ]
 render._withStripped = true
