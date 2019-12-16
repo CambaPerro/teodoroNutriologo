@@ -129,6 +129,10 @@
                     <label class="col-md-3 form-control-label" for="text-input">IMC</label>
                     <div class="col-md-9">{{ imc }}</div>
                   </div>
+                  <div class="form-group row" v-if="calorias>0">
+                    <label class="col-md-3 form-control-label" for="text-input">Fecha Fin</label>
+                    <div class="col-md-9">{{ fecha_fin }}</div>
+                  </div>
                   <button
               type="button"
               @click="formula()">
@@ -221,6 +225,8 @@ export default {
       ventana: 1,
       tipo: "",
       dias: 0,
+      fecha_fin:'',
+      fecha_inicio:'',
       imc:0,
       array_nivel_actividad:[],
       id_nivel:0,
@@ -330,6 +336,8 @@ export default {
           imc:this.imc,
           id_nivel:this.id_nivel,
           tipo: this.tipo,
+          fecha_fin:this.fecha_fin,
+          fecha_inicio:this.fecha_inicio,
           fecha_nacimiento: this.fecha_nacimiento,
           altura: this.altura,
           peso: this.peso,
@@ -377,6 +385,10 @@ export default {
 
       let im=this.peso/((this.altura/100)*(this.altura/100));
       this.imc=im.toFixed(0);
+      let date=new Date();
+      this.fecha_inicio=moment().format('YYYY-MM-DD');
+      date=date.setDate(this.dias);
+      this.fecha_fin=moment(date).format('YYYY-MM-DD');
     },
     objetivo(tipo) {
       this.tipo = tipo;

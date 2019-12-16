@@ -3632,6 +3632,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3642,6 +3708,7 @@ __webpack_require__.r(__webpack_exports__);
       // url_ctrl:'orden_alimento',
       array_data: [],
       array_menu: [],
+      array_dieta: [],
       fecha: new Date(),
       offset: 4
     };
@@ -3649,15 +3716,32 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.listarMenu();
     this.listarOrdenAlimento();
+    this.listar_dieta();
   },
   methods: {
-    listarOrdenAlimento: function listarOrdenAlimento() {
+    listar_dieta: function listar_dieta() {
       var _this = this;
 
-      var url = "orden_alimento?fecha=" + this.fecha;
+      var url = "dieta";
       axios.get(url).then(function (resp) {
-        if (resp.data.length > 0) {
-          _this.array_data = resp.data[0];
+        _this.array_dieta = resp.data[0];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    listarOrdenAlimento: function listarOrdenAlimento() {
+      var _this2 = this;
+
+      var fecha = this.fecha;
+      var url = "orden_alimento?fecha=" + fecha;
+      axios.get(url).then(function (resp) {
+        var data = resp.data;
+
+        if (data.length > 0) {
+          // console.log(data);
+          _this2.array_data = data[0];
+        } else {
+          _this2.array_data = [];
         } // console.log(this.array_data);
 
       })["catch"](function (error) {
@@ -3665,12 +3749,13 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     listarMenu: function listarMenu() {
-      var _this2 = this;
+      var _this3 = this;
 
       var url = "menu/listar_menu";
       axios.get(url).then(function (resp) {
-        _this2.array_menu = resp.data; // this.fecha=moment().format('YYYY-MM-DD');
-        // console.log(moment().format('YYYY-MM-DD'));
+        _this3.array_menu = resp.data;
+        var fecha = moment().format('YYYY-MM-DD');
+        _this3.fecha = fecha; // console.log(moment().format('YYYY-MM-DD'));
         // console.log(resp);
       })["catch"](function (error) {
         console.log(error);
@@ -3678,41 +3763,17 @@ __webpack_require__.r(__webpack_exports__);
     },
     agregar: function agregar() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-      // console.log(this.array_data);
-      if (this.array_data == null) {
-        //  console.log(this.array_data);
-        this.registrar(data);
-      } else {
-        // console.log(data.cantidad);
-        this.actualizar_detalle(data); // this.actualizar_detalle(data);
-      } // this.listarOrdenAlimento();
-
+      this.registrar(data);
     },
     registrar: function registrar() {
-      var _this3 = this;
-
-      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      axios.post("orden_alimento/registrar", {
-        id_alimento: data.id,
-        cantidad: data.cantidad
-      }).then(function (resp) {
-        // console.log(resp);
-        _this3.eventoAlerta("success", "Guardado Exitosamente");
-
-        _this3.listarOrdenAlimento();
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    actualizar_detalle: function actualizar_detalle() {
       var _this4 = this;
 
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      axios.put("orden_alimento/actualizar", {
+      axios.post("orden_alimento/registrar", {
+        fecha: this.fecha,
         id_alimento: data.id,
         cantidad: data.cantidad,
-        id_orden: this.array_data.id
+        alimento: data.alimento
       }).then(function (resp) {
         // console.log(resp);
         _this4.eventoAlerta("success", "Guardado Exitosamente");
@@ -3722,8 +3783,24 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    eliminar: function eliminar(id) {
+    actualizar_detalle: function actualizar_detalle() {
       var _this5 = this;
+
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      axios.put("orden_alimento/actualizar", {
+        id_alimento: data.id,
+        cantidad: data.cantidad
+      }).then(function (resp) {
+        // console.log(resp);
+        _this5.eventoAlerta("success", "Guardado Exitosamente");
+
+        _this5.listarOrdenAlimento();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    eliminar: function eliminar(id) {
+      var _this6 = this;
 
       var swalWithBootstrapButtons = sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_2___default.a.mixin({
         customClass: {
@@ -3745,16 +3822,16 @@ __webpack_require__.r(__webpack_exports__);
           axios.put("orden_alimento/eliminar_detalle", {
             id: id
           }).then(function (resp) {
-            _this5.eventoAlerta("success", "Eliminado Exitosamente");
+            _this6.eventoAlerta("success", "Eliminado Exitosamente");
 
-            _this5.listarOrdenAlimento();
+            _this6.listarOrdenAlimento();
           })["catch"](function (error) {
             console.log(error);
           });
         } else if (
         /* Read more about handling dismissals below */
         result.dismiss === sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_2___default.a.DismissReason.cancel) {
-          _this5.eventoAlerta("error", "Cancelado");
+          _this6.eventoAlerta("error", "Cancelado");
         }
       });
     },
@@ -5379,6 +5456,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 Vue.component("v-select", vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
@@ -5399,6 +5480,8 @@ Vue.component("v-select", vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
       ventana: 1,
       tipo: "",
       dias: 0,
+      fecha_fin: '',
+      fecha_inicio: '',
       imc: 0,
       array_nivel_actividad: [],
       id_nivel: 0,
@@ -5516,6 +5599,8 @@ Vue.component("v-select", vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
         imc: this.imc,
         id_nivel: this.id_nivel,
         tipo: this.tipo,
+        fecha_fin: this.fecha_fin,
+        fecha_inicio: this.fecha_inicio,
         fecha_nacimiento: this.fecha_nacimiento,
         altura: this.altura,
         peso: this.peso,
@@ -5558,6 +5643,10 @@ Vue.component("v-select", vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
       this.calorias = cal.toFixed(0);
       var im = this.peso / (this.altura / 100 * (this.altura / 100));
       this.imc = im.toFixed(0);
+      var date = new Date();
+      this.fecha_inicio = moment().format('YYYY-MM-DD');
+      date = date.setDate(this.dias);
+      this.fecha_fin = moment(date).format('YYYY-MM-DD');
     },
     objetivo: function objetivo(tipo) {
       this.tipo = tipo;
@@ -80877,6 +80966,61 @@ var render = function() {
         _c("div", { staticClass: "card-header" }),
         _vm._v(" "),
         _c("div", { staticClass: "car-body" }, [
+          _c("div", { staticClass: "form-group row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "input-group" }, [
+                _c("div", { staticClass: "col-md-10" }, [
+                  _c("div", { staticClass: "input-group" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fecha,
+                          expression: "fecha"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "date", placeholder: "Buscar...." },
+                      domProps: { value: _vm.fecha },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.fecha = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "input-group-append" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" },
+                          on: {
+                            click: function($event) {
+                              return _vm.listarOrdenAlimento()
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fa fa-search" }),
+                          _vm._v(
+                            "\n                      Buscar\n                    "
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-6" }, [
               _c("div", { staticClass: "table-responsive" }, [
@@ -80930,6 +81074,65 @@ var render = function() {
                   ]
                 )
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "table-responsive" }, [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-bordered table-striped table-sm"
+                  },
+                  [
+                    _c("thead", [
+                      _c("tr", [
+                        _c("h1", [_vm._v("Total Kcal")]),
+                        _vm._v(" "),
+                        _c("h2", [
+                          _vm._v(
+                            " " +
+                              _vm._s(_vm.array_data.total_calorias) +
+                              " / " +
+                              _vm._s(_vm.array_dieta.calorias)
+                          )
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("th", [_vm._v("Calorias")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.array_data.total_calorias))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Proteinas")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.array_data.total_proteinas))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Carbohidratos")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.array_data.total_carbohidratos))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Grasas")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(_vm.array_data.total_grasas))])
+                      ])
+                    ])
+                  ]
+                )
+              ])
             ])
           ]),
           _vm._v(" "),
@@ -80943,51 +81146,59 @@ var render = function() {
                   },
                   [
                     _vm._l(_vm.array_data.detalle, function(data) {
-                      return _vm.array_data.length > 0
-                        ? [
-                            _c("thead", [
-                              _c("th", { attrs: { colspan: "4" } }, [
-                                _vm._v(_vm._s(data.nombre))
-                              ])
-                            ]),
+                      return [
+                        _c("thead", [
+                          _c("th", { attrs: { colspan: "7" } }, [
+                            _vm._v(_vm._s(data.nombre))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          [
+                            _vm._m(1, true),
                             _vm._v(" "),
-                            _c(
-                              "tbody",
-                              _vm._l(data.detalle, function(data1) {
-                                return _c("tr", { key: data1.id }, [
-                                  _c("td", [_vm._v(_vm._s(data1.id))]),
-                                  _vm._v(" "),
-                                  _c("td", [_vm._v(_vm._s(data1.nombre))]),
-                                  _vm._v(" "),
-                                  _c("td", [_vm._v(_vm._s(data1.cantidad))]),
-                                  _vm._v(" "),
-                                  _c("td", [_vm._v(_vm._s(data1.peso))]),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _vm._m(0, true),
-                                    _vm._v(
-                                      "\n                         \n                        "
-                                    ),
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-danger btn-sm",
-                                        attrs: { type: "button" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.eliminar(data1.id)
-                                          }
+                            _vm._l(data.detalle, function(data1) {
+                              return _c("tr", { key: data1.id }, [
+                                _c("td", [_vm._v(_vm._s(data1.nombre))]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(data1.sub_calorias))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(_vm._s(data1.sub_carbohidratos))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(data1.sub_grasas))]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(data1.sub_proteinas))]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(data1.cantidad))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._m(2, true),
+                                  _vm._v(
+                                    "\n                         \n                        "
+                                  ),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger btn-sm",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.eliminar(data1.id)
                                         }
-                                      },
-                                      [_c("i", { staticClass: "icon-trash" })]
-                                    )
-                                  ])
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "icon-trash" })]
+                                  )
                                 ])
-                              }),
-                              0
-                            )
-                          ]
-                        : _vm._e()
+                              ])
+                            })
+                          ],
+                          2
+                        )
+                      ]
                     })
                   ],
                   2
@@ -81143,6 +81354,34 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("select", { staticClass: "form-control col-md-3" }, [
+      _c("option", { attrs: { value: "nombre" } }, [_vm._v("Nombre")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("Alimento")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Sub Total Calorias")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Sub Total Carbohidratos")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Sub Total Grasas")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Sub Total Proteinas")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Cantidad de Alimento")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Opciones")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -83093,6 +83332,23 @@ var render = function() {
                               _vm._v(" "),
                               _c("div", { staticClass: "col-md-9" }, [
                                 _vm._v(_vm._s(_vm.imc))
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.calorias > 0
+                          ? _c("div", { staticClass: "form-group row" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "col-md-3 form-control-label",
+                                  attrs: { for: "text-input" }
+                                },
+                                [_vm._v("Fecha Fin")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-9" }, [
+                                _vm._v(_vm._s(_vm.fecha_fin))
                               ])
                             ])
                           : _vm._e(),
