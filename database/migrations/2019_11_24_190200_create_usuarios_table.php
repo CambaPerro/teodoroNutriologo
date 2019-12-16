@@ -24,6 +24,7 @@ class CreateUsuariosTable extends Migration
             $table->decimal('peso',8,2)->nullable();
             $table->string('sexo',10)->nullable();
             $table->string('tipo',10);
+            $table->string('imagen')->nullable();
             $table->boolean('estado')->default(0);
             // $table->timestamps();
         });

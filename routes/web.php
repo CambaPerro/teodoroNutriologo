@@ -68,6 +68,10 @@ Route::post('/menu/registrar','MenuController@store');
 Route::put('/menu/actualizar','MenuController@update');
 Route::delete('/menu/eliminar_{id}','MenuController@destroy');
 
+//CRUD Perfil de Usuario
+Route::post('/user','UsuarioController@store');
+
+
 
 // Route:get('/nombre para url',functio(){
     // return view('direccion del views');
@@ -101,3 +105,7 @@ Route::get('/tipo_actividads',function(){
 Route::get('/menus',function(){
     return view('menu/index');
 })->name('menus');
+
+Route::get('/perfils',function(){
+    return view('perfil/index');
+})->name('perfils');

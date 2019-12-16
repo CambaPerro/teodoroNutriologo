@@ -42,6 +42,7 @@ Vue.component('tipo-actividad-component', require('./components/TipoActividad.vu
 Vue.component('dieta-component', require('./components/Dieta.vue').default);
 Vue.component('principal-component', require('./components/Principal.vue').default);
 Vue.component('menu-component', require('./components/Menu.vue').default);
+Vue.component('perfil-component', require('./components/Perfil.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
