@@ -3641,20 +3641,25 @@ __webpack_require__.r(__webpack_exports__);
     return {
       // url_ctrl:'orden_alimento',
       array_data: [],
-      array_menu: []
+      array_menu: [],
+      fecha: new Date(),
+      offset: 4
     };
   },
   mounted: function mounted() {
-    this.listarOrdenAlimento();
     this.listarMenu();
+    this.listarOrdenAlimento();
   },
   methods: {
     listarOrdenAlimento: function listarOrdenAlimento() {
       var _this = this;
 
-      var url = "orden_alimento";
+      var url = "orden_alimento?fecha=" + this.fecha;
       axios.get(url).then(function (resp) {
-        _this.array_data = resp.data[0]; // console.log(this.array_data);
+        if (resp.data.length > 0) {
+          _this.array_data = resp.data[0];
+        } // console.log(this.array_data);
+
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3664,7 +3669,9 @@ __webpack_require__.r(__webpack_exports__);
 
       var url = "menu/listar_menu";
       axios.get(url).then(function (resp) {
-        _this2.array_menu = resp.data; // console.log(resp);
+        _this2.array_menu = resp.data; // this.fecha=moment().format('YYYY-MM-DD');
+        // console.log(moment().format('YYYY-MM-DD'));
+        // console.log(resp);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -5163,10 +5170,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.js */ "./node_modules/sweetalert2/dist/sweetalert2.js");
-/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.js */ "./node_modules/sweetalert2/dist/sweetalert2.js");
+/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_3__);
 //
 //
 //
@@ -5334,6 +5345,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+Vue.component("v-select", vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5343,24 +5391,27 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       fecha_nacimiento: "",
-      altura: 1,
+      altura: 0,
       peso: 0,
       peso_ideal: 0,
+      nivel: 0,
       sexo: "",
       ventana: 1,
       tipo: "",
       dias: 0,
+      imc: 0,
       array_nivel_actividad: [],
       id_nivel: 0,
+      calorias: 0,
       pagination: {
-        total: 3,
+        total: 4,
         current_page: 1,
         per_page: 1,
-        last_page: 3,
+        last_page: 4,
         from: 1,
         to: 1
       },
-      offset: 3,
+      offset: 4,
       funcion: ""
     };
   },
@@ -5410,14 +5461,14 @@ __webpack_require__.r(__webpack_exports__);
 
       me.pagination.current_page = page; // enviar la peticion para visualizar la data de esta pagina
 
-      this.ventana = this.pagination.current_page;
-
-      if (this.ventana == 4) {
+      if (this.ventana + 1 == 5) {
         this.registrar();
       }
+
+      this.ventana = this.pagination.current_page;
     },
     eventoAlerta: function eventoAlerta(icono, mensaje) {
-      sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+      sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
         position: "center",
         icon: icono,
         title: mensaje,
@@ -5444,8 +5495,10 @@ __webpack_require__.r(__webpack_exports__);
     get_nivel_actividad: function get_nivel_actividad(val1) {
       try {
         this.id_nivel = val1.id;
+        this.nivel = val1.valor; // // this.formula();
       } catch (_unused) {
         this.id_nivel = 0;
+        this.nivel = 0;
       }
     },
     registrar: function registrar() {
@@ -5459,8 +5512,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post("dieta/registrar", {
         peso_ideal: this.peso_ideal,
-        calorias: 100,
-        imc: 100,
+        calorias: this.calorias,
+        imc: this.imc,
         id_nivel: this.id_nivel,
         tipo: this.tipo,
         fecha_nacimiento: this.fecha_nacimiento,
@@ -5475,6 +5528,36 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    formula: function formula() {
+      var cal = 0;
+      var fecha = moment();
+      var edad = 0;
+      var total = 0;
+      var fecha2 = moment(this.fecha_nacimiento);
+      edad = fecha.diff(fecha2, 'years'); // console.log(edad);
+
+      if (this.sexo == "MASCULINO") {
+        cal = 66 + 13.7 * this.peso + 5 * this.altura - 6.75 * edad; // console.log(cal);
+      }
+
+      if (this.sexo == "FEMENINO") {
+        cal = 655 + 9.6 * this.peso + 1.8 * this.altura - 4.7 * edad;
+      }
+
+      cal = cal * this.nivel; // console.log(cal);
+
+      if (this.funcion == "normal") {
+        cal = cal - 500;
+      }
+
+      if (this.funcion == "rapido") {
+        cal = cal - 1000;
+      }
+
+      this.calorias = cal.toFixed(0);
+      var im = this.peso / (this.altura / 100 * (this.altura / 100));
+      this.imc = im.toFixed(0);
     },
     objetivo: function objetivo(tipo) {
       this.tipo = tipo;
@@ -5551,6 +5634,13 @@ __webpack_require__.r(__webpack_exports__);
       if (this.ventana == 3) {
         if (!this.dias) {
           this.mensaje = "Seleccione el Objetivo";
+          return true;
+        }
+      }
+
+      if (this.ventana == 4) {
+        if (this.imc < 0) {
+          this.mensaje = "Calcule su IMC";
           return true;
         }
       }
@@ -80853,49 +80943,51 @@ var render = function() {
                   },
                   [
                     _vm._l(_vm.array_data.detalle, function(data) {
-                      return [
-                        _c("thead", [
-                          _c("th", { attrs: { colspan: "4" } }, [
-                            _vm._v(_vm._s(data.nombre))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          _vm._l(data.detalle, function(data1) {
-                            return _c("tr", { key: data1.id }, [
-                              _c("td", [_vm._v(_vm._s(data1.id))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(data1.nombre))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(data1.cantidad))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(data1.peso))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._m(0, true),
-                                _vm._v(
-                                  "\n                         \n                        "
-                                ),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-danger btn-sm",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.eliminar(data1.id)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "icon-trash" })]
-                                )
+                      return _vm.array_data.length > 0
+                        ? [
+                            _c("thead", [
+                              _c("th", { attrs: { colspan: "4" } }, [
+                                _vm._v(_vm._s(data.nombre))
                               ])
-                            ])
-                          }),
-                          0
-                        )
-                      ]
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "tbody",
+                              _vm._l(data.detalle, function(data1) {
+                                return _c("tr", { key: data1.id }, [
+                                  _c("td", [_vm._v(_vm._s(data1.id))]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(data1.nombre))]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(data1.cantidad))]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(data1.peso))]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._m(0, true),
+                                    _vm._v(
+                                      "\n                         \n                        "
+                                    ),
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-danger btn-sm",
+                                        attrs: { type: "button" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.eliminar(data1.id)
+                                          }
+                                        }
+                                      },
+                                      [_c("i", { staticClass: "icon-trash" })]
+                                    )
+                                  ])
+                                ])
+                              }),
+                              0
+                            )
+                          ]
+                        : _vm._e()
                     })
                   ],
                   2
@@ -82716,7 +82808,7 @@ var render = function() {
                               staticClass: "col-md-3 form-control-label",
                               attrs: { for: "text-input" }
                             },
-                            [_vm._v("Altura")]
+                            [_vm._v("Altura en cm")]
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-9" }, [
@@ -82761,7 +82853,7 @@ var render = function() {
                               staticClass: "col-md-3 form-control-label",
                               attrs: { for: "text-input" }
                             },
-                            [_vm._v("Peso")]
+                            [_vm._v("Peso en Kg")]
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-9" }, [
@@ -82969,7 +83061,68 @@ var render = function() {
                             })
                           ],
                           1
-                        )
+                        ),
+                        _vm._v(" "),
+                        _vm.calorias > 0
+                          ? _c("div", { staticClass: "form-group row" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "col-md-3 form-control-label",
+                                  attrs: { for: "text-input" }
+                                },
+                                [_vm._v("Calorias X dia")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-9" }, [
+                                _vm._v(_vm._s(_vm.calorias))
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.calorias > 0
+                          ? _c("div", { staticClass: "form-group row" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "col-md-3 form-control-label",
+                                  attrs: { for: "text-input" }
+                                },
+                                [_vm._v("IMC")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-9" }, [
+                                _vm._v(_vm._s(_vm.imc))
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.formula()
+                              }
+                            }
+                          },
+                          [_vm._v("\n                Calcular")]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _vm._m(6)
                       ]
                     : _vm._e()
                 ],
@@ -83070,7 +83223,113 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("menos de 16.5 Desnutricion")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("16.5 as 18.5 delgadez")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("18.5 a 25 Normal")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("25 a 30 Sobrepeso")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("30 a 35 obesidad Moderada")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("35 a 40 obesidad Severa")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("mas de 40 obesidad morbida o masiva")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -96835,8 +97094,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\masaco\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\masaco\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\teodoro\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\teodoro\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

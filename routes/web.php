@@ -68,7 +68,7 @@ Route::post('/menu/registrar','MenuController@store');
 Route::put('/menu/actualizar','MenuController@update');
 Route::delete('/menu/eliminar_{id}','MenuController@destroy');
 
-
+Route::get('/nivel_actividad/select','NivelActividadController@select');
 // Route:get('/nombre para url',functio(){
     // return view('direccion del views');
 // })->name('nombre para url');

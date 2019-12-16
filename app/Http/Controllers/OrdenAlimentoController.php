@@ -19,9 +19,9 @@ class OrdenAlimentoController extends Controller
     public function index(Request $request)
     {
         // if(!$request->ajax()) return redirect('/');
-        // $buscar=$request->buscar;
+        $fecha=$request->fecha;
 
-        $table=OrdenAlimento::where('fecha','=','2019/12/08')
+        $table=OrdenAlimento::where('fecha','=',$fecha)
         ->get();
         // $table->detalle=DetalleOrden::where('id_orden','=',$table->id)
         // // ->with('detalle_alimento')
@@ -31,7 +31,7 @@ class OrdenAlimentoController extends Controller
         //     ->with('alimento')
         //     ->get();
         // }
-        if($table!=null){
+        if(count($table)>0){
 
         $table[0]->detalle=OrdenAlimento::join('detalle_ordens','orden_alimentos.id','=','detalle_ordens.id_orden')
         ->join('detalle_alimentos','detalle_ordens.id_alimento','=','detalle_alimentos.id')
