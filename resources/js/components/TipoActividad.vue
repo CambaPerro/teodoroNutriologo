@@ -63,8 +63,8 @@
                                 <tr>
                                     <th>N°</th>
                                     <th>Tipo</th>
-                                    <th>Descripcion</th>
-                                    <th>Calorias Quemadas</th>
+                                    <!-- <th>Descripcion</th>
+                                    <th>Calorias Quemadas</th> -->
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
@@ -76,8 +76,8 @@
                                         </span>
                                     </td>
                                     <td>{{ data.tipo }}</td>
-                                    <td>{{ data.descripcion }}</td>
-                                    <td>{{ data.calorias_quemadas }}</td>
+                                    <!-- <td>{{ data.descripcion }}</td>
+                                    <td>{{ data.calorias_quemadas }}</td> -->
 
                                     <td>
                                         <button
@@ -209,7 +209,7 @@
                                     />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <!-- <div class="form-group row">
                                 <label
                                     class="col-md-3 form-control-label"
                                     for="text-input"
@@ -224,8 +224,8 @@
                                         required
                                     />
                                 </div>
-                            </div>
-                            <div class="form-group row">
+                            </div> -->
+                            <!-- <div class="form-group row">
                                 <label
                                     class="col-md-3 form-control-label"
                                     for="text-input"
@@ -241,7 +241,7 @@
                                         required
                                     />
                                 </div>
-                            </div>
+                            </div> -->
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -291,8 +291,8 @@ export default {
             //   atributos de la tabla
             id: 0,
             tipo: "",
-            descripcion:"",
-            calorias_quemadas: "",
+            // descripcion:"",
+            // calorias_quemadas: "",
             array_data: [],
             url_ctrl: "tipo_actividad",
             // fin de los atributos de la tabla
@@ -381,9 +381,9 @@ export default {
             }
             axios
                 .post(this.url_ctrl + "/registrar", {
-                    tipo : this.tipo,
-                    descripcion : this.descripcion,
-                    calorias_quemadas : this.calorias_quemadas
+                    tipo : this.tipo
+                    // descripcion : this.descripcion,
+                    // calorias_quemadas : this.calorias_quemadas
                 })
                 .then(resp => {
                     $("#ModalLong").modal("hide");
@@ -404,9 +404,9 @@ export default {
             axios
                 .put(this.url_ctrl + "/actualizar", {
                     id : this.id,
-                    tipo : this.tipo,
-                    descripcion : this.descripcion,
-                    calorias_quemadas : this.calorias_quemadas
+                    tipo : this.tipo
+                    // descripcion : this.descripcion,
+                    // calorias_quemadas : this.calorias_quemadas
                 })
                 .then(resp => {
                     $("#ModalLong").modal("hide");
@@ -471,8 +471,8 @@ export default {
                         (this.tipoAccion = 2);
                     this.id = data.id;
                     this.tipo = data.tipo;
-                    this.descripcion = data.descripcion;
-                    this.calorias_quemadas = data.calorias_quemadas;
+                    // this.descripcion = data.descripcion;
+                    // this.calorias_quemadas = data.calorias_quemadas;
                     break;
                 }
             }
@@ -480,10 +480,10 @@ export default {
         limpiar() {
             (this.id = 0),
                 (this.tipo = ""),
-                (this.descripcion = ""),
-                (this.calorias_quemadas = ""),
-                // this.tituloModal="",
-                (this.activarValidate = "");
+                (this.descripcion = "");
+                // (this.calorias_quemadas = ""),
+                // // this.tituloModal="",
+                // (this.activarValidate = "");
         },
         validar() {
             if (!this.tipo) {

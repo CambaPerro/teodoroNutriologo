@@ -38,8 +38,10 @@
             @guest
 
             @else
-              @if (Auth::user()->estado=='0')
+              @if (Auth::user()->estado=='0' && Auth::user()->tipo=='C')
+              <template>
               <principal-component :usuario="{{ Auth::user() }}"></principal-component>
+              </template>
            @else
            @include('header.header')
            <div class="app-body">

@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<template>
+    @guest
+
+    @else
+    @if (Auth::user()->estado=='1' && Auth::user()->tipo=='C')
+    <template>
     <dieta-component></dieta-component>
-</template>
+    </template>
+    @endif
+    @endguest
 @endsection

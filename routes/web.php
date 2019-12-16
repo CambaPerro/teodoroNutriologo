@@ -73,6 +73,7 @@ Route::post('/user','UsuarioController@store');
 
 
 
+Route::get('/nivel_actividad/select','NivelActividadController@select');
 // Route:get('/nombre para url',functio(){
     // return view('direccion del views');
 // })->name('nombre para url');

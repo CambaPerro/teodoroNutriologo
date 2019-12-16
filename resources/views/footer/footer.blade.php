@@ -1,10 +1,10 @@
 <footer class="app-footer">
         <div>
-          <a href="#">ABASTO</a>
-          <span>&copy; 2019 creativeLabs.</span>
+          <a href="#">Masaco.org</a>
+          <span>&copy; 2019</span>
         </div>
         <div class="ml-auto">
-          <span>Powered by</span>
-          <a href="#">Luis Rodrigo</a>
+          <span>Producido Por</span>
+          <a href="#">Grupo # 6</a>
         </div>
       </footer>

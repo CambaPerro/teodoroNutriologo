@@ -12,7 +12,7 @@
            <div class="row">
                <div class="col-md-6">
               <div class="table-responsive">
-                <table class="table table-bordered table-striped table-sm">
+                <table class="table table-bordered table-striped table-sm" >
                     <thead>
                       <tr>
                       <th>Total Kcal</th>
@@ -46,7 +46,7 @@
             <div class="col-md-6">
               <div class="table-responsive">
                 <table class="table table-bordered table-striped table-sm">
-                  <template v-for="data in array_data.detalle">
+                  <template v-for="data in array_data.detalle" v-if="array_data.length>0">
                     <thead>
                       <th colspan="4">{{ data.nombre }}</th>
                     </thead>
@@ -154,20 +154,26 @@ export default {
     return {
       // url_ctrl:'orden_alimento',
       array_data: [],
-      array_menu: []
+      array_menu: [],
+      fecha:new Date(),
+      offset: 4,
     };
   },
   mounted() {
-    this.listarOrdenAlimento();
     this.listarMenu();
+    this.listarOrdenAlimento();
+
   },
   methods: {
     listarOrdenAlimento() {
-      var url = "orden_alimento";
+      var url = "orden_alimento?fecha="+this.fecha;
       axios
         .get(url)
         .then(resp => {
-          this.array_data = resp.data[0];
+          if(resp.data.length>0)
+          {
+            this.array_data = resp.data[0];
+          }         
           // console.log(this.array_data);
         })
         .catch(error => {
@@ -180,6 +186,8 @@ export default {
         .get(url)
         .then(resp => {
           this.array_menu = resp.data;
+        // this.fecha=moment().format('YYYY-MM-DD');
+      // console.log(moment().format('YYYY-MM-DD'));
           // console.log(resp);
         })
         .catch(error => {

@@ -67,6 +67,7 @@
                                     <th>Tipo de Actividad</th>
                                     <th>Nombre</th>
                                     <th>Descripcion</th>
+                                    <th>Calorias Quemadas</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
@@ -80,6 +81,7 @@
                                     <td>{{ data.tipoactividad}}</td>
                                     <td>{{ data.nombre }}</td>
                                     <td>{{ data.descripcion }}</td>
+                                    <td>{{ data.calorias_quemadas }}</td>
                                     <td>
                                         <button
                                             type="button"
@@ -227,6 +229,23 @@
                             <div class="form-group row">
                                 <label
                                     class="col-md-3 form-control-label"
+                                    for="number-input"
+                                    >Calorias Quemadas</label
+                                >
+                                <div class="col-md-9">
+                                    <input
+                                        type="number"
+                                        step="any"
+                                        v-model="calorias_quemadas"
+                                        placeholder="calorias quemadas............"
+                                        class="form-control"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label
+                                    class="col-md-3 form-control-label"
                                     for="text-input"
                                     >Tipo de Actividad</label
                                 >
@@ -297,6 +316,7 @@ export default {
             tipoactividad: "",
             nombre: "",
             descripcion:"",
+            calorias_quemadas:0,
             
             
 
@@ -396,6 +416,7 @@ export default {
                     id_tipo: this.id_tipo,
                     nombre: this.nombre,
                     descripcion: this.descripcion,
+                    calorias_quemadas: this.calorias_quemadas,
                 })
                 .then(resp => {
                     this.eventoAlerta("success", "Guardado Exitosamente");
@@ -418,6 +439,7 @@ export default {
                     id_tipo: this.id_tipo,
                     nombre: this.nombre,
                     descripcion: this.descripcion,
+                    calorias_quemadas: this.calorias_quemadas,
                     id: this.id
                 })
                 .then(resp => {
@@ -509,6 +531,7 @@ export default {
                     this.id_tipo = data.id_tipo;
                     this.tipoactividad = data.tipoactividad;
                     this.descripcion = data.descripcion;
+                    this.calorias_quemadas= data.calorias_quemadas,
                     this.vue_tipo = {
                         id: this.id_tipo,
                         tipo: this.tipoactividad
@@ -523,6 +546,7 @@ export default {
             this.tipoactividad = "";
             this.nombre = "";
             this.descripcion = "";
+            this.calorias_quemadas =0,
             this.array_tipo = [];
             this.activarValidate = "";
         },

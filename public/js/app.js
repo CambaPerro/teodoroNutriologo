@@ -2129,6 +2129,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2144,6 +2163,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
       tipoactividad: "",
       nombre: "",
       descripcion: "",
+      calorias_quemadas: 0,
       array_data: [],
       array_tipo: [],
       url_ctrl: "actividad_fisica",
@@ -2245,7 +2265,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
       axios.post(this.url_ctrl + "/registrar", {
         id_tipo: this.id_tipo,
         nombre: this.nombre,
-        descripcion: this.descripcion
+        descripcion: this.descripcion,
+        calorias_quemadas: this.calorias_quemadas
       }).then(function (resp) {
         _this2.eventoAlerta("success", "Guardado Exitosamente");
 
@@ -2271,6 +2292,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
         id_tipo: this.id_tipo,
         nombre: this.nombre,
         descripcion: this.descripcion,
+        calorias_quemadas: this.calorias_quemadas,
         id: this.id
       }).then(function (resp) {
         _this3.eventoAlerta("success", "Actualizado Exitosamente");
@@ -2363,7 +2385,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
             this.id_tipo = data.id_tipo;
             this.tipoactividad = data.tipoactividad;
             this.descripcion = data.descripcion;
-            this.vue_tipo = {
+            this.calorias_quemadas = data.calorias_quemadas, this.vue_tipo = {
               id: this.id_tipo,
               tipo: this.tipoactividad
             };
@@ -2377,7 +2399,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("v-select", vue_select__WEB
       this.tipoactividad = "";
       this.nombre = "";
       this.descripcion = "";
-      this.array_tipo = [];
+      this.calorias_quemadas = 0, this.array_tipo = [];
       this.activarValidate = "";
     },
     validar: function validar() {
@@ -3619,20 +3641,25 @@ __webpack_require__.r(__webpack_exports__);
     return {
       // url_ctrl:'orden_alimento',
       array_data: [],
-      array_menu: []
+      array_menu: [],
+      fecha: new Date(),
+      offset: 4
     };
   },
   mounted: function mounted() {
-    this.listarOrdenAlimento();
     this.listarMenu();
+    this.listarOrdenAlimento();
   },
   methods: {
     listarOrdenAlimento: function listarOrdenAlimento() {
       var _this = this;
 
-      var url = "orden_alimento";
+      var url = "orden_alimento?fecha=" + this.fecha;
       axios.get(url).then(function (resp) {
-        _this.array_data = resp.data[0]; // console.log(this.array_data);
+        if (resp.data.length > 0) {
+          _this.array_data = resp.data[0];
+        } // console.log(this.array_data);
+
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3642,7 +3669,9 @@ __webpack_require__.r(__webpack_exports__);
 
       var url = "menu/listar_menu";
       axios.get(url).then(function (resp) {
-        _this2.array_menu = resp.data; // console.log(resp);
+        _this2.array_menu = resp.data; // this.fecha=moment().format('YYYY-MM-DD');
+        // console.log(moment().format('YYYY-MM-DD'));
+        // console.log(resp);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -5627,10 +5656,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.js */ "./node_modules/sweetalert2/dist/sweetalert2.js");
-/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.js */ "./node_modules/sweetalert2/dist/sweetalert2.js");
+/* harmony import */ var sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_3__);
 //
 //
 //
@@ -5819,6 +5852,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+Vue.component("v-select", vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5828,21 +5877,28 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       fecha_nacimiento: "",
-      altura: "",
-      peso: "",
+      altura: 0,
+      peso: 0,
+      peso_ideal: 0,
+      nivel: 0,
       sexo: "",
       ventana: 1,
       tipo: "",
+      dias: 0,
+      imc: 0,
+      array_nivel_actividad: [],
+      id_nivel: 0,
+      calorias: 0,
       pagination: {
-        total: 3,
+        total: 4,
         current_page: 1,
         per_page: 1,
-        last_page: 3,
+        last_page: 4,
         from: 1,
         to: 1
       },
-      offset: 3,
-      progreso: 0
+      offset: 4,
+      funcion: ""
     };
   },
   mounted: function mounted() {
@@ -5881,18 +5937,24 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     cambiarPagina: function cambiarPagina(page) {
+      if (this.validar()) {
+        this.activarValidate = "was-validated";
+        this.eventoAlerta("error", this.mensaje);
+        return;
+      }
+
       var me = this; // actualizar la Pagina
 
       me.pagination.current_page = page; // enviar la peticion para visualizar la data de esta pagina
 
-      this.ventana = this.pagination.current_page;
-
-      if (this.ventana == 4) {
+      if (this.ventana + 1 == 5) {
         this.registrar();
       }
+
+      this.ventana = this.pagination.current_page;
     },
     eventoAlerta: function eventoAlerta(icono, mensaje) {
-      sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+      sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
         position: "center",
         icon: icono,
         title: mensaje,
@@ -5900,8 +5962,33 @@ __webpack_require__.r(__webpack_exports__);
         timer: 1500
       });
     },
-    registrar: function registrar() {
+    select_nivel_actividad: function select_nivel_actividad(search, loading) {
       var _this = this;
+
+      loading(true);
+      var url = "nivel_actividad/select?buscar=" + search;
+      axios.get(url).then(function (resp) {
+        var respuesta = resp.data;
+
+        q: search;
+
+        _this.array_nivel_actividad = respuesta.table;
+        loading(false);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    get_nivel_actividad: function get_nivel_actividad(val1) {
+      try {
+        this.id_nivel = val1.id;
+        this.nivel = val1.valor; // // this.formula();
+      } catch (_unused) {
+        this.id_nivel = 0;
+        this.nivel = 0;
+      }
+    },
+    registrar: function registrar() {
+      var _this2 = this;
 
       if (this.validar()) {
         this.activarValidate = "was-validated";
@@ -5910,16 +5997,17 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios.post("dieta/registrar", {
-        peso_ideal: 60,
-        calorias: 100,
-        imc: 100,
+        peso_ideal: this.peso_ideal,
+        calorias: this.calorias,
+        imc: this.imc,
+        id_nivel: this.id_nivel,
         tipo: this.tipo,
         fecha_nacimiento: this.fecha_nacimiento,
         altura: this.altura,
         peso: this.peso,
         sexo: this.sexo
       }).then(function (resp) {
-        _this.eventoAlerta("success", "Bienbenido a Masaco"); // this.limpiar();
+        _this2.eventoAlerta("success", "Bienbenido a Masaco"); // this.limpiar();
 
 
         window.open("home");
@@ -5927,33 +6015,122 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
+    formula: function formula() {
+      var cal = 0;
+      var fecha = moment();
+      var edad = 0;
+      var total = 0;
+      var fecha2 = moment(this.fecha_nacimiento);
+      edad = fecha.diff(fecha2, 'years'); // console.log(edad);
+
+      if (this.sexo == "MASCULINO") {
+        cal = 66 + 13.7 * this.peso + 5 * this.altura - 6.75 * edad; // console.log(cal);
+      }
+
+      if (this.sexo == "FEMENINO") {
+        cal = 655 + 9.6 * this.peso + 1.8 * this.altura - 4.7 * edad;
+      }
+
+      cal = cal * this.nivel; // console.log(cal);
+
+      if (this.funcion == "normal") {
+        cal = cal - 500;
+      }
+
+      if (this.funcion == "rapido") {
+        cal = cal - 1000;
+      }
+
+      this.calorias = cal.toFixed(0);
+      var im = this.peso / (this.altura / 100 * (this.altura / 100));
+      this.imc = im.toFixed(0);
+    },
     objetivo: function objetivo(tipo) {
       this.tipo = tipo;
+      this.calcular_peso();
+
+      if (tipo == "mantener" && this.peso > this.peso_ideal || tipo == "mantener" && this.peso < this.peso_ideal) {
+        this.eventoAlerta('error', 'No puede Seleccionar esta Opcion');
+        return;
+      }
+
+      if (tipo == "reducir" && this.peso < this.peso_ideal) {
+        this.eventoAlerta('error', 'No puede Seleccionar esta Opcion');
+        return;
+      }
+
+      if (tipo == "aumentar" && this.peso > this.peso_ideal) {
+        this.eventoAlerta('error', 'No puede Seleccionar esta Opcion');
+        return;
+      }
+
       this.cambiarPagina(this.pagination.current_page + 1); // this.ventana = this.pagination.current_page;
     },
-    cambiarValor: function cambiarValor(valor) {
-      if (this.progreso + valor >= 10 && valor > 0) {
-        this.progreso = 10;
-        return;
+    calcular_peso: function calcular_peso() {
+      var alt = this.altura;
+      var total = 0;
+      var d = 0;
+
+      if (this.sexo == "MASCULINO") {
+        total = (alt - 100) * 0.9;
       }
 
-      if (this.progreso <= 0 && valor < 0) {
-        this.progreso = 0;
-        return;
+      if (this.sexo == "FEMENINO") {
+        total = (alt - 100) * 0.85;
       }
 
-      this.progreso = this.progreso + valor; // this.cambioValor.emit(this.progreso);k
-      // this.txtProgress.nativeElement.focus();
+      if (this.funcion == "normal") {
+        d = (this.peso - total) * 2 * 7;
+      }
+
+      if (this.funcion == "rapido") {
+        d = (this.peso - total) * 7;
+      }
+
+      if (d < 0) {
+        d = d * -1;
+      }
+
+      this.dias = d.toFixed(0);
+      this.peso_ideal = total.toFixed(0);
     },
     validar: function validar() {
-      // if (!this.nombre) {
-      //   this.mensaje = "Ingrese el Nombre";
-      //   return true;
-      // }
-      // if (!this.id_categoria) {
-      //   this.mensaje = "Seleccione la Categoria";
-      //   return true;
-      // }
+      if (this.ventana == 1) {
+        if (!this.fecha_nacimiento) {
+          this.mensaje = "Ingrese Su Fecha de Nacimiento";
+          return true;
+        }
+
+        if (this.altura < 100 || this.altura > 250) {
+          this.mensaje = "La altura no Puede ser menor a 100 cm o Mayor de 250 cm";
+          return true;
+        }
+
+        if (this.peso < 20) {
+          this.mensaje = "El Peso no Puede ser Menor a 20 Kilos";
+          return true;
+        }
+
+        if (!this.sexo) {
+          this.mensaje = "Seleccione el Sexo";
+          return true;
+        }
+      }
+
+      if (this.ventana == 3) {
+        if (!this.dias) {
+          this.mensaje = "Seleccione el Objetivo";
+          return true;
+        }
+      }
+
+      if (this.ventana == 4) {
+        if (this.imc < 0) {
+          this.mensaje = "Calcule su IMC";
+          return true;
+        }
+      }
+
       return false;
     }
   }
@@ -6267,8 +6444,8 @@ __webpack_require__.r(__webpack_exports__);
       //   atributos de la tabla
       id: 0,
       tipo: "",
-      descripcion: "",
-      calorias_quemadas: "",
+      // descripcion:"",
+      // calorias_quemadas: "",
       array_data: [],
       url_ctrl: "tipo_actividad",
       // fin de los atributos de la tabla
@@ -6364,9 +6541,9 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios.post(this.url_ctrl + "/registrar", {
-        tipo: this.tipo,
-        descripcion: this.descripcion,
-        calorias_quemadas: this.calorias_quemadas
+        tipo: this.tipo // descripcion : this.descripcion,
+        // calorias_quemadas : this.calorias_quemadas
+
       }).then(function (resp) {
         $("#ModalLong").modal("hide");
 
@@ -6390,9 +6567,9 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.put(this.url_ctrl + "/actualizar", {
         id: this.id,
-        tipo: this.tipo,
-        descripcion: this.descripcion,
-        calorias_quemadas: this.calorias_quemadas
+        tipo: this.tipo // descripcion : this.descripcion,
+        // calorias_quemadas : this.calorias_quemadas
+
       }).then(function (resp) {
         $("#ModalLong").modal("hide");
 
@@ -6454,16 +6631,17 @@ __webpack_require__.r(__webpack_exports__);
           {
             this.tituloModal = "Actualizar Tipo de Actividad", this.tipoAccion = 2;
             this.id = data.id;
-            this.tipo = data.tipo;
-            this.descripcion = data.descripcion;
-            this.calorias_quemadas = data.calorias_quemadas;
+            this.tipo = data.tipo; // this.descripcion = data.descripcion;
+            // this.calorias_quemadas = data.calorias_quemadas;
+
             break;
           }
       }
     },
     limpiar: function limpiar() {
-      this.id = 0, this.tipo = "", this.descripcion = "", this.calorias_quemadas = "", // this.tituloModal="",
-      this.activarValidate = "";
+      this.id = 0, this.tipo = "", this.descripcion = ""; // (this.calorias_quemadas = ""),
+      // // this.tituloModal="",
+      // (this.activarValidate = "");
     },
     validar: function validar() {
       if (!this.tipo) {
@@ -79594,6 +79772,8 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(data.descripcion))]),
                       _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(data.calorias_quemadas))]),
+                      _vm._v(" "),
                       _c("td", [
                         _c(
                           "button",
@@ -79861,6 +80041,46 @@ var render = function() {
                         "label",
                         {
                           staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "number-input" }
+                        },
+                        [_vm._v("Calorias Quemadas")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.calorias_quemadas,
+                              expression: "calorias_quemadas"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "number",
+                            step: "any",
+                            placeholder: "calorias quemadas............",
+                            required: ""
+                          },
+                          domProps: { value: _vm.calorias_quemadas },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.calorias_quemadas = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
                         [_vm._v("Tipo de Actividad")]
@@ -79980,6 +80200,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Nombre")]),
         _vm._v(" "),
         _c("th", [_vm._v("Descripcion")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Calorias Quemadas")]),
         _vm._v(" "),
         _c("th", [_vm._v("Opciones")])
       ])
@@ -81207,49 +81429,51 @@ var render = function() {
                   },
                   [
                     _vm._l(_vm.array_data.detalle, function(data) {
-                      return [
-                        _c("thead", [
-                          _c("th", { attrs: { colspan: "4" } }, [
-                            _vm._v(_vm._s(data.nombre))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          _vm._l(data.detalle, function(data1) {
-                            return _c("tr", { key: data1.id }, [
-                              _c("td", [_vm._v(_vm._s(data1.id))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(data1.nombre))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(data1.cantidad))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(data1.peso))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._m(0, true),
-                                _vm._v(
-                                  "\n                         \n                        "
-                                ),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-danger btn-sm",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.eliminar(data1.id)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "icon-trash" })]
-                                )
+                      return _vm.array_data.length > 0
+                        ? [
+                            _c("thead", [
+                              _c("th", { attrs: { colspan: "4" } }, [
+                                _vm._v(_vm._s(data.nombre))
                               ])
-                            ])
-                          }),
-                          0
-                        )
-                      ]
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "tbody",
+                              _vm._l(data.detalle, function(data1) {
+                                return _c("tr", { key: data1.id }, [
+                                  _c("td", [_vm._v(_vm._s(data1.id))]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(data1.nombre))]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(data1.cantidad))]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(data1.peso))]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._m(0, true),
+                                    _vm._v(
+                                      "\n                         \n                        "
+                                    ),
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-danger btn-sm",
+                                        attrs: { type: "button" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.eliminar(data1.id)
+                                          }
+                                        }
+                                      },
+                                      [_c("i", { staticClass: "icon-trash" })]
+                                    )
+                                  ])
+                                ])
+                              }),
+                              0
+                            )
+                          ]
+                        : _vm._e()
                     })
                   ],
                   2
@@ -83247,7 +83471,7 @@ var render = function() {
                 "form",
                 { attrs: { method: "POST" } },
                 [
-                  _vm.ventana == 1
+                  _vm.ventana == 2
                     ? [
                         _c("h1", [_vm._v("Objetivo")]),
                         _vm._v(" "),
@@ -83290,14 +83514,14 @@ var render = function() {
                             attrs: { type: "button" },
                             on: {
                               click: function($event) {
-                                return _vm.objetivo("contruir")
+                                return _vm.objetivo("aumentar")
                               }
                             }
                           },
                           [_vm._v("Contruir Musculo")]
                         )
                       ]
-                    : _vm.ventana == 2
+                    : _vm.ventana == 1
                     ? [
                         _c("h1", [_vm._v("Datos Personales")]),
                         _vm._v(" "),
@@ -83343,7 +83567,7 @@ var render = function() {
                               staticClass: "col-md-3 form-control-label",
                               attrs: { for: "text-input" }
                             },
-                            [_vm._v("Altura")]
+                            [_vm._v("Altura en cm")]
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-9" }, [
@@ -83351,9 +83575,10 @@ var render = function() {
                               directives: [
                                 {
                                   name: "model",
-                                  rawName: "v-model",
+                                  rawName: "v-model.number",
                                   value: _vm.altura,
-                                  expression: "altura"
+                                  expression: "altura",
+                                  modifiers: { number: true }
                                 }
                               ],
                               staticClass: "form-control",
@@ -83370,7 +83595,10 @@ var render = function() {
                                   if ($event.target.composing) {
                                     return
                                   }
-                                  _vm.altura = $event.target.value
+                                  _vm.altura = _vm._n($event.target.value)
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
                                 }
                               }
                             })
@@ -83384,7 +83612,7 @@ var render = function() {
                               staticClass: "col-md-3 form-control-label",
                               attrs: { for: "text-input" }
                             },
-                            [_vm._v("Peso")]
+                            [_vm._v("Peso en Kg")]
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-9" }, [
@@ -83392,9 +83620,10 @@ var render = function() {
                               directives: [
                                 {
                                   name: "model",
-                                  rawName: "v-model",
+                                  rawName: "v-model.number",
                                   value: _vm.peso,
-                                  expression: "peso"
+                                  expression: "peso",
+                                  modifiers: { number: true }
                                 }
                               ],
                               staticClass: "form-control",
@@ -83402,8 +83631,7 @@ var render = function() {
                                 type: "number",
                                 min: "0",
                                 step: "any",
-                                required: "",
-                                placeholder: "Peso..."
+                                required: ""
                               },
                               domProps: { value: _vm.peso },
                               on: {
@@ -83411,7 +83639,10 @@ var render = function() {
                                   if ($event.target.composing) {
                                     return
                                   }
-                                  _vm.peso = $event.target.value
+                                  _vm.peso = _vm._n($event.target.value)
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
                                 }
                               }
                             })
@@ -83465,12 +83696,12 @@ var render = function() {
                                 _vm._v(" "),
                                 _c(
                                   "option",
-                                  { attrs: { value: "Masculino" } },
-                                  [_vm._v("Masculino")]
+                                  { attrs: { value: "MASCULINO" } },
+                                  [_vm._v("MASCULINO")]
                                 ),
                                 _vm._v(" "),
-                                _c("option", { attrs: { value: "Femenino" } }, [
-                                  _vm._v("Femenino")
+                                _c("option", { attrs: { value: "FEMENINO" } }, [
+                                  _vm._v("FEMENINO")
                                 ])
                               ]
                             )
@@ -83486,84 +83717,55 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "card-body" }, [
-                          _c("div", { staticClass: "progress" }, [
-                            _c("div", {
-                              staticClass:
-                                "progress-bar progress-bar-striped progress-bar-animated",
-                              style: "width:" + _vm.progreso * 10 + "%",
-                              attrs: {
-                                role: "progressbar",
-                                "aria-valuenow": _vm.progreso * 10,
-                                "aria-valuemin": "0",
-                                "aria-valuemax": "100"
-                              }
-                            })
-                          ]),
+                          _c("h3", [_vm._v("Objetivo")]),
                           _vm._v(" "),
-                          _c("h3", [_vm._v("Semanas")]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "input-group" }, [
-                            _c("span", { staticClass: "input-group-prepend" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "button" }
-                                },
-                                [
-                                  _c("i", {
-                                    staticClass: "fa fa-minus",
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.cambiarValor(-1)
-                                      }
-                                    }
-                                  })
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
+                          _c(
+                            "select",
+                            {
                               directives: [
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.progreso,
-                                  expression: "progreso"
+                                  value: _vm.funcion,
+                                  expression: "funcion"
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: { type: "number", min: "1", max: "100" },
-                              domProps: { value: _vm.progreso },
                               on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.progreso = $event.target.value
+                                click: function($event) {
+                                  return _vm.calcular_peso()
+                                },
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.funcion = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "input-group-append" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.cambiarValor(+1)
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "fa fa-plus" })]
-                              )
-                            ])
-                          ])
+                            },
+                            [
+                              _c("option", { attrs: { value: "" } }, [
+                                _vm._v("Seleccione")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "normal" } }, [
+                                _vm._v("Normal")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "rapido" } }, [
+                                _vm._v("Rapido")
+                              ])
+                            ]
+                          )
                         ]),
-                        _vm._v(" "),
-                        _vm._m(0),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group row" }, [
                           _c(
@@ -83572,39 +83774,114 @@ var render = function() {
                               staticClass: "col-md-3 form-control-label",
                               attrs: { for: "text-input" }
                             },
-                            [_vm._v("Peso")]
+                            [_vm._v("Dias Estimado")]
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-9" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.peso,
-                                  expression: "peso"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "number",
-                                min: "0",
-                                step: "any",
-                                required: "",
-                                placeholder: "Peso..."
-                              },
-                              domProps: { value: _vm.peso },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.peso = $event.target.value
-                                }
-                              }
-                            })
+                            _vm._v(_vm._s(_vm.dias) + " Dias")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-md-3 form-control-label",
+                              attrs: { for: "text-input" }
+                            },
+                            [_vm._v("Peso ideal")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-9" }, [
+                            _vm._v(_vm._s(_vm.peso_ideal))
                           ])
                         ])
+                      ]
+                    : _vm.ventana == 4
+                    ? [
+                        _c("h1", [_vm._v("Seleccione el Nivel de Actividad")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "card-body" },
+                          [
+                            _c("h3", [_vm._v("Nivel Actidad")]),
+                            _vm._v(" "),
+                            _c("v-select", {
+                              attrs: {
+                                label: "nombre",
+                                options: _vm.array_nivel_actividad,
+                                placeholder: "Nivel Actividad"
+                              },
+                              on: {
+                                search: _vm.select_nivel_actividad,
+                                input: _vm.get_nivel_actividad
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm.calorias > 0
+                          ? _c("div", { staticClass: "form-group row" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "col-md-3 form-control-label",
+                                  attrs: { for: "text-input" }
+                                },
+                                [_vm._v("Calorias X dia")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-9" }, [
+                                _vm._v(_vm._s(_vm.calorias))
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.calorias > 0
+                          ? _c("div", { staticClass: "form-group row" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "col-md-3 form-control-label",
+                                  attrs: { for: "text-input" }
+                                },
+                                [_vm._v("IMC")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-9" }, [
+                                _vm._v(_vm._s(_vm.imc))
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.formula()
+                              }
+                            }
+                          },
+                          [_vm._v("\n                Calcular")]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _vm._m(6)
                       ]
                     : _vm._e()
                 ],
@@ -83624,7 +83901,8 @@ var render = function() {
                         "pagination pagination-lg justify-content-center"
                     },
                     [
-                      _vm.pagination.current_page > 1
+                      _vm.pagination.current_page < 2 ||
+                      _vm.pagination.current_page > 2
                         ? _c("li", { staticClass: "page-item" }, [
                             _c(
                               "a",
@@ -83671,7 +83949,8 @@ var render = function() {
                           : _vm._e()
                       }),
                       _vm._v(" "),
-                      _vm.pagination.current_page > 1
+                      _vm.pagination.current_page < 2 ||
+                      _vm.pagination.current_page > 2
                         ? _c("li", { staticClass: "page-item" }, [
                             _c(
                               "a",
@@ -83712,15 +83991,101 @@ var staticRenderFns = [
       _c(
         "label",
         {
-          staticClass: "col-md-3 form-control-label",
+          staticClass: "col-md-12 form-control-label",
           attrs: { for: "text-input" }
         },
-        [_vm._v("Fecha de Estimada de Cumplimiento")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-9" }, [
-        _c("input", { staticClass: "form-control", attrs: { type: "date" } })
-      ])
+        [_vm._v("menos de 16.5 Desnutricion")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("16.5 as 18.5 delgadez")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("18.5 a 25 Normal")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("25 a 30 Sobrepeso")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("30 a 35 obesidad Moderada")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("35 a 40 obesidad Severa")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-12 form-control-label",
+          attrs: { for: "text-input" }
+        },
+        [_vm._v("mas de 40 obesidad morbida o masiva")]
+      )
     ])
   }
 ]
@@ -83857,10 +84222,6 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(data.tipo))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.descripcion))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.calorias_quemadas))]),
                       _vm._v(" "),
                       _c(
                         "td",
@@ -84089,85 +84450,6 @@ var render = function() {
                           }
                         })
                       ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Descripcion")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-9" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.descripcion,
-                              expression: "descripcion"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            placeholder: "descripcion............",
-                            required: ""
-                          },
-                          domProps: { value: _vm.descripcion },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.descripcion = $event.target.value
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Calorias Quemadas")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-9" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.calorias_quemadas,
-                              expression: "calorias_quemadas"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            step: "any",
-                            placeholder: "calorias quemadas............",
-                            required: ""
-                          },
-                          domProps: { value: _vm.calorias_quemadas },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.calorias_quemadas = $event.target.value
-                            }
-                          }
-                        })
-                      ])
                     ])
                   ]
                 )
@@ -84253,10 +84535,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("N°")]),
         _vm._v(" "),
         _c("th", [_vm._v("Tipo")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Descripcion")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Calorias Quemadas")]),
         _vm._v(" "),
         _c("th", [_vm._v("Opciones")])
       ])

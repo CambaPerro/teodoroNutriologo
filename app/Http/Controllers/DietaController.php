@@ -43,6 +43,7 @@ class DietaController extends Controller
         $table->calorias=$request->calorias;
         $table->imc=$request->imc;
         $table->tipo=$request->tipo;
+        $table->id_nivel=$request->id_nivel;
         $table->save();
         
         $user=User::findOrFail(auth()->id());
@@ -75,6 +76,7 @@ class DietaController extends Controller
         $table->peso_ideal=$request->peso_ideal;
         $table->calorias=$request->calorias;
         $table->imc=$request->imc;
+        $table->id_nivel=$request->id_nivel;
         $table->save();
     }
 
