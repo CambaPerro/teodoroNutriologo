@@ -9,23 +9,12 @@
         <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <ul class="nav navbar-nav d-md-down-none">
-          <li class="nav-item px-3">
-            <a class="nav-link" href="#">Dashboard</a>
-          </li>
-          <li class="nav-item px-3">
-            <a class="nav-link" href="#">Users</a>
-          </li>
-          <li class="nav-item px-3">
-            <a class="nav-link" href="#">Settings</a>
-          </li>
-        </ul>
         <ul class="nav navbar-nav ml-auto">
             <i class="flag-icon flag-icon-bo h1" id="bo" title="bo"></i>
                         
           <li class="nav-item d-md-down-none">
             <a class="nav-link" >
-              <i class="icon-list"></i>
+              {{-- <i class="icon-list"></i> --}}
             </a>
           </li>
           <li class="nav-item d-md-down-none">
@@ -55,9 +44,9 @@
             </div>
           </li>
         </ul>
-        <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+        {{-- <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> --}}
         <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
           <span class="navbar-toggler-icon"></span>
         </button>

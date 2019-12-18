@@ -2,7 +2,7 @@
         <nav class="sidebar-nav">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="dashboard"><i class="icon-speedometer"></i> Escritorio</a>
+                    <a class="nav-link active" href="../public"><i class="icon-speedometer"></i> Escritorio</a>
                 </li>
                 <li class="nav-title">
                     Gestion de Dieta
@@ -16,20 +16,7 @@
                     </ul>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="alimento_dietas"><i class="nav-icon icon-user"></i> Alimento Dieta</a>
-                        </li>
-                    </ul>
-                    <ul class="nav-dropdown-items">
-                        <li class="nav-item">
-                            <a class="nav-link" href="menus"><i class="nav-icon icon-grid"></i> Menu</a>
-                        </li>
-                    </ul>
-                    <ul class="nav-dropdown-items">
-                        <li class="nav-item">
-                            <a class="nav-link" href="register"><i class="nav-icon icon-user"></i> Registro de Usuario</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="login"><i class="nav-icon icon-user"></i> Login</a>
+                            <a class="nav-link" href="perfils"><i class="nav-icon icon-user"></i> Perfil</a>
                         </li>
                     </ul>
                 </li>
@@ -43,11 +30,6 @@
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
                             <a class="nav-link" href="categorias"><i class="nav-icon icon-grid"></i> Categoria Alimentos</a>
-                        </li>
-                    </ul>
-                    <ul class="nav-dropdown-items">
-                        <li class="nav-item">
-                            <a class="nav-link" href="orden_alimentos"><i class="nav-icon icon-grid"></i> Orden Alimenticio</a>
                         </li>
                     </ul>
                     <ul class="nav-dropdown-items">

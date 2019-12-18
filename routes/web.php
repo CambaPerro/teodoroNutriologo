@@ -72,11 +72,11 @@ Route::delete('/menu/eliminar_{id}','MenuController@destroy');
 Route::post('/user/guardarImg','UsuarioController@guardar_imagen');
 
 Route::get('/user','UsuarioController@index');
-Route::get('/menu/listar_menu','UsuarioController@listar_menu');
-Route::get('/menu/listar_alimento','UsuarioController@listar_alimento');
-Route::post('/menu/registrar','UsuarioController@store');
-Route::put('/menu/actualizar','UsuarioController@update');
-Route::delete('/menu/eliminar_{id}','UsuarioController@destroy');
+// Route::get('/menu/listar_menu','UsuarioController@listar_menu');
+// Route::get('/menu/listar_alimento','UsuarioController@listar_alimento');
+// Route::post('/menu/registrar','UsuarioController@store');
+// Route::put('/menu/actualizar','UsuarioController@update');
+// Route::delete('/menu/eliminar_{id}','UsuarioController@destroy');
 
 
 
